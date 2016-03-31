@@ -1,0 +1,77 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'mentoring_list.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+        {% for mentoring in mentoring_list %}
+            <div>
+                {{mentoring.author}}
+                {{mentoring.major}}
+                {{mentoring.date}}
+                {{mentoring.area}}
+                {{mentoring.capacity}}
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col-md-4">
+
+            <div class="well well-sm">
+            찾아오시는 길
+            </div>
+            <div id="map" style="width:100%; min-height:300px;">
+            </div>
+            <br />
+
+            <!-- 추천 스토어-->
+            <div class="well well-sm">
+            추천 멘토링
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem i totatque eveniet unde.</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit eveniet unde.</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit amet, c</p>
+                </div>
+            </div>
+            <br />
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

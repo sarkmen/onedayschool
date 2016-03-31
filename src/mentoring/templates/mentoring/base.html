@@ -1,0 +1,152 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OneDaySchool</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+
+    <style>
+      .modal .modal-header, .modal h4, .modal .close {
+          background-color: #5cb85c;
+          color:white !important;
+          text-align: center;
+          font-size: 30px;
+      }
+      .modal .modal-footer {
+          background-color: #f9f9f9;
+      }
+      .modal-content-gray {
+        background-color: #eee;
+      }
+      .search-modal {
+        top:40%;
+      }
+
+      .search-modal .modal-body {
+        padding: 10px;
+        text-align: center;
+      }
+      .modal-body .btn-sm {
+        padding: 5px 8px;
+        margin: 2px;
+      }
+  </style>
+
+
+{% block style %}
+{% endblock %}
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<script src="{% static 'jquery-1.12.0.js' %}"></script>
+
+<script>
+$(document).ready(function(){
+    $("#loginBtn").click(function(){
+        $("#loginModal").modal();
+    });
+});
+
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $("#where").focusin(function(){
+        $("#whereChoiceModal").modal();
+    });
+
+    $('.region_choice').click(function(){
+        var regionChoice = $(this).val();
+        $('#where').val(regionChoice);
+        $("#whereChoiceModal").modal("hide");
+    });
+
+    $("#howmany").focusin(function(){
+        $("#howmanyChoiceModal").modal();
+    });
+
+    $('.max_guest_choice').click(function(){
+        var maxGuestChoice = $(this).val();
+        $('#howmany').val(maxGuestChoice);
+        $("#howmanyChoiceModal").modal("hide");
+    });
+
+});
+
+</script>
+
+
+
+{% block headjs %}
+{% endblock %}
+
+</head>
+
+<body>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <li class="alert alert-{{message.tags}}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+{% block navbar %}
+  {% include 'mentoring/navbar.html'%}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+<div class="container">
+    <!-- Footer -->
+    <hr />
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; OneDaySchool   서비스소개  이용약관   개인정보취급방침   고객센터</p>
+                <p>사업자등록번호 : 000-0000-0000 통신판매업신고번호 : 2016-555-5555 주소 : 서울대학교 관정관 파리바게트</p>
+
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
+
+
+{% block script %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+</body>
+
+</html>

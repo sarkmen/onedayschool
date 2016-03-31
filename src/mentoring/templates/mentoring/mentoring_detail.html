@@ -1,0 +1,111 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'mentoring_detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+
+        <!--업체 정보 content-->
+        <div class="col-md-8">
+
+            <!-- Preview Image -->
+
+            <div class="well well-sm">
+            멘토링 정보
+            </div>
+            <div>
+              <ul class="slides">
+                <li>{{mentoring.major}}</li>
+                <li>{{mentoring.date}}</li>
+              </ul>
+            </div>
+
+
+            <p>멘토 분을 구하고 있습니다.</p>
+
+            <hr>
+            <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
+            <hr/>
+            {% for apply in mentoring.apply_set.all %}
+                {{apply.content}}
+                <button class='btn btn-primary'>수락하기</button>
+
+            {% endfor %}
+            <form action="{% url 'apply_new' mentoring.pk %}" method="post">
+                        {% csrf_token %}
+                        {{ apply_form }}
+                        <input type="submit" value="멘토링 지원하기" class="btn btn-block btn-primary"/>
+                   </form>
+
+        </div>
+
+
+        <!-- Blog Sidebar Widgets Column -->
+
+
+
+
+        <div class="col-md-4">
+
+            <div class="well well-sm">
+            찾아오시는 길
+            </div>
+            <div id="map" style="width:100%; min-height:300px;">
+            </div>
+            <br />
+
+            <!-- 추천 스토어-->
+            <div class="well well-sm">
+            추천 멘토링
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem i totatque eveniet unde.</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit eveniet unde.</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit amet, c</p>
+                </div>
+            </div>
+            <br />
+
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}
