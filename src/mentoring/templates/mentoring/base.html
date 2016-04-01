@@ -44,13 +44,11 @@
         padding-bottom: 20px;
         background-color : #cce6ff;
       }
-      .navbar {
-          background-color: red;
-          height: 30%;
-      }
+
       #loginBtn {
           font-size: 30;
       }
+
   </style>
 
 
@@ -87,64 +85,69 @@ $(document).ready(function(){
 </head>
 
 <body>
-    <div id='header'>
-         <!-- Navigation -->
-      <div class="navbar">
-          <div class="container">
-              <!-- Brand and toggle get grouped for better mobile display -->
+    <nav class="navbar" role="navigation" style="margin-bottom: 0px;">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="background-color: #cccccc">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" style="background-color: black"></span>
+                    <span class="icon-bar" style="background-color: black"></span>
+                    <span class="icon-bar" style="background-color: black" ></span>
+                </button>
+                <!--<a class="navbar-brand" href="/">원데이스쿨</a>-->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" style="text-align: right;" id="bs-example-navbar-collapse-1">
 
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse">
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {% if user.profile.is_mentor %}
+                            <li>
+                                <a href="{% url 'profile' %}">마이페이지</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}?next=/">로그아웃</a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a href="{% url 'profile' %}">마이페이지</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}?next=/">로그아웃</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                         <a href="#" id="loginBtn">로그인</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup_choice' %}">회원가입</a>
+                    </li>
+                </ul>
+                {% endif %}
 
-                  {% if user.is_authenticated %}
-                  <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <b class="caret"></b></a>
-                          <ul class="dropdown-menu">
-                              {% if user.profile.is_mentor %}
-                              <li>
-                                  <a href="{% url 'profile' %}">마이페이지</a>
-                              </li>
-                              <li>
-                                  <a href="{% url 'logout' %}?next=/">로그아웃</a>
-                              </li>
-                              {% else %}
-                              <li>
-                                  <a href="{% url 'profile' %}">마이페이지</a>
-                              </li>
-                              <li>
-                                  <a href="{% url 'logout' %}?next=/">로그아웃</a>
-                              </li>
-                              {% endif %}
-                          </ul>
-                      </li>
-                  </ul>
-                  {% else %}
-                  <ul class="nav navbar-nav navbar-right">
-                      <li>
-                           <a href="#" id="loginBtn">로그인</a>
-                      </li>
-                      <li>
-                          <a href="{% url 'signup_choice' %}">회원가입</a>
-                      </li>
-                  </ul>
-                  {% endif %}
-                  <div>
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  </div>
-                  <div>
-                  <h1 style="text-align: center; padding-top: 50px"><a href="/"><img src='{% static 'img/nav_logo.jpg' %}' style="width: 300px; height: 150px;"/></a></h1>
-                  </div>
-              </div>
-              <!-- /.navbar-collapse -->
-          </div>
-          <!-- /.container -->
-          <hr />
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="logo_wrapper" style="">
+      <div id="logo_div">
+        <h1 style="text-align: center; margin:0 0 15px 0; "><a href="/"><img src='{% static 'img/nav_logo.jpg' %}' style="width: 200px; height: 80px;"/></a></h1>
+      </div>
+    </div>
+    <hr/>
+
+{% include 'mentoring/loginModal.html' %}
 
       <style>
       hr {
@@ -159,7 +162,7 @@ $(document).ready(function(){
         padding: 10px 20px 0 20px;
         height: 50px;
         display: inline-block;
-        font-size: 20px;
+        font-size: 15px;
         text-decoration: none;
         color : #737373;
       }
