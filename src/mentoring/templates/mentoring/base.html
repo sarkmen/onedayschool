@@ -144,12 +144,30 @@ $(document).ready(function(){
               <!-- /.navbar-collapse -->
           </div>
           <!-- /.container -->
-          <hr/>
-      <h3 style="text-align: center;"><a href="#">Intro</a><a href="#">Mentoring</a> <a href="#">Q&A</h3>
-      <div style="text-align: center;">
-        <div class="pill" style="display: inline-block; padding: 20px; font-size: 19px;">Intro</div>
-        <div class="pill" style="display: inline-block;">Mentoring</div>
-        <div class="pill" style="display: inline-block;">Q&A</div>
+          <hr />
+
+      <style>
+      hr {
+        margin : 0 0 0 0;
+      }
+      #menu_bar {
+
+        height: 50px;
+        text-align: center;
+      }
+      #menu_bar #menu {
+        padding: 10px 20px 0 20px;
+        height: 50px;
+        display: inline-block;
+        font-size: 20px;
+        text-decoration: none;
+        color : #737373;
+      }
+      </style>
+      <div id="menu_bar" style="text-align: center;">
+        <a href="#"><div id="menu">INTRO</div></a> ■
+        <a href="#"><div id="menu">MENTORING</div></a> ■
+        <a href="#"><div id="menu">Q & A</div></a>
       </div>
       <hr/
       {% include 'mentoring/loginModal.html' %}
