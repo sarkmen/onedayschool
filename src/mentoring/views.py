@@ -23,7 +23,6 @@ def mentoring_detail(request, pk):
 def mentoring_new(request):
     if request.method == 'POST':
         mentoringform = MentoringForm(request.POST)
-
         if mentoringform.is_valid():
             mentoring = mentoringform.save(commit=False)
             mentoring.author = request.user
@@ -40,10 +39,9 @@ def mentoring_edit(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
     if request.method == "POST":
         mentoringform = MentoringForm(request.POST, instance=mentoring)
-
         if mentoringform.is_valid():
+            mentoring = mentoringform.save(commit=False)
             mentoring.save()
-
             messages.success(request, "멘토링이 성공적으로 수정되었습니다.")
             return redirect("/")
     else:
@@ -79,7 +77,7 @@ def plan_edit(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
     plan = get_object_or_404(Plan, pk=mentoring.pk)
     if request.method == "POST":
-        planform = PlanForm(request.POST)
+        planform = PlanForm(request.POST, instance=plan)
         if planform.is_valid():
             plan = planform.save(commit=False)
             plan.mentoring = mentoring
@@ -103,8 +101,17 @@ def apply_new(request, pk):
             apply.save()
             return redirect(mentoring_detail, pk=pk)
 
-def apply_edit(request, pk):
-    pass
+
+def apply_edit(request, pk, apply_pk):
+    mentoring = get_object_or_404(Mentoring, pk=pk)
+    apply = get_object_or_404(Apply, pk=apply_pk)
+    if request.method == "POST":
+        applyform = ApplyForm(request.POST, instance=apply)
+        if applyform.is_valid():
+            apply = applyform.save(commit=False)
+            apply.save()
+            return redirect(mentoring_detail, pk=pk)
+
 
 def mentoring_authenticate(request, pk, apply_pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
