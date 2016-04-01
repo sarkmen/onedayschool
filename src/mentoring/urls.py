@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/plan/edit/$', views.plan_edit, name='plan_edit'),
     url(r'^(?P<pk>[0-9]+)/plan/detail/$', views.plan_detail, name='plan_detail'),
     url(r'^(?P<pk>\d+)/apply/new/$', views.apply_new, name='apply_new'),
+    url(r'^(?P<pk>\d+)/apply/(?P<apply_pk>\d+)/accept/$', views.mentoring_authenticate, name='accept'),
 
 ]

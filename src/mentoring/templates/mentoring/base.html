@@ -51,8 +51,6 @@
       #loginBtn {
           font-size: 30;
       }
-
-
   </style>
 
 
@@ -140,27 +138,20 @@ $(document).ready(function(){
                   </button>
                   </div>
                   <div>
-                  <h1 style="text-align: center;"><a href="/"><img src='{% static 'img/nav_logo.jpg' %}' style="width: 300px; height: 150px;"/></a></h1>
+                  <h1 style="text-align: center; padding-top: 50px"><a href="/"><img src='{% static 'img/nav_logo.jpg' %}' style="width: 300px; height: 150px;"/></a></h1>
                   </div>
               </div>
               <!-- /.navbar-collapse -->
           </div>
           <!-- /.container -->
           <hr/>
-
+      <h3 style="text-align: center;"><a href="#">Intro</a><a href="#">Mentoring</a> <a href="#">Q&A</h3>
+      <div style="text-align: center;">
+        <div class="pill" style="display: inline-block; padding: 20px; font-size: 19px;">Intro</div>
+        <div class="pill" style="display: inline-block;">Mentoring</div>
+        <div class="pill" style="display: inline-block;">Q&A</div>
       </div>
-      <ul class="nav navbar-nav navbar-center">
-            <li>
-                <a href='#'>Intro</a>
-            </li>
-            <li>
-                <a href='#'>Mentoring</a>
-            </li>
-            <li>
-                <a href='#'>Q&A</a>
-            </li>
-          </ul>
-
+      <hr/
       {% include 'mentoring/loginModal.html' %}
     </div>
     {% if messages %}

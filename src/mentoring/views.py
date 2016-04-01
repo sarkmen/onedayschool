@@ -106,7 +106,13 @@ def apply_new(request, pk):
 def apply_edit(request, pk):
     pass
 
-def mentoring_authenticate(request, pk):
+def mentoring_authenticate(request, pk, apply_pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
+    apply = get_object_or_404(Apply, pk=apply_pk)
+    if request.method == "POST":
+        mentoring.acceptor = apply.applicant
+        mentoring.save()
+        return redirect(mentoring_detail, pk=pk)
+    return render(request, 'mentoring/mentoring_detail.html', {'mentoring' : mentoring, 'apply_form' : ApplyForm(), })
 
 

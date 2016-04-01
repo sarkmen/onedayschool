@@ -33,8 +33,8 @@
             <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
             <hr/>
             {% for apply in mentoring.apply_set.all %}
-                {{apply.content}}
-                <button class='btn btn-primary'>수락하기</button>
+                <h6>{{apply.content}}   <button class='btn btn-primary'><a href="{% url 'mentoring_authenticate' mentoring.pk apply.pk }">수락하기</a></button></h6>
+
 
             {% endfor %}
             <form action="{% url 'apply_new' mentoring.pk %}" method="post">
