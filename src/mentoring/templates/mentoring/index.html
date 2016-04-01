@@ -12,21 +12,16 @@
 
 
     #myCarousel .img-responsive {
-        border-radius: 5px;
+        border-radius: 15px;
         opacity: 0.7;
     }
     .carousel-caption {
-    top: 50%;
-    padding: 0px;
-    margin-top: -38px;
-    }
-
-    .carousel-caption h1 {
-        opacity: 1;
+    top: 75%;
+    opacity: 0.8;
     }
 
     .carousel-inner {
-        margin-top: 15%;
+        margin-top: -40px;
         height : 100%;
         width : 100%;
     }
@@ -42,10 +37,21 @@
       box-sizing: border-box;
     }
 
-    #intro_section_1 h3 {
-      margin: 0 0 50px;
-    }
+    #intro_section_2 {
+    padding: 60px 50px;
 
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+    .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
 
 
 
@@ -81,7 +87,7 @@
           <img class="img-responsive first-slide" src="{% static 'img/maindoor.jpg' %}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h2>Example headline.</h2>
+              <h2>서울대학교 원데이스쿨</h2>
             </div>
           </div>
         </div>
@@ -90,7 +96,7 @@
           <img class="img-responsive second-slide" src="{% static 'img/t-rounge.jpg' %}" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
+              <h2>좋은 사진 좀 추천해줘요..</h1>
             </div>
           </div>
         </div>
@@ -99,7 +105,7 @@
           <img class="img-responsive" class="third-slide" src="{% static 'img/1on1.jpg' %}" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
+              <h2>사진때문에 웹페이지가...</h1>
             </div>
           </div>
         </div>
@@ -119,15 +125,15 @@
 
     <!-- Container (소개창 1 section) -->
     <div id="intro_section_1" class="container text-center">
-      <h3>1st 소개창</h3>
-      <h4><em>We love music!</em></h4>
-      <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2 style="margin: 0 0 50px;">1st 소개창</h2>
+      <h3><em>서울대 원데이 스쿨!!</em></h3>
+      <p style="font-size: 20px; margin-bottom: 30px;">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <br>
       <div class="row">
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 1</strong></p><br>
           <a href="#demo" data-toggle="collapse">
-            <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img_1.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo" class="collapse">
             <br><p>상세설명 1</p>
@@ -138,7 +144,7 @@
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 2</strong></p><br>
           <a href="#demo2" data-toggle="collapse">
-            <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img_2.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo2" class="collapse">
             <br><p>상세설명 1</p>
@@ -149,7 +155,7 @@
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 3</strong></p><br>
           <a href="#demo3" data-toggle="collapse">
-            <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img_3.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo3" class="collapse">
             <br><p>상세설명 1</p>
@@ -161,6 +167,37 @@
     </div>
     <!-- /. 소개창 1 -->
 
+    <!-- Container (소개창 2 section) -->
+    <div id="intro_section_2" class="container-fluid">
+      <div class="row">
+        <div class="col-sm-8" style="padding-left: 10%;">
+          <h2 style="font-size: 24px;text-transform: uppercase;color: #303030;font-weight: 400;margin-bottom: 30px;">About Company Page</h2><br>
+          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-signal logo" style="color: #f4511e;font-size: 200px; padding: 60px 0 0 30px;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-grey" style="background-color: #f6f6f6; padding: 50px 0 70px 0; ">
+      <div class="row">
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-globe logo slideanim slide" style="color: #f4511e;font-size: 200px;padding: 60px 0 0 120px;"></span>
+        </div>
+        <div class="col-sm-8" style="padding-right: 10%;">
+          <h2>Our Values</h2><br>
+          <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+          <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <br><div style="margin-top: 30px;margin-left: 450px;"><a href="{% url 'mentoring_new' %}"><button class="btn btn-default btn-lg" >멘토링 신청!</button></a></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /. 소개창 2 -->
 
 
 
