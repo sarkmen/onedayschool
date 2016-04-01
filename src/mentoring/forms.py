@@ -6,7 +6,7 @@ from .models import Mentoring, Plan, Apply
 class MentoringForm(forms.ModelForm):
     class Meta:
         model = Mentoring
-        fields = ('major', 'date', 'capacity', 'area',)
+        fields = ('major', 'date', 'requirements')
 
 
 class PlanForm(forms.ModelForm):

@@ -59,6 +59,7 @@ class Mentoring(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default='1')
     acceptor = models.ForeignKey(Profile, null=True)
     major = models.CharField(max_length=40, verbose_name='전공선택/관심분야')
+    requirements = models.TextField(max_length=2000, verbose_name='멘토에게 바라는 점')
     date = models.CharField(max_length=20)
     capacity = models.PositiveSmallIntegerField(default=0)
     area = models.CharField(max_length=20, verbose_name='멘토링 지역')
