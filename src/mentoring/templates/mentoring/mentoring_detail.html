@@ -20,15 +20,19 @@
             멘토링 정보
             </div>
             <div>
-              <ul class="slides">
-                <li>{{mentoring.major}}</li>
-                <li>{{mentoring.date}}</li>
+              <ul class="nav">
+                <li>관심학과 : {{mentoring.major}}</li>
+                <li>원하는 멘토링 날짜 : {{mentoring.date}}</li>
+                <li>요청사항 : </li>
+                <li>{{mentoring.requirements}}</li>
               </ul>
             </div>
 
-
+            {% if mentoring.acceptor %}
+            <p>성립된 멘토링입니다.</p>
+            {% else %}
             <p>멘토 분을 구하고 있습니다.</p>
-
+            {% endif %}
             <hr>
             <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
             <hr/>

@@ -10,15 +10,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-        {% for mentoring in mentoring_list %}
-            <div>
-                {{mentoring.author}}
-                {{mentoring.major}}
-                {{mentoring.date}}
-                {{mentoring.area}}
-                {{mentoring.capacity}}
+            <div class="well well-sm">
+            멘토를 구하고 있어요.
             </div>
-        {% endfor %}
+            {% for mentoring in mentoring_list %}
+                {% if mentoring.author.profile.is_mentor %}
+                {% else %}
+                <div>
+                    {{mentoring.author}}
+                    {{mentoring.major}}
+                    {{mentoring.date}}
+                    {{mentoring.requirements}}
+                </div>
+                {% endif %}
+            {% endfor %}
+            <div class="well well-sm">
+            멘티를 구하고 있어요.
+            </div>
+            {% for mentoring in mentoring_list %}
+                {% if mentoring.author.profile.is_mentor %}
+                <div>
+                    {{mentoring.author}}
+                    {{mentoring.major}}
+                    {{mentoring.date}}
+                    {{mentoring.requirements}}
+                </div>
+                {% else %}
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="col-md-4">
 
