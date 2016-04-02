@@ -19,3 +19,4 @@ class ApplyForm(forms.ModelForm):
     class Meta:
         model = Apply
         fields = ('content',)
+

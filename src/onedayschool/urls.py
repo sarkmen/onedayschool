@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^intro/$', mentoring_views.intro, name='intro'),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^mentoring/', include('mentoring.urls')),
+    url(r'^Q&A/', include('QNA.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

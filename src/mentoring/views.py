@@ -16,11 +16,16 @@ def intro(request):
 
 def mentoring_list(request):
     mentoring_list = Mentoring.objects.all()
-    return render(request, 'mentoring/mentoring_list.html', {'mentoring_list' : mentoring_list})
+    return render(request, 'mentoring/mentoring_list.html', {
+        'mentoring_list' : mentoring_list
+        })
 
 def mentoring_detail(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
-    return render(request, 'mentoring/mentoring_detail.html', {'mentoring' : mentoring, 'apply_form' : ApplyForm(), })
+    return render(request, 'mentoring/mentoring_detail.html', {
+        'mentoring' : mentoring,
+        'apply_form' : ApplyForm(),
+        })
 
 @login_required
 def mentoring_new(request):
@@ -35,7 +40,9 @@ def mentoring_new(request):
     else:
         mentoringform = MentoringForm()
 
-    return render(request, 'mentoring/mentoring_form.html', {'mentoringform' : mentoringform})
+    return render(request, 'mentoring/mentoring_form.html', {
+        'mentoringform' : mentoringform
+        })
 
 @login_required
 def mentoring_edit(request, pk):
@@ -50,13 +57,17 @@ def mentoring_edit(request, pk):
     else:
         mentoringform = MentoringForm(instance=mentoring)
 
-    return render(request, 'mentoring/mentoring_form.html', {'mentoringform' : mentoringform})
+    return render(request, 'mentoring/mentoring_form.html', {
+        'mentoringform' : mentoringform
+        })
 
 
 def plan_detail(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
     plan = mentoring.plan
-    return render(request, 'mentoring/plan_detail.html', {'plan' : plan})
+    return render(request, 'mentoring/plan_detail.html', {
+        'plan' : plan
+        })
 
 
 
@@ -73,7 +84,10 @@ def plan_new(request, pk):
             return redirect(plan_detail, pk=pk)
     else:
         planform = PlanForm()
-    return render(request, 'mentoring/plan_form.html', {'planform' : planform, 'mentoring' : mentoring})
+    return render(request, 'mentoring/plan_form.html', {
+        'planform' : planform,
+        'mentoring' : mentoring
+        })
 
 @login_required
 def plan_edit(request, pk):
@@ -89,7 +103,10 @@ def plan_edit(request, pk):
             return redirect(plan_detail, pk=pk)
     else:
         planform = PlanForm()
-    return render(request, 'mentoring/plan_form.html', {'planform' : planform, 'mentoring' : mentoring})
+    return render(request, 'mentoring/plan_form.html', {
+        'planform' : planform,
+        'mentoring' : mentoring
+        })
 
 
 def apply_new(request, pk):
@@ -123,6 +140,9 @@ def mentoring_authenticate(request, pk, apply_pk):
         mentoring.acceptor = apply.applicant
         mentoring.save()
         return redirect(mentoring_detail, pk=pk)
-    return render(request, 'mentoring/mentoring_detail.html', {'mentoring' : mentoring, 'apply_form' : ApplyForm(), })
+    return render(request, 'mentoring/mentoring_detail.html', {
+        'mentoring' : mentoring,
+        'apply_form' : ApplyForm(),
+        })
 
 

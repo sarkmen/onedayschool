@@ -1,0 +1,32 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'question_form.css' %}"/>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <h2><strong>질문 등록하기</strong></h2>
+    </div>
+
+    <div class="col-sm-6 col-sm-offset-3">
+        <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_form questionform %}
+            <hr />
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 제출</button>
+            {% endbuttons %}
+        </form>
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

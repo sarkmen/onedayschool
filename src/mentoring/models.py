@@ -79,8 +79,6 @@ class Plan(models.Model):
     know_how = models.TextField(max_length=500, verbose_name='본인만의 특별한 공부법')
     delivering_message = models.TextField(max_length=500, verbose_name='그 외에 전달하고 싶은 메세지')
 
-    def __str__(self):
-        return self.name
 
 
 class Apply(models.Model):
@@ -88,4 +86,8 @@ class Apply(models.Model):
     content = models.TextField()
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+
+
 

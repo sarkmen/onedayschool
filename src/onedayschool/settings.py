@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #our apps
     'mentoring',
     'accounts',
+    'QNA',
 ]
 
 MIDDLEWARE_CLASSES = [
