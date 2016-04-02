@@ -7,7 +7,7 @@
     #Homepage {
       padding: 0 0 0 0;
       width : 100%;
-      height : 2500px;
+      height : 2200px;
     }
 
     #myCarousel {
@@ -143,7 +143,7 @@
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 1</strong></p><br>
           <a href="#demo" data-toggle="collapse">
-            <img src='{% static 'img/mento_img_1.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img1.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo" class="collapse">
             <br><p>상세설명 1</p>
@@ -154,7 +154,7 @@
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 2</strong></p><br>
           <a href="#demo2" data-toggle="collapse">
-            <img src='{% static 'img/mento_img_2.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img2.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo2" class="collapse">
             <br><p>상세설명 1</p>
@@ -165,7 +165,7 @@
         <div class="col-sm-4">
           <p class="text-center"><strong>내용 3</strong></p><br>
           <a href="#demo3" data-toggle="collapse">
-            <img src='{% static 'img/mento_img_3.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+            <img src='{% static 'img/mento_img3.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
           </a>
           <div id="demo3" class="collapse">
             <br><p>상세설명 1</p>
@@ -178,7 +178,7 @@
     <!-- /. 소개창 1 -->
 
     <!-- Container (소개창 2 section) -->
-    <div id="intro_section_2" class="container-fluid">
+    <div id="intro_section_2" class="container-fluid" style="background-color: #f2f2f2;">
       <div class="row">
         <div class="col-sm-8" style="padding-left: 10%;">
           <h2 style="font-size: 24px;text-transform: uppercase;color: #303030;font-weight: 400;margin-bottom: 30px;">About Company Page</h2><br>
@@ -187,15 +187,15 @@
 
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-signal logo" style="color: #f4511e;font-size: 200px; padding: 60px 0 0 30px;"></span>
+          <span class="glyphicon glyphicon-signal logo" style="color: #4d94ff;font-size: 200px; position: absolute;margin : 50px 0 0 20px;"></span>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid bg-grey" style="background-color: #f6f6f6; padding: 50px 0 70px 0; ">
+    <div class="container-fluid bg-grey" style="padding: 50px 0 70px 0; ">
       <div class="row">
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-globe logo slideanim slide" style="color: #f4511e;font-size: 200px;padding: 60px 0 0 120px;"></span>
+        <div class="col-sm-4" style="height: 100%;">
+          <span class="glyphicon glyphicon-globe logo slideanim slide" style="color: #4d94ff;font-size: 200px;padding: 0 0 0 0; position: relative; margin : 20% 30% 30% 30%;"></span>
         </div>
         <div class="col-sm-8" style="padding-right: 10%;">
           <h2>Our Values</h2><br>
@@ -215,8 +215,8 @@
 
 <div class="footer">
     <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-        <a class="btn btn-xs btn-primary" href="{% url 'mentoring_new' %}">멘토링 등록하기</a>
+        <p class="text-muted"></p>
+        <!--<a class="btn btn-xs btn-primary" style="margin:auto;" href="{% url 'mentoring_new' %}">멘토링 등록하기</a>-->
     </div>
 </div>
 

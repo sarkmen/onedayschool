@@ -45,9 +45,6 @@
         background-color : #cce6ff;
       }
 
-      #loginBtn {
-          font-size: 30;
-      }
 
   </style>
 
@@ -85,7 +82,7 @@ $(document).ready(function(){
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" style="margin-bottom: 0px;">
+    <nav class="navbar" role="navigation" style="min-height:30px;margin-bottom: 0px;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -107,29 +104,29 @@ $(document).ready(function(){
                         <ul class="dropdown-menu">
                             {% if user.profile.is_mentor %}
                             <li>
-                                <a href="{% url 'profile' %}">마이페이지</a>
+                                <a href="{% url 'profile' %}" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-user"></span> 마이페이지</a>
                             </li>
                             <li>
-                                <a href="{% url 'logout' %}?next=/">로그아웃</a>
+                                <a href="{% url 'logout' %}?next=/" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
                             </li>
                             {% else %}
                             <li>
-                                <a href="{% url 'profile' %}">마이페이지</a>
+                                <a href="{% url 'profile' %}" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-user"></span> 마이페이지</a>
                             </li>
                             <li>
-                                <a href="{% url 'logout' %}?next=/">로그아웃</a>
+                                <a href="{% url 'logout' %}?next=/" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
                             </li>
                             {% endif %}
                         </ul>
                     </li>
                 </ul>
                 {% else %}
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" id="test">
                     <li>
-                         <a href="#" id="loginBtn">로그인</a>
+                         <a href="#" id="loginBtn" style="font-size: 12px;color : #737373;padding-top:5px;padding-bottom:5px;"><span class="glyphicon glyphicon-log-in"></span> 로그인</a>
                     </li>
                     <li>
-                        <a href="{% url 'signup_choice' %}">회원가입</a>
+                        <a href="{% url 'signup_choice' %}" style="font-size: 12px;color : #737373;padding-top:5px;padding-bottom:5px;"><span class="glyphicon glyphicon-edit"></span> 회원가입</a>
                     </li>
                 </ul>
                 {% endif %}
@@ -190,9 +187,9 @@ $(document).ready(function(){
 {% endblock %}
 
 
-<footer class="text-center">
-  <a class="up-arrow" href="/" data-toggle="tooltip" title="TO TOP">
-    <span class="glyphicon glyphicon-chevron-up"></span>
+<footer class="text-center" style="background-color: #cce0ff; padding: 20px 0 50px 0;">
+  <a class="up-arrow" href="/" data-toggle="tooltip" title="TO TOP" style="text-decoration: none;">
+    <span class="glyphicon glyphicon-chevron-up"></span><br>TOP
   </a><br><br>
   <p>Copyright &copy; OneDaySchool   서비스소개  이용약관   개인정보취급방침   고객센터</p>
                 <p>사업자등록번호 : 000-0000-0000 통신판매업신고번호 : 2016-555-5555 주소 : 서울대학교 관정관 파리바게트</p>
