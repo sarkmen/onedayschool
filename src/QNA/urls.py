@@ -8,7 +8,9 @@ urlpatterns = [
     url(r'^new/$', views.question_new, name='question_new'),
     url(r'^(?P<pk>\d+)/edit/$', views.question_edit, name='question_edit'),
     url(r'^(?P<pk>\d+)/answer/new/$', views.answer_new, name='answer_new'),
-    url(r'^(?P<pk>\d+)/answer/(?P<answer_pk>\d+)/$', views.answer_edit, name='answer_edit'),
+    url(r'^(?P<pk>\d+)/answer/(?P<answer_pk>\d+)/edit/$', views.answer_edit, name='answer_edit'),
+    url(r'^(?P<pk>\d+)/answer/(?P<answer_pk>\d+)/delete/$', views.answer_delete, name='answer_delete'),
+
 
 
 ]

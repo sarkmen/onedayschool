@@ -1,0 +1,33 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+    {% for review in review_list %}
+    <a href="#">
+    <div>
+        <img src="{{review.photo1.url}}" style="width:80px; height=:80px;"/>
+        <hr/>
+        <h4>{{review.date}}</h4>
+        <h6>{{review.school}}
+        {{review.name}}</h6>
+    </div>
+    </a>
+    {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if reviews.has_previous %}
+                <a href="?page={{ reviews.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
+            </span>
+            {% if reviews.has_next %}
+                <a href="?page={{ stores.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock %}

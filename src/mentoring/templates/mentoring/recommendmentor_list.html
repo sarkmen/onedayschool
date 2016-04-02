@@ -1,0 +1,21 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+    {% for recommendmentor in recommendmentor_list %}
+    <div class="col-md-12">
+        <div class="col-sm-3">
+        <img src="{{recommendmentor.photo.url}}" style="width:80px; height=:80px;"/>
+        <hr/>
+        {{recommendmentor.name}}
+        </div>
+        <div class="col-sm-9">
+        <h3>{{recommendmentor.title}}</h3>
+        <h5>{{recommendmentor.major}}</h5>
+        <p>{{recommendmentor.career}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>

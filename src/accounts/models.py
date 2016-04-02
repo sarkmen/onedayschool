@@ -76,7 +76,7 @@ GRADE_CHOICES = (
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=20, verbose_name='이름')
-    major = models.CharField(max_length=40, choices=MAJOR_CHOICES, default='', verbose_name='전공')
+    major = models.CharField(max_length=40, choices=MAJOR_CHOICES, default='', verbose_name='전공', blank=True)
     phone = models.CharField(max_length=20, null=True, verbose_name='전화번호')
     admission_type = models.CharField(max_length=40, choices=ADMISSION_TYPE_CHOICES, default='', verbose_name='입학 전형')
 
@@ -84,8 +84,8 @@ class Profile(models.Model):
     is_mentor = models.BooleanField(default=False)
     frequency = models.IntegerField(default=0)
     rating = models.FloatField(blank=True, default=0)
-    image = models.ImageField(blank=True, upload_to=random_name_upload_to, verbose_name='사진 업로드')
-    intro = models.TextField(max_length=300, verbose_name='간단한 자기소개')
+    image = models.ImageField(blank=True, null=True, upload_to=random_name_upload_to, verbose_name='사진 업로드')
+    intro = models.TextField(max_length=300, verbose_name='기타 약력')
 
     #멘티 only
     grade = models.CharField(max_length=20, verbose_name='학년')

@@ -1,0 +1,30 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <h2>{{review.school}}
+    {{review.name}}</h2>
+    <h3>{{review.date}}</h3>
+    {% if review.photo1 %}
+    <img src="{{review.photo1.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    {% if review.photo2 %}
+    <img src="{{review.photo2.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    {% if review.photo3 %}
+    <img src="{{review.photo3.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    {% if review.photo4 %}
+    <img src="{{review.photo4.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    {% if review.photo5 %}
+    <img src="{{review.photo5.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    {% if review.photo6 %}
+    <img src="{{review.photo6.url}}" style="width:300px; height=:200px;"/>
+    {% endif %}
+    <hr/>
+
+    {{review.content}}
+{% endblock%}

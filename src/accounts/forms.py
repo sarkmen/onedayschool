@@ -15,11 +15,12 @@ class MentorForm(UserCreationForm):
     username = forms.CharField(label='아이디')
     password1 = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
     password2 = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput)
+    name = forms.CharField(label='이름')
     major = forms.ChoiceField(label='소속학과', choices=MAJOR_CHOICES)
     admission_type = forms.ChoiceField(label='입학전형', choices=ADMISSION_TYPE_CHOICES)
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
     image = forms.ImageField(label='프로필 사진')
-    intro = forms.CharField(label='자기소개', widget=forms.TextInput(attrs={'placeholder': '간단한 자기소개'}))
+    intro = forms.CharField(label='자기소개', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
     is_agree = forms.BooleanField(label='약관동의', error_messages={
         'required' : '약관동의를 해주셔야 가입이 됩니다.',
     })
@@ -53,6 +54,7 @@ class MenteeForm(UserCreationForm):
     username = forms.CharField(label='아이디')
     password1 = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
     password2 = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput)
+    name = forms.CharField(label='이름')
     major = forms.ChoiceField(label='지망학과', choices=MAJOR_CHOICES)
     admission_type = forms.ChoiceField(label='희망입시전형', choices=ADMISSION_TYPE_CHOICES)
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])

@@ -88,6 +88,27 @@ class Apply(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+class Recommendmentor(models.Model):
+    name = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
+    major = models.CharField(max_length=40)
+    career = models.CharField(max_length=100)
+    photo = models.ImageField()
 
+    def __str__(self):
+        return self.name
+
+
+class Review(models.Model):
+    date = models.CharField(max_length=20)
+    school = models.CharField(max_length=40)
+    name = models.CharField(max_length=20)
+    content = models.TextField()
+    photo1 = models.ImageField(blank=True)
+    photo2 = models.ImageField(blank=True)
+    photo3 = models.ImageField(blank=True)
+    photo4 = models.ImageField(blank=True)
+    photo5 = models.ImageField(blank=True)
+    photo6 = models.ImageField(blank=True)
 
 

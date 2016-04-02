@@ -56,6 +56,18 @@ def question_edit(request, pk):
         'questionform' : questionform
         })
 
+@login_required
+def question_delete(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    if request.user != question.author:
+        messages.error(request, "자신이 작성한 질문만 삭제할 수 있습니다.")
+        return redirect(question_detail, pk=question.pk)
+    question.delete()
+    messages.error(request, "질문이 삭제되었습니다.")
+    return redirect(question_list)
+
+
+@login_required
 def answer_new(request, pk):
     question = get_object_or_404(Question, pk=pk)
     if request.method == "POST":
@@ -68,7 +80,7 @@ def answer_new(request, pk):
             answer.save()
             return redirect(question_detail, pk=pk)
 
-
+@login_required
 def answer_edit(request, pk, answer_pk):
     question = get_object_or_404(Question, pk=pk)
     answer = get_object_or_404(Answer, pk=answer_pk)
@@ -78,4 +90,16 @@ def answer_edit(request, pk, answer_pk):
             answer = answerform.save(commit=False)
             answer.save()
             return redirect(question_detail, pk=pk)
+
+
+@login_required
+def answer_delete(request, pk, answer_pk):
+    question = get_object_or_404(Question, pk=pk)
+    answer = get_object_or_404(Answer, pk=answer_pk)
+    if request.user != answer.author:
+        messages.error(request, "자신이 작성한 답변만 삭제할 수 있습니다.")
+        return redirect(question_detail, pk=question.pk)
+    answer.delete()
+    messages.error(request, "답변이 삭제되었습니다.")
+    return redirect(question_detail, pk=question.pk)
 

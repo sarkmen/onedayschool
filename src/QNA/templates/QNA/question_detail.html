@@ -30,7 +30,7 @@
             </div>
             <hr/>
             {% for answer in question.answer_set.all %}
-                <h6>{{answer.content}}</h6>
+                <h6>{{answer.content}}<button class='btn btn-primary'><a href="{% url 'answer_delete' question.pk answer.pk %}">삭제하기</a></button></h6>
             {% endfor %}
             <form action="{% url 'answer_new' question.pk %}" method="post">
                         {% csrf_token %}
