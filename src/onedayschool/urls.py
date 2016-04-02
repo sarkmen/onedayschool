@@ -26,6 +26,7 @@ from mentoring import views as mentoring_views
 urlpatterns = [
     url(r'^$', mentoring_views.index, name='index'),
     url(r'^admin/', admin.site.urls),
+    url(r'^intro/$', mentoring_views.intro, name='intro'),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^mentoring/', include('mentoring.urls')),
 ]

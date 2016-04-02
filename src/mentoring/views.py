@@ -11,6 +11,9 @@ from accounts.models import Profile
 def index(request):
     return render(request, 'mentoring/index.html')
 
+def intro(request):
+    return render(request, 'mentoring/intro.html')
+
 def mentoring_list(request):
     mentoring_list = Mentoring.objects.all()
     return render(request, 'mentoring/mentoring_list.html', {'mentoring_list' : mentoring_list})
