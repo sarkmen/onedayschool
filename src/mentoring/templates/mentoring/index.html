@@ -1,225 +1,218 @@
+{% extends 'mentoring/base.html' %}
 {% load staticfiles %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>OneDaySchool</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" />
-
-    <!-- Custom CSS -->
-
-    <style>
-      .modal .modal-header, .modal h4, .modal .close {
-          background-color: #5cb85c;
-          color:white !important;
-          text-align: center;
-          font-size: 30px;
-      }
-      .modal .modal-footer {
-          background-color: #f9f9f9;
-      }
-      .modal-content-gray {
-        background-color: #eee;
-
-      .search-modal .modal-body {
-        padding: 10px;
-        text-align: center;
-      }
-      .modal-body .btn-sm {
-        padding: 5px 8px;
-        margin: 2px;
-      }
-
-      footer {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        background-color : #cce6ff;
-      }
-
-
-  </style>
-
+{% load bootstrap3 %}
 
 {% block style %}
-{% endblock %}
+<style>
+    #Homepage {
+      padding: 0 0 0 0;
+      width : 100%;
+      height : 2200px;
+    }
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-
-<script src="{% static 'jquery-1.12.0.js' %}"></script>
-
-<script>
-$(document).ready(function(){
-    $("#loginBtn").click(function(){
-        $("#loginModal").modal();
-    });
-});
-
-</script>
+    #myCarousel {
+      padding : 0 0 0 0;
+      width : 100%;
+      height : 400px;
+    }
 
 
+    #myCarousel .img-responsive {
+        height : 400px;
 
-{% block headjs %}
-{% endblock %}
+        opacity: 0.7;
+    }
+    .carousel-caption {
+    margin-top:
+    opacity: 0.8;
+    }
 
-</head>
-
-<body>
-    <nav class="navbar" role="navigation" style="min-height:30px;margin-bottom: 0px;">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="background-color: #cccccc">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar" style="background-color: black"></span>
-                    <span class="icon-bar" style="background-color: black"></span>
-                    <span class="icon-bar" style="background-color: black" ></span>
-                </button>
-                <!--<a class="navbar-brand" href="/">원데이스쿨</a>-->
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" style="text-align: right;" id="bs-example-navbar-collapse-1">
-
-                {% if user.is_authenticated %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            {% if user.profile.is_mentor %}
-                            <li>
-                                <a href="{% url 'profile' %}" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-user"></span> 마이페이지</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'logout' %}?next=/" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="{% url 'profile' %}" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-user"></span> 마이페이지</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'logout' %}?next=/" style="font-size: 12px;color : #737373;"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                </ul>
-                {% else %}
-                <ul class="nav navbar-nav navbar-right" id="test">
-                    <li>
-                         <a href="#" id="loginBtn" style="font-size: 12px;color : #737373;padding-top:5px;padding-bottom:5px;"><span class="glyphicon glyphicon-log-in"></span> 로그인</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'signup_choice' %}" style="font-size: 12px;color : #737373;padding-top:5px;padding-bottom:5px;"><span class="glyphicon glyphicon-edit"></span> 회원가입</a>
-                    </li>
-                </ul>
-                {% endif %}
-
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <div class="logo_wrapper" style="">
-      <div id="logo_div">
-        <h1 style="text-align: center; margin:0 0 15px 0; "><a href="/"><img src='{% static 'img/nav_logo.jpg' %}' style="width: 200px; height: 80px;"/></a></h1>
-      </div>
-    </div>
-    <hr/>
-
-{% include 'mentoring/loginModal.html' %}
-
-      <style>
-      hr {
-        margin : 0 0 0 0;
-      }
-      #menu_bar {
-
-        height: 40px;
-        text-align: center;
-        opacity: 0.9;
-      }
-      #menu_bar #menu {
-        padding: 10px 20px 0 20px;
-        height: 50px;
-        display: inline-block;
-        font-size: 15px;
-        text-decoration: none;
-        color : #737373;
-      }
-      .affix {
-        top:-5px;
+    .carousel-inner {
+        background: white;
+        margin-top: 0px;
+        height: 400px;
+        width : 100%;
+    }
+    .item img {
+        height: 600px;
         width:100%;
-        z-index: 1;
+    }
 
-      }
-      .affix + .logo_wrapper {
-      padding-top: 70px;
-      }
-      </style>
-      <nav class="navbar" data-spy="affix" data-offset-top="130" style="min-height: 40px;margin: 0 0 0 0;" >
-        <div id="menu_bar" style="background-color:white;float:center;text-align: center;" >
-          <a href="/"><div id="menu">HOME</div></a> ■
-          <a href="/intro"><div id="menu">INTRO</div></a> ■
-          <a href="#"><div id="menu">MENTORING</div></a> ■
-          <a href="#"><div id="menu">Q & A</div></a>
-        </div>
-      </nav>
+    #intro_section_1 {
+      padding: 80px 120px;
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      box-sizing: border-box;
+    }
 
-      <hr/>
+    #intro_section_2 {
+    padding: 60px 50px;
 
-      {% include 'mentoring/loginModal.html' %}
-    </div>
-    {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <li class="alert alert-{{message.tags}}">
-                {{ message }}
-            </li>
-        {% endfor %}
-    </div>
-    {% endif %}
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+</style>
+{% endblock %}
 
 
 {% block content %}
+
+
+
+
+
+
+
+
+
+<div class="container" id="Homepage">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+
+
+        <div class="item active">
+          <img class="img-responsive first-slide" src="{% static 'img/maindoor.jpg' %}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>서울대학교 원데이스쿨</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="img-responsive second-slide" src="{% static 'img/t-rounge.jpg' %}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>좋은 사진 좀 추천해줘요..</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="img-responsive third-slide" src="{% static 'img/1on1.jpg' %}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>사진때문에 웹페이지가...</h1>
+            </div>
+          </div>
+        </div>
+        <!-- Left and right controls -->
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+    <!-- /.carousel -->
+
+    <!-- Container (소개창 1 section) -->
+    <div id="intro_section_1" class="container text-center">
+      <h2 style="margin: 0 0 50px;">서울대 학생들이 직접 개발한 맞춤형 프리미엄 멘토링</h2>
+      <h3><em>서울대 원데이 스쿨은 이렇게 다릅니다</em></h3>
+      <p style="font-size: 20px; margin-bottom: 30px;">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <br>
+      <div class="row">
+        <div class="col-sm-4">
+          <p class="text-center"><strong>내용 1</strong></p><br>
+          <a href="#demo" data-toggle="collapse">
+            <img src='{% static 'img/mento_img1.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+          </a>
+          <div id="demo" class="collapse">
+            <br><p>상세설명 1</p>
+            <p>상세설명 2</p>
+            <p>상세설명 3</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <p class="text-center"><strong>내용 2</strong></p><br>
+          <a href="#demo2" data-toggle="collapse">
+            <img src='{% static 'img/mento_img2.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+          </a>
+          <div id="demo2" class="collapse">
+            <br><p>상세설명 1</p>
+            <p>상세설명 2</p>
+            <p>상세설명 3</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <p class="text-center"><strong>내용 3</strong></p><br>
+          <a href="#demo3" data-toggle="collapse">
+            <img src='{% static 'img/mento_img3.jpg' %}' class="img-rounded person" alt="Random Name" width="255" height="255">
+          </a>
+          <div id="demo3" class="collapse">
+            <br><p>상세설명 1</p>
+            <p>상세설명 2</p>
+            <p>상세설명 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /. 소개창 1 -->
+
+    <!-- Container (소개창 2 section) -->
+    <div id="intro_section_2" class="container-fluid" style="background-color: #f2f2f2;">
+      <div class="row">
+        <div class="col-sm-8" style="padding-left: 10%; float: left;">
+          <h3 style="color: #303030;font-weight: 400;margin-bottom: 30px;">접속자들의 이목을 끌 수 있는 내용 1</h3><br>
+          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        </div>
+        <div class="col-sm-4" style="float: right;">
+          <span class="glyphicon glyphicon-signal logo" style="display:inline-block;color: #4d94ff;font-size: 200px; position: absolute;margin : 50px 0 0 20px;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-grey" style="padding: 50px 0 70px 0; ">
+      <div class="row">
+        <div class="col-sm-4" style="height: 100%;float:left;">
+          <span class="glyphicon glyphicon-globe logo slideanim slide" style="color: #4d94ff;font-size: 200px;padding: 0 0 0 0; position: relative; margin : 20% 30% 30% 30%;"></span>
+        </div>
+        <div class="col-sm-8" style="padding-right: 10%;float: right;">
+          <h3>접속자들의 이목을 끌 수 있는 내용 2</h3><br>
+          <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+          <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /. 소개창 2 -->
+
+<div style="float: center;"><br><h4 style="text-align: center;">당신이 고민하는 동안 이미 100명 이상의 학생들이 서울대 원데이 스쿨의 효과를 체험했습니다!</h4><h1 style="text-align: center;"><a href="{% url 'mentoring_new' %}"><button class="btn btn-default btn-lg" style="margin-right: 20px; font-size: 15px;">프로그램 정보 보기</button></a><a href="{% url 'mentoring_new' %}"><button class="btn btn-info btn-lg" style="margin-left: 20px;font-size: 15px;">멘토링 신청</button></a></h1></div>
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <p class="text-muted"></p>
+        <!--<a class="btn btn-xs btn-primary" style="margin:auto;" href="{% url 'mentoring_new' %}">멘토링 등록하기</a>-->
+    </div>
+</div>
+
 {% endblock %}
-
-
-<footer class="text-center" style="clear:both;background-color: #cce0ff; padding: 20px 0 50px 0;">
-  <a class="up-arrow" href="/" data-toggle="tooltip" title="TO TOP" style="text-decoration: none;">
-    <span class="glyphicon glyphicon-chevron-up"></span><br>TOP
-  </a><br><br>
-  <p>Copyright &copy; OneDaySchool   서비스소개  이용약관   개인정보취급방침   고객센터</p>
-                <p>사업자등록번호 : 000-0000-0000 통신판매업신고번호 : 2016-555-5555 주소 : 서울대학교 관정관 파리바게트</p>
-</footer>
-
-
-<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
-
-
-{% block script %}
-{% endblock %}
-
-{% block js %}
-{% endblock %}
-
-</body>
-
-</html>
