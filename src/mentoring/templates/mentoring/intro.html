@@ -1,3 +1,90 @@
 {% extends 'mentoring/base.html' %}
 {% load staticfiles %}
 {% load bootstrap3 %}
+
+{% block style %}
+<style>
+    * {
+      border : 1px dashed #3a5fcd;
+    }
+
+    #Intropage {
+      padding: 0 0 0 0;
+      width : 100%;
+      height : 4000px;
+    }
+
+    #Intropage div {
+      height : 750px;
+    }
+    #video-wrap {
+      position: relative;
+      width: 100%;
+      z-index: 99;
+    }
+    .main-play-shade {
+    background: #fff url(/static/img/ajax-loader.gif) no-repeat center center;
+    }
+    .video {
+    position: relative;
+    object-fit: fill;
+    z-index: -1;
+    }
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" id="Intropage">
+
+    <div id="content_1">
+      <div id="video-wrap" style="width:100%;height:100%;">
+        <div class="main-play-shade" style="width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;z-index: 9999;display: none;"></div>
+        <video class="video" src="/static/img/sharpa2.mp4" style="width: 100%;height: 750px;max-height: 800px; overflow: hidden;" autoplay onplay="mainPlay()" loop="loop" controls></video>
+<!--
+      <script type="text/javascript">
+      $('.main-play-shade').css({
+        width : '100%' ,
+        height : $(window).height() ,
+        position : 'absolute' ,
+        top :0 ,
+        left : 0 ,
+        zIndex : 9999
+      });
+      function mainPlay() {
+        $('.main-play-shade').hide();
+        $('#video-wrap').css('height' , $('.video').height());
+      }
+      </script>  -->
+      </div>
+    </div>
+
+
+
+
+    <div id="content_2" style="background-color: #f2f2f2;">
+    <p>회사 소개 !!</p>
+
+    </div>
+
+    <div id="content_3">
+    <p>123</p>
+    </div>
+
+    <div id="content_4" style="background-color: #f2f2f2;">
+    <p>123</p>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

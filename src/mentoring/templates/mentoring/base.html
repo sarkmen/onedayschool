@@ -152,8 +152,9 @@ $(document).ready(function(){
       }
       #menu_bar {
 
-        height: 50px;
+        height: 40px;
         text-align: center;
+        opacity: 0.9;
       }
       #menu_bar #menu {
         padding: 10px 20px 0 20px;
@@ -163,13 +164,27 @@ $(document).ready(function(){
         text-decoration: none;
         color : #737373;
       }
+      .affix {
+        top:-5px;
+        width:100%;
+        z-index: 1;
+
+      }
+      .affix + .logo_wrapper {
+      padding-top: 70px;
+      }
       </style>
-      <div id="menu_bar" style="text-align: center;">
-        <a href="#"><div id="menu">INTRO</div></a> ■
-        <a href="#"><div id="menu">MENTORING</div></a> ■
-        <a href="#"><div id="menu">Q & A</div></a>
-      </div>
-      <hr/
+      <nav class="navbar" data-spy="affix" data-offset-top="130" style="min-height: 40px;margin: 0 0 0 0;" >
+        <div id="menu_bar" style="background-color:white;float:center;text-align: center;" >
+          <a href="/"><div id="menu">HOME</div></a> ■
+          <a href="/intro"><div id="menu">INTRO</div></a> ■
+          <a href="#"><div id="menu">MENTORING</div></a> ■
+          <a href="#"><div id="menu">Q & A</div></a>
+        </div>
+      </nav>
+
+      <hr/>
+
       {% include 'mentoring/loginModal.html' %}
     </div>
     {% if messages %}
@@ -187,12 +202,12 @@ $(document).ready(function(){
 {% endblock %}
 
 
-<footer class="text-center" style="background-color: #cce0ff; padding: 20px 0 50px 0;">
+<footer class="text-center" style="clear:both;background-color: #cce0ff; padding: 20px 0 50px 0;">
   <a class="up-arrow" href="/" data-toggle="tooltip" title="TO TOP" style="text-decoration: none;">
     <span class="glyphicon glyphicon-chevron-up"></span><br>TOP
   </a><br><br>
   <p>Copyright &copy; OneDaySchool   서비스소개  이용약관   개인정보취급방침   고객센터</p>
-                <p>사업자등록번호 : 282-52-00066 주소 : 서울 관악구 관악로 1 서울대학교 58동 432호</p>
+                <p>사업자등록번호 : 000-0000-0000 통신판매업신고번호 : 2016-555-5555 주소 : 서울대학교 관정관 파리바게트</p>
 </footer>
 
 
