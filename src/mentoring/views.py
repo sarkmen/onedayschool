@@ -16,6 +16,9 @@ def index(request):
 def intro(request):
     return render(request, 'mentoring/intro.html')
 
+def program_info(request):
+    return render(request, 'mentoring/program_info.html')
+
 
 def mentoring_list(request):
     mentoring_list = Mentoring.objects.all()

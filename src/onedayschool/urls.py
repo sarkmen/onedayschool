@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^$', mentoring_views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^intro/$', mentoring_views.intro, name='intro'),
+    url(r'^program_info/$', mentoring_views.program_info, name='program_info'),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^mentoring/', include('mentoring.urls')),
     url(r'^Q&A/', include('QNA.urls')),
