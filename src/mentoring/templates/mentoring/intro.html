@@ -2,20 +2,33 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 
+{% block headjs %}
+<!-- 스크롤이 비디오 넘어가면 비디오 pause시키는 jquery -->
+<script>
+    $(window).scroll(function(){
+        if ($(window).scrollTop() > (10+$('#video1').height()+$('#top_nav').height()+$('#logo_div').height()))
+                {$('#video1')[0].pause();}
+
+        else    {$('#video1')[0].play();}
+});
+</script>
+
+{% endblock %}
+
+
 {% block style %}
 <style>
-    * {
-      border : 1px dashed #3a5fcd;
-    }
+
 
     #Intropage {
       padding: 0 0 0 0;
       width : 100%;
-      height : 4000px;
+
     }
 
     #Intropage div {
-      height : 750px;
+      min-height : 100px;
+      width: 100%;
     }
     #video-wrap {
       position: relative;
@@ -25,11 +38,12 @@
     .main-play-shade {
     background: #fff url(/static/img/ajax-loader.gif) no-repeat center center;
     }
-    .video {
+    #video1 {
     position: relative;
     object-fit: fill;
     z-index: -1;
     }
+
 
 
 </style>
@@ -40,41 +54,46 @@
 <div class="container-fluid" id="Intropage">
 
     <div id="content_1">
-      <div id="video-wrap" style="width:100%;height:100%;">
+      <div id="video-wrap" style="width:100%;height:100%; margin-bottom:0px;">
         <div class="main-play-shade" style="width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;z-index: 9999;display: none;"></div>
-        <video class="video" src="/static/img/sharpa2.mp4" style="width: 100%;height: 750px;max-height: 800px; overflow: hidden;" autoplay onplay="mainPlay()" loop="loop" controls></video>
-<!--
-      <script type="text/javascript">
-      $('.main-play-shade').css({
-        width : '100%' ,
-        height : $(window).height() ,
-        position : 'absolute' ,
-        top :0 ,
-        left : 0 ,
-        zIndex : 9999
-      });
-      function mainPlay() {
-        $('.main-play-shade').hide();
-        $('#video-wrap').css('height' , $('.video').height());
-      }
-      </script>  -->
+        <video id="video1"class="video" src="/static/img/sharpa2.mp4" style="width:100%; height: 700px;max-height: 800px; overflow: hidden;" autoplay loop="loop" controls></video>
+
+
+
+
+
       </div>
     </div>
 
 
 
+<!-- Container (회사 소개 section) -->
+    <div id="content_2" class="container text-center" style="background-color: #e6f2ff; padding-top: 50px;padding-bottom: 50px;">
+      <br><hr><br>
+      <h1 style="margin: 0 0 50px;">회사 소개</h1>
+      <h3><em>Vision & Mission</em></h3>
+      <p style="font-size: 20px; margin-bottom: 30px;">Better Education, Better Society<br>공감을 통한 더 나은 변화
+      </p>
+      <h3><em>약력</em></h3>
+      <p style="font-size: 20px; margin-bottom: 30px;">‘샤르파’는 우리나라의 교육문제에 대해 고민하는 서울대학교 학생들이 모여 만든 교육 스타트업입니다.<br>‘서울대 원데이 스쿨’은 샤르파를 대표하는 프로그램으로서, 2015년 9월부터 지금까지 수많은 청소년들의 학업 고민을 해결해주고 있습니다.<br>‘서울대학교 벤처경영 기업가센터’, ‘SK 청년비상’에서 그 성과를 인정하여 공식적으로 지원을 하고 있으며, <br>학과 교수님들이 자문을 담당하고 있습니다.
 
-    <div id="content_2" style="background-color: #f2f2f2;">
-    <p>회사 소개 !!</p>
+
+</p>
 
     </div>
 
-    <div id="content_3">
-    <p>123</p>
+    <div id="content_3" class="container text-center">
+    <br><hr><br>
+    <h1><b>팀 소개</b></h1>
+    <h1 style="text-align: center"><img src='{% static 'img/team_member.png' %}' style="width:100%;" /></h1>
     </div>
 
-    <div id="content_4" style="background-color: #f2f2f2;">
-    <p>123</p>
+    <div id="content_4" class="container text-center" style="background-color: ;">
+    <br><hr><br>
+    <h2>후원</h2>
+    <br>
+    <h1><img src='{% static 'img/SNU_SK_img.png' %}' style="position:inline-block; width: 100%;" /></h1>
+<br><br><br>
     </div>
 
 
@@ -88,3 +107,5 @@
 
 
 {% endblock %}
+
+

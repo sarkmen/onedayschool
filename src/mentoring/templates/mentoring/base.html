@@ -18,6 +18,14 @@
     <!-- Custom CSS -->
 
     <style>
+      @import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb);
+      * {
+        font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic';
+        color : #737373
+    }
+
+
+
       .modal .modal-header, .modal h4, .modal .close {
           background-color: #5cb85c;
           color:white !important;
@@ -65,14 +73,17 @@
 
 <script src="{% static 'jquery-1.12.0.js' %}"></script>
 
+
+
+<!-- 로그인 버튼 누르면 로그인 Modal이 뜨는 jquery -->
 <script>
 $(document).ready(function(){
     $("#loginBtn").click(function(){
         $("#loginModal").modal();
     });
 });
-
 </script>
+
 
 
 
@@ -82,7 +93,7 @@ $(document).ready(function(){
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" style="min-height:30px;margin-bottom: 0px;">
+    <nav id="top_nav" class="navbar" role="navigation" style="min-height:30px;margin-bottom: 0px;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -151,39 +162,49 @@ $(document).ready(function(){
         margin : 0 0 0 0;
       }
       #menu_bar {
+        width: 100%;
 
-        height: 40px;
+        max-height: 300px;
         text-align: center;
         opacity: 0.9;
+
       }
       #menu_bar #menu {
-        padding: 10px 20px 0 20px;
-        height: 50px;
+        position: relative;
+        padding: 10px 15px 10px 15px;
+
         display: inline-block;
         font-size: 15px;
+
         text-decoration: none;
         color : #737373;
       }
       .affix {
         top:-5px;
         width:100%;
-        z-index: 1;
+        z-index: 2;
+        height: 200px;
 
       }
-      .affix + .logo_wrapper {
-      padding-top: 70px;
-      }
+
       </style>
-      <nav class="navbar" data-spy="affix" data-offset-top="130" style="min-height: 40px;margin: 0 0 0 0;" >
+      <nav class="navbar" data-spy="affix" data-offset-top="130"style="margin: 0 0 0 0;min-height: 0;" >
         <div id="menu_bar" style="background-color:white;float:center;text-align: center;" >
-          <a href="/"><div id="menu">HOME</div></a> ■
-          <a href="/intro"><div id="menu">INTRO</div></a> ■
-          <a href="#"><div id="menu">MENTORING</div></a> ■
-          <a href="#"><div id="menu">Q & A</div></a>
-        </div>
-      </nav>
 
-      <hr/>
+
+
+
+
+
+          <a href="/"><div id="menu"><b>HOME</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="/intro"><div id="menu"><b>ABOUT US</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="#"><div id="menu"><b>프로그램 소개</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="#"><div id="menu"><b>멘토링 신청</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="#"><div id="menu"><b>Q & A</b></div></a>
+        </div>
+      </nav><hr>
+<br><br>
+      <hr>
 
       {% include 'mentoring/loginModal.html' %}
     </div>
