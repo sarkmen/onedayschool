@@ -2,7 +2,22 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 
+
+
 {% block headjs %}
+
+<script src="{% static 'jquery-1.12.0.js' %}"></script>
+
+
+
+<!-- 로그인 버튼 누르면 로그인 Modal이 뜨는 jquery -->
+<script>
+$(document).ready(function(){
+    $("#loginBtn").click(function(){
+        $("#loginModal").modal();
+    });
+});
+</script>
 <!-- 스크롤이 비디오 넘어가면 비디오 pause시키는 jquery -->
 <script>
     $(window).scroll(function(){
@@ -13,7 +28,12 @@
 });
 </script>
 
+
+
+
 {% endblock %}
+
+
 
 
 {% block style %}
@@ -33,7 +53,7 @@
     #video-wrap {
       position: relative;
       width: 100%;
-      z-index: 99;
+      z-index: 999;
     }
     .main-play-shade {
     background: #fff url(/static/img/ajax-loader.gif) no-repeat center center;
@@ -41,7 +61,7 @@
     #video1 {
     position: relative;
     object-fit: fill;
-    z-index: -1;
+    z-index: 999;
     }
 
 
@@ -55,7 +75,7 @@
 
     <div id="content_1">
       <div id="video-wrap" style="width:100%;height:100%; margin-bottom:0px;">
-        <div class="main-play-shade" style="width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;z-index: 9999;display: none;"></div>
+        <div class="main-play-shade" style="z-index: 999;width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;display: none;"></div>
         <video id="video1"class="video" src="/static/img/sharpa2.mp4" style="width:100%; height: 700px;max-height: 800px; overflow: hidden;" autoplay loop="loop" controls></video>
       </div>
     </div>
