@@ -28,6 +28,9 @@
         position : relative;
       }
 
+      .navbar, #logo_div {
+        background-color: white;
+      }
 
       .modal .modal-header, .modal h4, .modal .close {
           background-color: #5cb85c;
@@ -96,7 +99,7 @@ $(document).ready(function(){
 </head>
 
 <body>
-  <div style="width: 100%;position:fixed;"><img src="{% static 'img/SNU_background.png' %}"style="width:100%;height:100%;position:fixed;opacity: 0.08;z-index: 999;" /></div>
+  <div style="width: 100%;position:fixed;"><img src="{% static 'img/SNU_background.png' %}"style="width:100%;height:100%;position:fixed;opacity: 0.1;z-index: 999;" /></div>
     <nav id="top_nav" class="navbar" role="navigation" style="z-index:1;min-height:30px;margin-bottom: 0px;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -187,7 +190,7 @@ $(document).ready(function(){
         top:-5px;
         width:100%;
         z-index: 2;
-        height: 200px;
+
 
       }
 
@@ -202,8 +205,8 @@ $(document).ready(function(){
 
           <a href="/"><div id="menu"><b>HOME</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
           <a href="/intro"><div id="menu"><b>ABOUT US</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
-          <a href="#"><div id="menu"><b>프로그램 소개</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
-          <a href="#"><div id="menu"><b>멘토링 신청</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="/program_info"><div id="menu"><b>프로그램 소개</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
+          <a href="/mentoring/new"><div id="menu"><b>멘토링 신청</b></div></a><span class="glyphicon glyphicon-pencil"style="font-size: 8px;"></span>
           <a href="#"><div id="menu"><b>Q & A</b></div></a>
         </div>
       </nav><hr>
