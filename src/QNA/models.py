@@ -19,3 +19,10 @@ class Answer(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     content = models.TextField(verbose_name='답변')
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Faq(models.Model):
+    question_title = models.CharField(max_length=100)
+    question_content = models.TextField()
+    answer_title = models.CharField(max_length=200)
+    answer_content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

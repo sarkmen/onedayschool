@@ -72,6 +72,18 @@ GRADE_CHOICES = (
     ('N수생', 'N수생'),
 )
 
+ACCESS_ROUTE = (
+    ('지인소개', '지인소개'),
+    ('학원소개', '학원소개'),
+    ('페이스북', '페이스북'),
+    ('네이버', '네이버'),
+    ('전단지', '전단지'),
+    ('기타', '기타'),
+
+
+)
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -84,12 +96,13 @@ class Profile(models.Model):
     is_mentor = models.BooleanField(default=False)
     frequency = models.IntegerField(default=0)
     rating = models.FloatField(blank=True, default=0)
+    highschool = models.CharField(blank=True, max_length=40)
     image = models.ImageField(blank=True, null=True, upload_to=random_name_upload_to, verbose_name='사진 업로드')
     intro = models.TextField(max_length=300, verbose_name='기타 약력')
 
     #멘티 only
     grade = models.CharField(max_length=20, verbose_name='학년')
-    access_route = models.CharField(max_length=80, verbose_name='가입경로')
+    access_route = models.CharField(max_length=80, choices=ACCESS_ROUTE, verbose_name='가입경로')
 
     def __str__(self):
         return self.user.username

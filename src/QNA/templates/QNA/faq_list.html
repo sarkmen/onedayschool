@@ -2,54 +2,22 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'mentoring_detail.css' %}" />
-{% endblock %}
-
 {% block content %}
 <div class="container">
-    <!-- Page Heading -->
     <div class="row">
-
-        <!--업체 정보 content-->
         <div class="col-md-8">
-
-            <!-- Preview Image -->
-
             <div class="well well-sm">
-            질문
+            자주 묻는 질문
             </div>
-            <div>
-              <ul class="nav">
-                <li>제목 : {{question.title}}</li>
-                <li>내용 : {{question.content}}</li>
-              </ul>
-            </div>
-            <div class="well well-sm">
-            답변
-            </div>
-            <hr/>
-            {% for answer in question.answer_set.all %}
-                <h6>{{answer.content}}<button class='btn btn-primary'><a href="{% url 'answer_delete' question.pk answer.pk %}">삭제하기</a></button></h6>
+            {% for faq in faq_list %}
+                <div class="col-sm-2">
+                    {{faq.pk}}
+                </div>
+                <div class="col-sm-10">
+                    {{faq.question_title}}
+                </div>
             {% endfor %}
-            {% if user.is_staff %}
-            <form action="{% url 'answer_new' question.pk %}" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form answer_form %}
-                        {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 답변하기</button>
-                    {% endbuttons %}
-                   </form>
-            {% endif %}
-
         </div>
-
-
-        <!-- Blog Sidebar Widgets Column -->
-
-
-
-
         <div class="col-md-4">
 
             <div class="well well-sm">
@@ -102,9 +70,6 @@
 
 
         </div>
-
     </div>
-    <!-- /.row -->
 </div>
-<!-- /.container -->
 {% endblock %}

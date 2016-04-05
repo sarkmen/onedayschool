@@ -21,27 +21,19 @@
             </div>
             <div>
               <ul class="nav">
-                <li>제목 : {{question.title}}</li>
-                <li>내용 : {{question.content}}</li>
+                <li>제목 : {{faq.question_title}}</li>
+                <li>내용 : {{faq.question_content}}</li>
               </ul>
             </div>
             <div class="well well-sm">
             답변
             </div>
-            <hr/>
-            {% for answer in question.answer_set.all %}
-                <h6>{{answer.content}}<button class='btn btn-primary'><a href="{% url 'answer_delete' question.pk answer.pk %}">삭제하기</a></button></h6>
-            {% endfor %}
-            {% if user.is_staff %}
-            <form action="{% url 'answer_new' question.pk %}" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form answer_form %}
-                        {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 답변하기</button>
-                    {% endbuttons %}
-                   </form>
-            {% endif %}
-
+            <div>
+              <ul class="nav">
+                <li>제목 : {{faq.answer_title}}</li>
+                <li>내용 : {{faq.answer_content}}</li>
+              </ul>
+            </div>
         </div>
 
 

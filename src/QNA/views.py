@@ -3,15 +3,23 @@ from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Question, Answer
+from .models import Question, Answer, Faq
 from .forms import QuestionForm, AnswerForm
 from accounts.models import Profile
 
 # Create your views here.
+def qna_main(request):
+    faq_list = Faq.objects.all()
+    question_list = Question.objects.all()
+    return render(request, 'QNA/qnamain.html', {
+        'question_list' : question_list,
+        'faq_list' : faq_list,
+        })
+
 def question_list(request):
     question_list = Question.objects.all()
     return render(request, 'QNA/question_list.html', {
-        'question_list' : question_list
+        'question_list' : question_list,
         })
 
 def question_detail(request, pk):
@@ -103,3 +111,14 @@ def answer_delete(request, pk, answer_pk):
     messages.error(request, "답변이 삭제되었습니다.")
     return redirect(question_detail, pk=question.pk)
 
+def faq_list(request):
+    faq_list = Faq.objects.all()
+    return render(request, 'QNA/faq_list.html', {
+        'faq_list' : faq_list
+        })
+
+def faq_detail(request, pk):
+    faq = get_object_or_404(Faq, pk=pk)
+    return render(request, 'QNA/faq_detail.html', {
+        'faq' : faq,
+        })

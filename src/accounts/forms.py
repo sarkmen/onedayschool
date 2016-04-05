@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Profile, MAJOR_CHOICES, ADMISSION_TYPE_CHOICES, GRADE_CHOICES
+from .models import Profile, MAJOR_CHOICES, ADMISSION_TYPE_CHOICES, GRADE_CHOICES, ACCESS_ROUTE
 
 def phone_validator(value):
     number = ''.join(re.findall(r'\d+', value))
@@ -18,9 +18,10 @@ class MentorForm(UserCreationForm):
     name = forms.CharField(label='이름')
     major = forms.ChoiceField(label='소속학과', choices=MAJOR_CHOICES)
     admission_type = forms.ChoiceField(label='입학전형', choices=ADMISSION_TYPE_CHOICES)
+    highschool = forms.CharField(label='출신고등학교')
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
-    image = forms.ImageField(label='프로필 사진')
-    intro = forms.CharField(label='자기소개', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
+    #image = forms.ImageField(label='프로필 사진')
+    intro = forms.CharField(label='각종 약력', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
     is_agree = forms.BooleanField(label='약관동의', error_messages={
         'required' : '약관동의를 해주셔야 가입이 됩니다.',
     })
@@ -55,11 +56,11 @@ class MenteeForm(UserCreationForm):
     password1 = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
     password2 = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput)
     name = forms.CharField(label='이름')
-    major = forms.ChoiceField(label='지망학과', choices=MAJOR_CHOICES)
-    admission_type = forms.ChoiceField(label='희망입시전형', choices=ADMISSION_TYPE_CHOICES)
-    phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
+    #major = forms.ChoiceField(label='지망학과', choices=MAJOR_CHOICES)
+    #admission_type = forms.ChoiceField(label='희망입시전형', choices=ADMISSION_TYPE_CHOICES)
+    #phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
     grade = forms.ChoiceField(label='학년', choices=GRADE_CHOICES)
-    access_route = forms.CharField(label='가입경로', widget=forms.TextInput(attrs={'placeholder': '가입경로를 적어주세요.'}))
+    access_route = forms.ChoiceField(label='가입경로', choices=ACCESS_ROUTE)
     is_agree = forms.BooleanField(label='약관동의', error_messages={
         'required' : '약관동의를 해주셔야 가입이 됩니다.',
     })

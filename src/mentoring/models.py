@@ -52,17 +52,35 @@ MAJOR_CHOICES = (
 
 )
 
+RATING_CHOICES = (
+    ('높은 편', '높은 편'),
+    ('중간 정도', '중간 정도'),
+    ('낮은 편', '낮은 편'),
+    ('매우 낮은 편', '매우 낮은 편'),
+
+)
 
 
 class Mentoring(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default='1')
     acceptor = models.ForeignKey(Profile, null=True)
-    major = models.CharField(max_length=40, verbose_name='전공선택/관심분야')
-    requirements = models.TextField(max_length=2000, verbose_name='멘토에게 바라는 점')
-    date = models.CharField(max_length=20)
     capacity = models.PositiveSmallIntegerField(default=0)
-    area = models.CharField(max_length=20, verbose_name='멘토링 지역')
+    name = models.CharField(max_length=20, verbose_name='이름')
+    area_highschool = models.CharField(max_length=40, verbose_name='지역/학교')
+    grade = models.CharField(max_length=20, verbose_name='학년')
+    phone_mentee = models.CharField(max_length=20, blank=True, verbose_name='학생 전화번호')
+    phone_keeper = models.CharField(max_length=20, verbose_name='보호자 전화번호')
+    date = models.CharField(max_length=20)
+    wannabe = models.CharField(max_length=40, verbose_name='장래희망')
+    university = models.CharField(max_length=30, verbose_name='희망대학')
+    rating = models.CharField(max_length=20, verbose_name='성적수준')
+    will_to_study = models.CharField(max_length=30, choices=RATING_CHOICES, verbose_name='공부의욕')
+    major1 = models.CharField(max_length=40, verbose_name='관심전공1')
+    major2 = models.CharField(max_length=40, verbose_name='관심전공2')
+    major3 = models.CharField(max_length=40, verbose_name='관심전공3')
+    questions = models.TextField(max_length=2000, verbose_name='평소 궁금했던 질문')
+    requirements = models.TextField(max_length=2000, verbose_name='멘토에게 바라는 점')
     is_recommended = models.PositiveSmallIntegerField(unique=True, blank=True, null=True)
 
     def __str__(self):
