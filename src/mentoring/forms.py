@@ -6,7 +6,7 @@ from .models import Mentoring, Plan, Apply, MAJOR_CHOICES
 class MentoringForm(forms.ModelForm):
     class Meta:
         model = Mentoring
-        fields = ('name', 'area_highschool', 'grade', 'phone_mentee', 'phone_keeper', 'date', 'wannabe', 'university', 'rating', 'will_to_study', 'major1', 'major2', 'major3', 'questions', 'requirements')
+        fields = ('name', 'area_highschool', 'grade', 'phone_mentee', 'phone_keeper', 'date', 'wannabe', 'university', 'major1', 'major2', 'major3', 'rating', 'will_to_study', 'questions', 'requirements')
         widgets = {
             'will_to_study' : forms.RadioSelect(attrs={'style':'display:none'})
 

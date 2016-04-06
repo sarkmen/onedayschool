@@ -71,7 +71,7 @@ class Mentoring(models.Model):
     grade = models.CharField(max_length=20, verbose_name='학년')
     phone_mentee = models.CharField(max_length=20, blank=True, verbose_name='학생 전화번호')
     phone_keeper = models.CharField(max_length=20, verbose_name='보호자 전화번호')
-    date = models.CharField(max_length=20)
+    date = models.CharField(max_length=20, verbose_name='희망 날짜')
     wannabe = models.CharField(max_length=40, verbose_name='장래희망')
     university = models.CharField(max_length=30, verbose_name='희망대학')
     rating = models.CharField(max_length=20, verbose_name='성적수준')
