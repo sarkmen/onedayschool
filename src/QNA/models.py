@@ -13,6 +13,9 @@ class Question(models.Model):
     content = models.TextField(verbose_name='질문내용')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question)
@@ -20,9 +23,17 @@ class Answer(models.Model):
     content = models.TextField(verbose_name='답변')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.question.title
+
+
 class Faq(models.Model):
     question_title = models.CharField(max_length=100)
     question_content = models.TextField()
     answer_title = models.CharField(max_length=200)
     answer_content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.question_title
+

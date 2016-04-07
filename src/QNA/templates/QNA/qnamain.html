@@ -6,9 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <a href="{% url 'faq_list' %}">
             <div class="well well-sm" >
             FAQ
             </div>
+            </a>
             <div style='height:200px;'>
             {% for faq in faq_list %}
                 <a href="{% url 'faq_detail' faq.pk %}">
@@ -18,13 +20,16 @@
                 <div class="col-sm-10">
                     {{faq.question_title}}
                 </div>
+                </a>
             {% endfor %}
             </div>
             <div>
             </div>
+            <a href="{% url 'question_list' %}">
             <div class="well well-sm">
             Q&A
             </div>
+            </a>
             {% for question in question_list %}
                 <a href="{% url 'question_detail' question.pk %}">
                 <div class="col-sm-2">
