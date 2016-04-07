@@ -63,8 +63,12 @@ $(document).ready(function(){
     object-fit: fill;
     z-index: 999;
     }
-
-
+    .crop {
+      overflow: hidden;
+    }
+    .crop video {
+      margin: -10px 0px -10px 0px;
+    }
 
 </style>
 {% endblock %}
@@ -76,7 +80,7 @@ $(document).ready(function(){
     <div id="content_1">
       <div id="video-wrap" style="width:100%;height:100%; margin-bottom:0px;">
         <div class="main-play-shade" style="z-index: 999;width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;display: none;"></div>
-        <video id="video1"class="video" src="/static/img/sharpa2.mp4" style="width:100%; height: 700px;max-height: 800px; overflow: hidden;" autoplay loop="loop" controls></video>
+        <p class="crop"><video id="video1"class="video" src="/static/img/sharpa2.mp4" style="width:102%; height: 700px;max-height: 800px; overflow: hidden; margin-left: -5px;  " autoplay loop="loop" controls></video></p>
       </div>
     </div>
 

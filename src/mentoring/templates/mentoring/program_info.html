@@ -43,42 +43,59 @@ $(function(){
 
       left : 0px;
       position: absolute;
-      margin-top: 10%;
+      margin-top: 3%;
   }
-  div.col-sm-10 div {
-      height: 800px;
-      font-size: 28px;
-  }
-#section11 {color: #737373; background-color: #1E88E5; z-index: 1;}
-#section12 {color: #737373; background-color: #673ab7;}
-#section13 {color: #737373; background-color: #ff9800;}
+
+
+#section11 {color: #737373; background-color: white; z-index: 1;}
+#section12 {color: #737373; background-color: white; }
+#section13 {color: #737373; background-color: white;}
 #section14 {color: #737373; background-color: white;}
-#section15 {color: #737373; background-color: #f2f2f2;}
-#section2 {color: #737373; background-color: #00bcd4;}
-#section3 {color: #737373; background-color: #009688;}
+#section15 {color: #737373; background-color: white;}
+#section2 {color: #737373; background-color: white;}
+#section3 {color: #737373; background-color: white;}
 
   @media screen and (max-width: 810px) {
-    #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 150px; }
+    #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 0px; }
+    .content_div { margin-left: 160px; }
   }
 
   .affix {
-        margin-top: 15px;
-        z-index: 500
-        ;
+        position: fixed;
+        width: 15%;
+        margin-top: 13%;
+        min-width: 185px;
+        z-index: 500;
+
       }
 
 #Mypill >li > a {
   color:  #737373;
-  font-size: 15px;
+  font-size: 1vw;
 
 }
 
 #Mypill > li.active > a {
-    font-size: 17px;
+    font-size: 1vw;
     background-color:#008ae6;
     color: white;
 }
-// This changes the color of the active
+
+#section3 h1 { font-size: 2.5vw; }
+
+
+#review_photo {
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+}
+
+#review_photo img {
+  min-width: 50px;
+  min-height: 50px;
+  width: 80%;
+}
+
 
 
 
@@ -94,51 +111,92 @@ $(function(){
 
 <div id="Program_info_page" >
 
-    <div class="container" style=" margin-left: 5px;margin-right: 5px; padding: 0 0 0 0;">
-        <div class="row">
-
-            <nav class="col-sm-2" id="myScrollspy" data-spy="affix" data-offset-top="130"style="color: ;">
-                <ul id = Mypill class="nav nav-pills nav-stacked" style="color: red ;">
+    <div style=" margin-left: 5px;border-right: 5px; padding: 0 0 0 0;">
+        <div class="row" style="min-width: 900px;">
+            <nav id="myScrollspy" data-spy="affix" data-offset-top="130"style="float: left; width: 15%;">
+                <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width: 107px;background-color: white;border-radius: 15px;">
                   <li><a href="#">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
-                  <li><a href="#section11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>배 경</b></a></li>
-                  <li><a href="#section12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>목 적</b></a></li>
-                  <li><a href="#section13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>내 용</b></a></li>
-                  <li><a href="#section14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>일정표</b></a></li>
-                  <li><a href="#section15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>오시는 길</b></a></li>
+                  <li><a href="#section11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>목 적</b></a></li>
+                  <li><a href="#section12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>배 경</b></a></li>
+                  <li><a href="#section13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>장 점</b></a></li>
+                  <li><a href="#section14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>일정표</b></a></li>
+                  <li><a href="#section15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>오시는 길</b></a></li>
 
                   <li><a href="#section2">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토 소개</b></a></li>
                   <li><a href="#section3">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토링 후기</b></a></li>
 
                 </ul>
             </nav>
-            <div class="col-sm-10" style="float: right;">
-                <div id="section11">
-                    <h1>프로그램 배경</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+            <div style="left: 0; width: 130px;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
+
+            <div class="content_div" style="position: relative;min-width:500px;width:70%;margin: 0 7% 0 7%; display: inline-block;">
+
+
+                <div id="section11" style="">
+                    <h1>
+                    <img src="{% static "img/pro_info_11.png" %}" style="width : 100%;padding-top: 0%;" /></h1>
                 </div>
                 <div id="section12">
-                    <h1>프로그램 목적</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <h1>
+                     <img src="{% static "img/pro_info_12.png" %}" style="width : 100%;"/></h1>
                 </div>
                 <div id="section13">
-                    <h1>프로그램 내용</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <h1>
+                     <img src="{% static "img/pro_info_13.png" %}" style="width : 100%; padding-bottom: 5%;"/></h1>
                 </div>
                 <div id="section14">
-                    <h1>일정표</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <h1>
+                     <img src="{% static "img/pro_info_14.png" %}" style="width : 100%;"/></h1>
                 </div>
                 <div id="section15">
-                    <h1>오시는 길</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <h1>
+                     <img src="{% static "img/pro_info_15.png" %}" style="width : 100%;"/></h1>
                 </div>
                 <div id="section2">
-                    <h1>멘토 소개</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <h1>
+                     <img src="{% static "img/pro_info_2.png" %}" style="width : 100%;"/></h1>
                 </div>
-                <div id="section3">
-                    <h1>멘토링 후기</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                <div id="section3" style=" padding: 10% 15% 10% 15%;">
+                      <h1 style="text-align: left;"><span style="color: #005c99;">멘토링</span> <small style="color: #0073e6;">후기</small></h1>
+                      <br><br>
+                      <div class="row slideanim">
+                        <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                        <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                        <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                      </div>
+                      <br><br>
+                      <div class="row slideanim">
+                        <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                       <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}"/></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                        <div id="review_photo">
+                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
+                          <h4>2015.11.02</h4>
+                          <h5>서울대생의 공부법을 배웠어요.</h5>
+                        </div>
+                      </div>
+                      </div>
+
+
                 </div>
             </div>
         </div>
