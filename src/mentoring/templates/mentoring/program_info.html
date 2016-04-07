@@ -9,12 +9,24 @@
 
 <!-- 로그인 버튼 누르면 로그인 Modal이 뜨는 jquery -->
 <script>
+
 $(document).ready(function(){
     $("#loginBtn").click(function(){
         $("#loginModal").modal();
     });
 });
 </script>
+<script>
+$(function(){
+    $('body').scrollspy({ target: '#myScrollspy', offset:100 });
+});
+
+
+
+</script>
+
+
+
 
 
 {% endblock %}
@@ -25,72 +37,107 @@ $(document).ready(function(){
 <style>
   #Program_info_page {
       position: relative;
+      overflow: auto;
   }
   ul.nav-pills {
-      top: 50%;
-      position: relative;
-      margin-top: 5%;
+
+      left : 0px;
+      position: absolute;
+      margin-top: 10%;
   }
-  div.col-sm-9 div {
-      height: 250px;
+  div.col-sm-10 div {
+      height: 800px;
       font-size: 28px;
   }
-  #section1 {color: #fff; background-color: #1E88E5;}
-  #section2 {color: #fff; background-color: #673ab7;}
-  #section3 {color: #fff; background-color: #ff9800;}
-  #section41 {color: #fff; background-color: #00bcd4;}
-  #section42 {color: #fff; background-color: #009688;}
+#section11 {color: #737373; background-color: #1E88E5; z-index: 1;}
+#section12 {color: #737373; background-color: #673ab7;}
+#section13 {color: #737373; background-color: #ff9800;}
+#section14 {color: #737373; background-color: white;}
+#section15 {color: #737373; background-color: #f2f2f2;}
+#section2 {color: #737373; background-color: #00bcd4;}
+#section3 {color: #737373; background-color: #009688;}
 
   @media screen and (max-width: 810px) {
-    #section1, #section2, #section3, #section41, #section42  { margin-left: 150px; }
+    #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 150px; }
   }
 
-  </style>
+  .affix {
+        margin-top: 15px;
+        z-index: 500
+        ;
+      }
+
+#Mypill >li > a {
+  color:  #737373;
+  font-size: 15px;
+
+}
+
+#Mypill > li.active > a {
+    font-size: 17px;
+    background-color:#008ae6;
+    color: white;
+}
+// This changes the color of the active
+
+
+
+
+</style>
 
 {% endblock %}
 
 {% block content %}
-<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
 
 
 
-<div id="Program_info_page" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
-    <div class="container">
+<div id="Program_info_page" >
+
+    <div class="container" style=" margin-left: 5px;margin-right: 5px; padding: 0 0 0 0;">
         <div class="row">
-            <nav class="col-sm-3" id="myScrollspy">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#section1">Section 1</a></li>
-                    <li><a href="#section2">Section 2</a></li>
-                    <li><a href="#section3">Section 3</a></li>
-                    <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#section41">Section 4-1</a></li>
-                            <li><a href="#section42">Section 4-2</a></li>
-                        </ul>
-                    </li>
+
+            <nav class="col-sm-2" id="myScrollspy" data-spy="affix" data-offset-top="130"style="color: ;">
+                <ul id = Mypill class="nav nav-pills nav-stacked" style="color: red ;">
+                  <li><a href="#">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
+                  <li><a href="#section11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>배 경</b></a></li>
+                  <li><a href="#section12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>목 적</b></a></li>
+                  <li><a href="#section13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>내 용</b></a></li>
+                  <li><a href="#section14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>일정표</b></a></li>
+                  <li><a href="#section15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>오시는 길</b></a></li>
+
+                  <li><a href="#section2">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토 소개</b></a></li>
+                  <li><a href="#section3">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토링 후기</b></a></li>
+
                 </ul>
             </nav>
-            <div class="col-sm-9">
-                <div id="section1">
-                    <h1>Section 1</h1>
+            <div class="col-sm-10" style="float: right;">
+                <div id="section11">
+                    <h1>프로그램 배경</h1>
+                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                </div>
+                <div id="section12">
+                    <h1>프로그램 목적</h1>
+                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                </div>
+                <div id="section13">
+                    <h1>프로그램 내용</h1>
+                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                </div>
+                <div id="section14">
+                    <h1>일정표</h1>
+                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                </div>
+                <div id="section15">
+                    <h1>오시는 길</h1>
                     <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                 </div>
                 <div id="section2">
-                    <h1>Section 2</h1>
+                    <h1>멘토 소개</h1>
                     <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                 </div>
                 <div id="section3">
-                    <h1>Section 3</h1>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                </div>
-                <div id="section41">
-                    <h1>Section 4-1</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                </div>
-                <div id="section42">
-                    <h1>Section 4-2</h1>
+                    <h1>멘토링 후기</h1>
                     <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                 </div>
             </div>
