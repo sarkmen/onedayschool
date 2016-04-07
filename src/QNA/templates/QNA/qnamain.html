@@ -11,6 +11,7 @@
             </div>
             <div style='height:200px;'>
             {% for faq in faq_list %}
+                <a href="{% url 'faq_detail' faq.pk %}">
                 <div class="col-sm-2" >
                     {{faq.pk}}
                 </div>
@@ -25,12 +26,14 @@
             Q&A
             </div>
             {% for question in question_list %}
+                <a href="{% url 'question_detail' question.pk %}">
                 <div class="col-sm-2">
                     {{question.author}}
                 </div>
                 <div class="col-sm-10">
                     {{question.title}}
                 </div>
+                </a>
             {% endfor %}
         </div>
         <div class="col-md-4">

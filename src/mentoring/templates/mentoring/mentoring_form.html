@@ -4,6 +4,20 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'mentoring_form.css' %}" />
+    <style type="text/css">
+    .radio {
+        display: inline-block;
+        border-radius: 3px;
+        margin: 10px 1px;
+        border: 1px solid #aaa;
+    }
+    .radio:hover, .radio:focus, .radio:active {
+        background-color: #aaa;
+    }
+    .radio label {
+        padding:5px;
+    }
+    </style>
 {% endblock %}
 
 
@@ -49,5 +63,24 @@
 </div>
 {% endif %}
 
+{% endblock %}
 
+{% block script %}
+<script>
+$(document).ready(function(){
+    $('input:checked').parent().css('background-color', '#aaa');
+
+    function selectedRadioColor(radioInput){
+        $(radioInput).on('change', function() {
+        $(radioInput).parent().css('background-color', 'white');
+        $(this).parent().css('background-color', '#aaa');
+        });
+    };
+
+    selectedRadioColor('#id_will_to_study input');
+
+
+
+});
+</script>
 {% endblock %}

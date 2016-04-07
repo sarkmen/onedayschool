@@ -4,7 +4,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .models import Profile
 from .forms import MentorForm, MenteeForm, MentorUpdateForm, MenteeUpdateForm
+from mentoring.models import Mentoring
 
 # Create your views here.
 def signup_choice(request):
@@ -54,8 +56,32 @@ def mentee_signup(request):
 @login_required
 def profile(request):
     user = get_object_or_404(User, pk=request.user.pk)
+    profile = get_object_or_404(Profile, pk=request.user.profile.pk)
+    mentoring_list = Mentoring.objects.all()
+    mentoring_mine = []
+    for mentoring in mentoring_list:
+        if mentoring.author==request.user:
+            mentoring_mine.append(mentoring)
+        elif mentoring.acceptor==profile.phone:
+            mentoring_mine.append(mentoring)
+        else:
+            pass
+    if profile.is_mentor:
+        return render(request, 'accounts/mentor_profile.html', {
+            'user' : user,
+            'profile' : profile,
+            'mentoring_mine' : mentoring_mine,
+            })
+    else:
+        return render(request, 'accounts/mentee_profile.html', {
+            'user' : user,
+            'profile' : profile,
+            'mentoring_mine' : mentoring_mine,
+            })
 
-    if not user.profile.is_mentor:
+def profile_edit(request):
+    user = get_object_or_404(User, pk=request.user.pk)
+    if user.profile.is_mentor:
         if request.method == 'POST' :
             form = MentorUpdateForm(request.POST, instance = user.profile)
             if form.is_valid():
@@ -63,7 +89,7 @@ def profile(request):
                 return redirect('profile')
         else:
             form = MentorUpdateForm(instance=user.profile)
-        return render(request, 'accounts/mentee_profile.html', {'user': user, 'form': form, })
+        return render(request, 'accounts/mentor_signup.html', {'user': user, 'form': form, })
     else:
         if request.method == 'POST':
             form = MenteeUpdateForm(request.POST, instance=user.profile)
@@ -72,4 +98,4 @@ def profile(request):
                 return redirect('profile')
         else:
             form = MenteeUpdateForm(instance=user.profile)
-        return render(request, 'accounts/mentor_profile.html', {'user': user, 'form': form, })
+        return render(request, 'accounts/mentee_signup.html', {'user': user, 'form': form, })

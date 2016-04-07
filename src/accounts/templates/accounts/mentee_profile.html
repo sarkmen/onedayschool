@@ -1,1 +1,56 @@
-{% extends 'accounts/mentor_profile.html' %}
+{% extends 'mentoring/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-sm-2">
+                <div class="well well-sm">
+                개인정보
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div class="col-sm-2">
+                <h5>ID</h5>
+                <h5>이름</h5>
+                <a href="{% url 'profile_edit' %}"><button class="btn">개인정보 수정하기</button></a>
+                </div>
+                <div class="col-sm-4">
+                <h5>{{user.username}}</h5>
+                <h5>{{profile.name}}</h5>
+                </div>
+                <div class="col-sm-2">
+                <h5>비밀번호</h5>
+                <h5>학년</h5>
+                </div>
+                <div class="col-sm-4">
+                <h5>***********</h5>
+                <h5>{{profile.grade}}</h5>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-sm-2">
+                <div class="well well-sm">
+                나의 멘토링
+                </div>
+            </div>
+            <div class="col-sm-10">
+                {% for mentoring in mentoring_mine %}
+                <div class="row">
+                    <a href="{% url 'plan_new' pk=mentoring.pk %}">
+                    <div class="col-sm-6">
+                    <h5>{{mentoring.date}}</h5>
+                    </div>
+                    <div class="col-sm-6">
+                    <h5>{{mentoring.name}}</h5>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

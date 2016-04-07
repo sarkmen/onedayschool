@@ -38,7 +38,12 @@ class MentorForm(UserCreationForm):
         user = super(MentorForm, self).save(commit=False)
         if commit:
             user.save()
+            user.profile.name = self.cleaned_data['name']
             user.profile.major = self.cleaned_data['major']
+            user.profile.admission_type = self.cleaned_data['admission_type']
+            user.profile.highschool = self.cleaned_data['highschool']
+            user.profile.phone = self.cleaned_data['phone']
+            user.profile.intro = self.cleaned_data['intro']
             user.profile.is_mentor = True
             user.profile.save()
         return user
@@ -48,7 +53,7 @@ class MentorUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('major', 'admission_type', 'phone', 'intro', )
+        fields = ('name', 'major', 'admission_type', 'highschool', 'phone', 'intro', )
 
 
 class MenteeForm(UserCreationForm):
@@ -73,7 +78,9 @@ class MenteeForm(UserCreationForm):
         user = super(MenteeForm, self).save(commit=False)
         if commit:
             user.save()
-            user.profile.major = self.cleaned_data['major']
+            user.profile.name = self.cleaned_data['name']
+            user.profile.grade = self.cleaned_data['grade']
+            user.profile.access_route = self.cleaned_data['access_route']
             user.profile.is_mentor = False
             user.profile.save()
         return user
@@ -83,7 +90,7 @@ class MenteeUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('major', 'admission_type', 'phone', 'grade',)
+        fields = ('name', 'grade',)
 
 
 class LoginForm(AuthenticationForm):

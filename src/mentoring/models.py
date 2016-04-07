@@ -56,15 +56,14 @@ RATING_CHOICES = (
     ('높은 편', '높은 편'),
     ('중간 정도', '중간 정도'),
     ('낮은 편', '낮은 편'),
-    ('매우 낮은 편', '매우 낮은 편'),
-
+    ('매우 낮은 편', '매우 낮은 편')
 )
 
 
 class Mentoring(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default='1')
-    acceptor = models.ForeignKey(Profile, null=True)
+    acceptor = models.CharField(max_length=20, default='1', verbose_name='멘토 전화번호')
     capacity = models.PositiveSmallIntegerField(default=0)
     name = models.CharField(max_length=20, verbose_name='이름')
     area_highschool = models.CharField(max_length=40, verbose_name='지역/학교')

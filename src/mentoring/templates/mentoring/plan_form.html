@@ -9,7 +9,128 @@
 
 {% block content %}
 
+{% if user.profile.phone == mentoring.acceptor %}
 <div class="container">
+    <div class="row">
+        <div class="well well-sm">
+        멘토링 정보
+        </div>
+        <div>
+          <ul class="nav">
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>이름</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.name}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>지역/학교</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.area_highschool}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>학년</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.grade}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티 전화번호</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.phone_mentee}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>보호자 전화번호</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.phone_keeper}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>희망날짜</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.date}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>장래희망</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.wannabe}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>희망대학</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.university}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>성적수준</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.rating}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>공부의욕</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.will_to_study}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공1</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major1}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공2</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major2}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공3</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major3}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>평소 궁금했던 질문</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.questions}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토에게 바라는 점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.requirements}}</h5>
+                </div>
+            </div>
+          </ul>
+        </div>
+    </div>
     <div class="row">
     <div class="col-sm-8 col-sm-offset-2 text-center">
         <h2><strong>멘토링 계획하기</strong></h2>
@@ -28,5 +149,8 @@
     </div>
 </div>
 
+{% else %}
+자신이 맡은 멘토링의 계획만 세울 수 있습니다.
+{% endif %}
 
 {% endblock %}

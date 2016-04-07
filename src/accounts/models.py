@@ -88,15 +88,14 @@ ACCESS_ROUTE = (
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=20, verbose_name='이름')
+    #멘토 only
     major = models.CharField(max_length=40, choices=MAJOR_CHOICES, default='', verbose_name='전공', blank=True)
     phone = models.CharField(max_length=20, null=True, verbose_name='전화번호')
     admission_type = models.CharField(max_length=40, choices=ADMISSION_TYPE_CHOICES, default='', verbose_name='입학 전형')
-
-    # 멘토 only
     is_mentor = models.BooleanField(default=False)
     frequency = models.IntegerField(default=0)
     rating = models.FloatField(blank=True, default=0)
-    highschool = models.CharField(blank=True, max_length=40)
+    highschool = models.CharField(blank=True, max_length=40, verbose_name='출신 고등학교')
     image = models.ImageField(blank=True, null=True, upload_to=random_name_upload_to, verbose_name='사진 업로드')
     intro = models.TextField(max_length=300, verbose_name='기타 약력')
 
@@ -105,7 +104,7 @@ class Profile(models.Model):
     access_route = models.CharField(max_length=80, choices=ACCESS_ROUTE, verbose_name='가입경로')
 
     def __str__(self):
-        return self.user.username
+        return self.name+" "+self.user.username
 
 def pre_on_mentorimage_save(sender, **kwargs):
     mentor_image = kwargs['instance']

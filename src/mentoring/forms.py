@@ -8,7 +8,7 @@ class MentoringForm(forms.ModelForm):
         model = Mentoring
         fields = ('name', 'area_highschool', 'grade', 'phone_mentee', 'phone_keeper', 'date', 'wannabe', 'university', 'major1', 'major2', 'major3', 'rating', 'will_to_study', 'questions', 'requirements')
         widgets = {
-            'will_to_study' : forms.RadioSelect(attrs={'style':'display:none'})
+            'will_to_study' : forms.RadioSelect(attrs={'style':'display: none'}),
 
         }
 
