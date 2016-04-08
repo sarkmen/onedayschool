@@ -27,18 +27,14 @@
 <div class="container">
     <div class="row">
     <div class="col-sm-8 col-sm-offset-2 text-center">
-        <h2><strong>멘토링 신청하기</strong></h2>
+        <h2><strong>멘티만 멘토링을 신청할 수 있습니다. ㅠㅠ</strong></h2>
+        <div style="height: 50px;">
+        </div>
+        <a href="/"><h4><strong>홈페이지로 돌아가기</strong></h4></a>
     </div>
 
     <div class="col-sm-6 col-sm-offset-3">
-        <form method="post" action="">
-            {% csrf_token %}
-            {% bootstrap_form mentoringform %}
-            <hr />
-            {% buttons %}
-                <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 신청하기</button>
-            {% endbuttons %}
-        </form>
+
     </div>
     </div>
 </div>
