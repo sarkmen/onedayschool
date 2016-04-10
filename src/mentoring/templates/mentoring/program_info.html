@@ -25,6 +25,151 @@ $(function(){
 
 </script>
 
+<!-- 구글 지도 관련 스크립트 -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter = new google.maps.LatLng(37.466876, 126.948097);
+var MapCenter = new google.maps.LatLng(37.473915, 126.952163);
+var BusStop = new google.maps.LatLng(37.480344, 126.952496);
+
+var image = '{% static "img/busstop.png" %}';
+
+function initialize() {
+var mapProp = {
+center:MapCenter,
+zoom:14,
+scrollwheel:true,
+draggable:true,
+mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+var marker = new google.maps.Marker({
+position:myCenter,
+icon : image,
+});
+var start = new google.maps.Marker({
+position:BusStop,
+icon : image,
+});
+
+
+marker.setMap(map);
+start.setMap(map);
+
+var lineSymbol = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 8,
+    strokeColor: '#393'
+  };
+
+var line = new google.maps.Polyline({
+    path: [{lat: 37.480344, lng: 126.952496},
+    {lat: 37.477694, lng: 126.952273},
+    {lat: 37.473318, lng: 126.953098},
+    {lat: 37.471806, lng: 126.952826},
+    {lat: 37.469101, lng: 126.951764},
+    {lat: 37.468684, lng: 126.951528},
+    {lat: 37.467620, lng: 126.949908},
+    {lat: 37.467305, lng: 126.947827},
+    {lat: 37.466876, lng: 126.948097}],
+    icons: [{
+      icon: lineSymbol,
+      offset: '100%'
+    }],
+    strokeColor: '#a6a6a6',
+    map: map
+  });
+
+animateCircle(line);
+
+var contentString1 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h4 id="firstHeading" class="firstHeading">"서울대입구역" 버스정류장</h4>'+
+      '<div id="bodyContent">'+
+      '<p><b>5511, 5513, 5515번 버스</b>에 탑승하여<br> "서울대학교" 버스정류장 하차</p>'+
+      '</div>'+
+      '</div>';
+var contentString2 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h4 id="firstHeading" class="firstHeading">"서울대학교" 버스정류장</h4>'+
+      '<div id="bodyContent">'+
+      '<p>"서울대학교" 버스정류장에서 하차 후<br> 서울대학교 정문으로 걸어서 이동</p>'+
+      '</div>'+
+      '</div>';
+
+
+var infowindow1 = new google.maps.InfoWindow({
+    content: contentString1
+  });
+var infowindow2 = new google.maps.InfoWindow({
+    content: contentString2
+  });
+
+start.addListener('click', function() {
+    infowindow1.open(map, start);
+  });
+marker.addListener('click', function() {
+    infowindow2.open(map, marker);
+  });
+
+var lineSymbol_2 = {
+    path: 'M 0,-1 0,1',
+    strokeOpacity: 1,
+    strokeColor: '#a6a6a6',
+    scale: 4
+  };
+
+  // Create the polyline, passing the symbol in the 'icons' property.
+  // Give the line an opacity of 0.
+  // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+  var line_2 = new google.maps.Polyline({
+    path: [{lat: 37.480926, lng: 126.952422},
+    {lat: 37.480344, lng: 126.952496}],
+    strokeOpacity: 0,
+    icons: [{
+      icon: lineSymbol_2,
+      offset: '0',
+      repeat: '20px'
+    }],
+    map: map
+  });
+  var line_3 = new google.maps.Polyline({
+    path: [{lat: 37.466876, lng: 126.948097},
+    {lat: 37.466649, lng: 126.948342}],
+    strokeOpacity: 0,
+    icons: [{
+      icon: lineSymbol_2,
+      offset: '0',
+      repeat: '20px'
+    }],
+    map: map
+  });
+
+
+
+}
+function animateCircle(line) {
+    var count = 0;
+    window.setInterval(function() {
+      count = (count + 1) % 400;
+
+      var icons = line.get('icons');
+      icons[0].offset = (count / 4) + '%';
+      line.set('icons', icons);
+  }, 20);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<!-- 여기까지 구글 지도 스크립트 -->
+
+
 
 
 
@@ -37,7 +182,7 @@ $(function(){
 <style>
   #Program_info_page {
       position: relative;
-      overflow: auto;
+
   }
   ul.nav-pills {
 
@@ -129,7 +274,7 @@ $(function(){
             </nav>
             <div style="left: 0; width: 130px;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
 
-            <div class="content_div" style="position: relative;min-width:500px;width:70%;margin: 0 7% 0 7%; display: inline-block;">
+            <div class="content_div" style="position: relative;min-width:500px;width:80%;margin: 0 0% 0 0%; display: inline-block;">
 
 
                 <div id="section11" style="">
@@ -151,12 +296,17 @@ $(function(){
                 <div id="section15">
                     <h1>
                      <img src="{% static "img/pro_info_15.png" %}" style="width : 100%;"/></h1>
+
+                    <!-- Google Map div -->
+                    <div id="googleMap" style="height:300px;margin : 0 15% 0 27%;width:50%;"></div>
+
+
                 </div>
-                <div id="section2">
+                <div id="section2" style="padding-top: 15%;">
                     <h1>
                      <img src="{% static "img/pro_info_2.png" %}" style="width : 100%;"/></h1>
                 </div>
-                <div id="section3" style=" padding: 10% 15% 10% 15%;">
+                <div id="section3" style=" padding: 10% 15% 10% 15%; text-align: center;" >
                       <h1 style="text-align: left;"><span style="color: #005c99;">멘토링</span> <small style="color: #0073e6;">후기</small></h1>
                       <br><br>
                       <div class="row slideanim">
@@ -194,7 +344,15 @@ $(function(){
                           <h5>서울대생의 공부법을 배웠어요.</h5>
                         </div>
                       </div>
-                      </div>
+                    <h1><ul class="pagination pagination-sm center">
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                    </ul></h1>
+
+                </div>
 
 
                 </div>
