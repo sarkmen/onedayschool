@@ -51,21 +51,25 @@ def question_new(request):
 @login_required
 def question_edit(request, pk):
     question = get_object_or_404(Question, pk=pk)
-    if request.method == "POST":
-        questionform = QuestionForm(request.POST, instance=question)
-        if questionform.is_valid():
-            question = questionform.save(commit=False)
-            question.save()
-            messages.success(request, "질문이 성공적으로 수정되었습니다.")
-            return redirect("/")
+    if question.author == request.user:
+        if request.method == "POST":
+            questionform = QuestionForm(request.POST, instance=question)
+            if questionform.is_valid():
+                question = questionform.save(commit=False)
+                question.save()
+                messages.success(request, "질문이 성공적으로 수정되었습니다.")
+                return redirect("/")
+        else:
+            questionform = QuestionForm(instance=question)
+
     else:
-        questionform = QuestionForm(instance=question)
+        messages.error(request, "질문 작성자만 수정할 수 있습니다.")
+        return redirect(question_detail, pk=question.pk)
 
     return render(request, 'QNA/question_form.html', {
         'questionform' : questionform
         })
 
-@staff_member_required
 @login_required
 def question_delete(request, pk):
     question = get_object_or_404(Question, pk=pk)
@@ -77,6 +81,7 @@ def question_delete(request, pk):
     return redirect(question_list)
 
 
+@staff_member_required
 @login_required
 def answer_new(request, pk):
     question = get_object_or_404(Question, pk=pk)
@@ -90,6 +95,7 @@ def answer_new(request, pk):
             answer.save()
             return redirect(question_detail, pk=pk)
 
+@staff_member_required
 @login_required
 def answer_edit(request, pk, answer_pk):
     question = get_object_or_404(Question, pk=pk)
@@ -102,6 +108,7 @@ def answer_edit(request, pk, answer_pk):
             return redirect(question_detail, pk=pk)
 
 
+@staff_member_required
 @login_required
 def answer_delete(request, pk, answer_pk):
     question = get_object_or_404(Question, pk=pk)
