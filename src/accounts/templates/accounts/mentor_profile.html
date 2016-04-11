@@ -1,63 +1,100 @@
 {% extends 'mentoring/base.html' %}
+{% block style %}
+<style>
 
+#left_cell {
+    text-align: center;
+    width: 10%;
+
+}
+
+#right_cell {
+    text-align: left;
+    font-weight: lighter;
+    width: 20%;
+}
+
+#right_cell:hover, #left_cell:hover {
+    background-color: #f5f5f5;
+}
+
+</style>
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-sm-2">
-                <div class="well well-sm">
-                개인정보
-                </div>
-            </div>
-            <div class="col-sm-10">
-                <div class="col-sm-2">
-                <h5>ID</h5>
-                <h5>이름</h5>
-                <h5>전공</h5>
-                <h5>전화번호</h5>
-                </div>
-                <div class="col-sm-4">
-                <h5>{{user.username}}</h5>
-                <h5>{{profile.name}}</h5>
-                <h5>{{profile.major}}</h5>
-                <h5>{{profile.phone}}</h5>
-                </div>
-                <div class="col-sm-2">
-                <h5>비밀번호</h5>
-                <h5>출신 고등학교</h5>
-                <h5>입학 전형</h5>
-                <h5>각종 약력</h5>
-                </div>
-                <div class="col-sm-4">
-                <h5>***********</h5>
-                <h5>{{profile.highschool}}</h5>
-                <h5>{{profile.admission_type}}</h5>
-                <h5>{{profile.intro}}</h5>
-                </div>
+        <div class="table-responsive" style="width: 80%; margin-bottom: 10%;">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th style="width: 10%;background-color:#f5f5f5;text-align: center;border : 2px ridge #cccccc;"><b>개인정보</b></th>
+                            <th id="left_cell"><b>ID</b></th>
+                            <th id="right_cell">{{user.username}}</th>
 
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th id="left_cell"><b>이름</b></th>
+                            <th id="right_cell">{{profile.name}}</th>
+
+                        </tr>
+                        <tr>
+                            <th style="border-top: none;"></th>
+                            <th id="left_cell"><b>비밀번호</b></th>
+                            <th id="right_cell">********</th>
+
+                        </tr>
+                        <tr>
+                            <th style="border-top: none;"></th>
+                            <th id="left_cell"><b>전화번호</b></th>
+                            <th id="right_cell">{{profile.phone}}</th>
+                        </tr>
+                        <tr>
+                            <th style="border-top: none;"></th>
+                            <th id="left_cell"><b>출신 고등학교</b></th>
+                            <th id="right_cell">{{profile.highschool}}</th>
+                        </tr>
+                        <tr>
+                            <th style="border-top: none;"></th>
+                            <th id="left_cell"><b>입학 전형</b></th>
+                            <th id="right_cell">{{profile.admission_type}}</th>
+                        </tr>
+                        <tr>
+                            <th style="border-top: none;"></th>
+                            <th id="left_cell"><b>각종 약력</b></th>
+                            <th id="right_cell">{{profile.intro}}</th>
+                            <th style="width: 2%;border:none; padding: 0 0 0 5%"><a href="{% url 'profile_edit' %}"><button class="btn-sm btn-warning" style="border:none;float:right;font-weight:bolder;">수정</button></a></th>
+                        </tr>
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+        <div class="table-responsive" style="width: 80%;display: inline-block;">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th style="width: 10%;background-color:#f5f5f5;text-align: center;border : 2px ridge #cccccc;"><b>나의 멘토링</b></th>
+                            <th id="left_cell" style="font-weight: bold;">멘티 이름</th>
+                            <th id="right_cell"style="font-weight: bold;">멘토링 날짜</th>
+
+                        </tr>
+                        {% for mentoring in mentoring_mine %}
+
+                            <tr>
+                                <th></th>
+                                <th id="left_cell" style="font-weight: normal;">{{mentoring.name}}</th>
+                                <th id="right_cell"style="font-weight: lighter;">{{mentoring.date}}</th>
+                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'plan_new' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">이동</button></a></th>
+                        </tr>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
         </div>
-        <div class="col-md-12">
-            <div class="col-sm-2">
-                <div class="well well-sm">
-                나의 멘토링
-                </div>
-            </div>
-            <div class="col-sm-10">
-                {% for mentoring in mentoring_mine %}
-                <div class="row">
-                    <a href="{% url 'plan_new' pk=mentoring.pk %}">
-                    <div class="col-sm-6">
-                    <h5>{{mentoring.date}}</h5>
-                    </div>
-                    <div class="col-sm-6">
-                    <h5>{{mentoring.name}}</h5>
-                    </div>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+
     </div>
 </div>
 {% endblock %}
