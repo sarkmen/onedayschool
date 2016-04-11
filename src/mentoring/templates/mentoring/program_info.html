@@ -29,7 +29,7 @@ $(function(){
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
 var myCenter = new google.maps.LatLng(37.466876, 126.948097);
-var MapCenter = new google.maps.LatLng(37.473915, 126.952163);
+var MapCenter = new google.maps.LatLng(37.473915, 126.952183);
 var BusStop = new google.maps.LatLng(37.480344, 126.952496);
 
 var image = '{% static "img/busstop.png" %}';
@@ -183,6 +183,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   #Program_info_page {
       position: relative;
 
+
   }
   ul.nav-pills {
 
@@ -200,7 +201,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 #section2 {color: #737373; background-color: white;}
 #section3 {color: #737373; background-color: white;}
 
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 800px) {
     #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 0px; }
     .content_div { margin-left: 160px; }
   }
@@ -257,7 +258,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div id="Program_info_page" >
 
     <div style=" margin-left: 5px;border-right: 5px; padding: 0 0 0 0;">
-        <div class="row" style="min-width: 900px;">
+        <div class="row" style="width:100%;min-width: 800px;">
             <nav id="myScrollspy" data-spy="affix" data-offset-top="130"style="float: left; width: 15%;">
                 <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width: 107px;background-color: white;border-radius: 15px;">
                   <li><a href="#">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
@@ -272,9 +273,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
                 </ul>
             </nav>
-            <div style="left: 0; width: 130px;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
+            <div style="left: 0; width: 140px;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
 
-            <div class="content_div" style="position: relative;min-width:500px;width:80%;margin: 0 0% 0 0%; display: inline-block;">
+            <div class="content_div" style="position: relative;min-width:500px;width:70%;margin: 0 0% 0 5%; display: inline-block;">
 
 
                 <div id="section11" style="">
