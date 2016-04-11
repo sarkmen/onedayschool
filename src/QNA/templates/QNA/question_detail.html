@@ -1,74 +1,227 @@
 {% extends 'mentoring/base.html' %}
 {% load staticfiles %}
 {% load bootstrap3 %}
+{% block headjs %}
+<script src="{% static 'jquery-1.12.0.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
+<!-- 로그인 버튼 누르면 로그인 Modal이 뜨는 jquery -->
+<script>
+$(document).ready(function(){
+    $("#loginBtn").click(function(){
+        $("#loginModal").modal();
+    });
+});
+</script>
+<!-- 구글 지도 관련 스크립트 -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter = new google.maps.LatLng(37.466876, 126.948097);
+var MapCenter = new google.maps.LatLng(37.473915, 126.952163);
+var BusStop = new google.maps.LatLng(37.480344, 126.952496);
+
+var image = '{% static "img/busstop.png" %}';
+
+function initialize() {
+var mapProp = {
+center:MapCenter,
+zoom:14,
+scrollwheel:true,
+draggable:true,
+mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+var marker = new google.maps.Marker({
+position:myCenter,
+icon : image,
+});
+var start = new google.maps.Marker({
+position:BusStop,
+icon : image,
+});
+
+
+marker.setMap(map);
+start.setMap(map);
+
+var lineSymbol = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 8,
+    strokeColor: '#393'
+  };
+
+var line = new google.maps.Polyline({
+    path: [{lat: 37.480344, lng: 126.952496},
+    {lat: 37.477694, lng: 126.952273},
+    {lat: 37.473318, lng: 126.953098},
+    {lat: 37.471806, lng: 126.952826},
+    {lat: 37.469101, lng: 126.951764},
+    {lat: 37.468684, lng: 126.951528},
+    {lat: 37.467620, lng: 126.949908},
+    {lat: 37.467305, lng: 126.947827},
+    {lat: 37.466876, lng: 126.948097}],
+    icons: [{
+      icon: lineSymbol,
+      offset: '100%'
+    }],
+    strokeColor: '#a6a6a6',
+    map: map
+  });
+
+animateCircle(line);
+
+var contentString1 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h4 id="firstHeading" class="firstHeading">"서울대입구역" 버스정류장</h4>'+
+      '<div id="bodyContent">'+
+      '<p><b>5511, 5513, 5515번 버스</b>에 탑승하여<br> "서울대학교" 버스정류장 하차</p>'+
+      '</div>'+
+      '</div>';
+var contentString2 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h4 id="firstHeading" class="firstHeading">"서울대학교" 버스정류장</h4>'+
+      '<div id="bodyContent">'+
+      '<p>"서울대학교" 버스정류장에서 하차 후<br> 서울대학교 정문으로 걸어서 이동</p>'+
+      '</div>'+
+      '</div>';
+
+
+var infowindow1 = new google.maps.InfoWindow({
+    content: contentString1
+  });
+var infowindow2 = new google.maps.InfoWindow({
+    content: contentString2
+  });
+
+start.addListener('click', function() {
+    infowindow1.open(map, start);
+  });
+marker.addListener('click', function() {
+    infowindow2.open(map, marker);
+  });
+
+var lineSymbol_2 = {
+    path: 'M 0,-1 0,1',
+    strokeOpacity: 1,
+    strokeColor: '#a6a6a6',
+    scale: 4
+  };
+
+  // Create the polyline, passing the symbol in the 'icons' property.
+  // Give the line an opacity of 0.
+  // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+  var line_2 = new google.maps.Polyline({
+    path: [{lat: 37.480926, lng: 126.952422},
+    {lat: 37.480344, lng: 126.952496}],
+    strokeOpacity: 0,
+    icons: [{
+      icon: lineSymbol_2,
+      offset: '0',
+      repeat: '20px'
+    }],
+    map: map
+  });
+  var line_3 = new google.maps.Polyline({
+    path: [{lat: 37.466876, lng: 126.948097},
+    {lat: 37.466649, lng: 126.948342}],
+    strokeOpacity: 0,
+    icons: [{
+      icon: lineSymbol_2,
+      offset: '0',
+      repeat: '20px'
+    }],
+    map: map
+  });
+
+
+
+}
+function animateCircle(line) {
+    var count = 0;
+    window.setInterval(function() {
+      count = (count + 1) % 400;
+
+      var icons = line.get('icons');
+      icons[0].offset = (count / 4) + '%';
+      line.set('icons', icons);
+  }, 20);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<!-- 여기까지 구글 지도 스크립트 -->
+{% endblock %}
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'mentoring_detail.css' %}" />
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <!-- Page Heading -->
+
+<div class="container"style="width: 100%;min-width:600px;">
     <div class="row">
-
-        <!--업체 정보 content-->
-        <div class="col-md-8">
-
-            <!-- Preview Image -->
-
-            <div class="well well-sm">
-            질문
+        <div id="col-left" style="width:70%;float: left;margin-left: 1.5%; overflow: hidden;">
+            <div class="well well-sm" style="text-align: center;margin-bottom: 0;">
+                <b>질 문</b>
             </div>
-            <div>
-              <ul class="nav">
-                <li>제목 : {{question.title}}</li>
-                <li>내용 : {{question.content}}</li>
-              </ul>
-            </div>
-            <div class="well well-sm">
-            답변
-            </div>
+            <div style="height: 25px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 0%;overflow:hidden;"><b>제목</div>
+            <div style="height: 25px;width:82%;position:relative;float:right;border: 0px solid black;margin-bottom: 0%;overflow:hidden;">{{question.title}}</div></b>
+            <div style="height: 30px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 0%;overflow:hidden;"><b>작성자</b></div>
+            <div style="height: 30px;width:82%;position:relative;float:right;border: 0px solid black;margin-bottom: 0%;overflow:hidden;">{{question.author}}</div>
+            <hr style="height:1px;width:99%;background-color:;margin: 0 0 2% 0;">
+            <div style="height: ;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;"><b>내용</b></div>
+            <div style="min-height:300px ;width:80%;position:relative;float:right;border: 0px solid black;margin-bottom: 1%;padding: 0 1% 0 1%;"><p style="width: 100%;overflow:hidden;word-wrap:break-word;">{{question.content}}</p></div>
+
+            <div class="well well-sm" style="text-align: center;clear: both;margin-bottom: 0;">
+                 <b>답 변</b>
+                </div>
             <hr/>
-            {% for answer in question.answer_set.all %}
-                <h6>{{answer.content}}
-                {% if user.is_staff %}
-                <button class='btn btn-primary'><a href="{% url 'answer_delete' question.pk answer.pk %}">삭제하기</a></button>
-                {% endif %}</h6>
-            {% endfor %}
-            {% if question.answer_set.all %}
-            {% else %}
-            <h6>답변이 아직 등록되지 않았습니다.</h6>
-            {% endif %}
-            {% if user.is_staff %}
-            <form action="{% url 'answer_new' question.pk %}" method="post">
+            <div style="height: ;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;"><br><b>내용</b></div>
+            <div style="min-height:300px ;width:80%;position:relative;float:right;border: 0px solid black;margin-bottom: 1%;padding: 0 1% 0 1%;"><br>
+
+                <p style="width: 100%;overflow:hidden;word-wrap:break-word;">
+                    {% for answer in question.answer_set.all %}
+                        {{answer.content}}
+                        {% if user.is_staff %}
+                        <button class='btn btn-primary'><a href="{% url 'answer_delete' question.pk answer.pk %}">삭제하기</a></button>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if question.answer_set.all %}
+
+                    {% else %}
+                        답변이 아직 등록되지 않았습니다.
+                    {% endif %}
+
+                    {% if user.is_staff %}
+                        <form action="{% url 'answer_new' question.pk %}" method="post">
                         {% csrf_token %}
                         {% bootstrap_form answer_form %}
-                        {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 답변하기</button>
-                    {% endbuttons %}
-                   </form>
-            {% endif %}
-
+                            {% buttons %}
+                            <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 답변하기</button>
+                            {% endbuttons %}
+                        </form>
+                    {% endif %}
+                </p>
+            </div>
         </div>
 
-
-        <!-- Blog Sidebar Widgets Column -->
-
-
-
-
-        <div class="col-md-4">
+        <div id="col-right" style="width:25%;float: right;margin-right: 1.5%;">
 
             <div class="well well-sm">
-            찾아오시는 길
+            <b>찾아오시는 길</b>
             </div>
-            <div id="map" style="width:100%; min-height:300px;">
+            <div id="googleMap" style="width:100%; height:300px;">
             </div>
             <br />
 
             <!-- 추천 스토어-->
             <div class="well well-sm">
-            추천 멘토링
+            <b>추천 멘토링</b>
             </div>
             <div class="row">
                 <div class="col-md-5">

@@ -1,18 +1,12 @@
-{% extends 'mentoring/base.html' %}
-{% load staticfiles %}
-{% load bootstrap3 %}
 
-{% block headjs %}
-<!-- 구글 지도 관련 스크립트 -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script>
+
+function initialize() {
+
 var myCenter = new google.maps.LatLng(37.466876, 126.948097);
 var MapCenter = new google.maps.LatLng(37.473915, 126.952163);
 var BusStop = new google.maps.LatLng(37.480344, 126.952496);
 
 var image = '{% static "img/busstop.png" %}';
-
-function initialize() {
 var mapProp = {
 center:MapCenter,
 zoom:14,
@@ -22,8 +16,6 @@ mapTypeId:google.maps.MapTypeId.ROADMAP
 };
 
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-
 var marker = new google.maps.Marker({
 position:myCenter,
 icon : image,
@@ -33,7 +25,6 @@ position:BusStop,
 icon : image,
 });
 
-
 marker.setMap(map);
 start.setMap(map);
 
@@ -42,7 +33,6 @@ var lineSymbol = {
     scale: 8,
     strokeColor: '#393'
   };
-
 var line = new google.maps.Polyline({
     path: [{lat: 37.480344, lng: 126.952496},
     {lat: 37.477694, lng: 126.952273},
@@ -60,9 +50,7 @@ var line = new google.maps.Polyline({
     strokeColor: '#a6a6a6',
     map: map
   });
-
 animateCircle(line);
-
 var contentString1 = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -79,22 +67,18 @@ var contentString2 = '<div id="content">'+
       '<p>"서울대학교" 버스정류장에서 하차 후<br> 서울대학교 정문으로 걸어서 이동</p>'+
       '</div>'+
       '</div>';
-
-
 var infowindow1 = new google.maps.InfoWindow({
     content: contentString1
   });
 var infowindow2 = new google.maps.InfoWindow({
     content: contentString2
   });
-
 start.addListener('click', function() {
     infowindow1.open(map, start);
   });
 marker.addListener('click', function() {
     infowindow2.open(map, marker);
   });
-
 var lineSymbol_2 = {
     path: 'M 0,-1 0,1',
     strokeOpacity: 1,
@@ -127,9 +111,6 @@ var lineSymbol_2 = {
     }],
     map: map
   });
-
-
-
 }
 function animateCircle(line) {
     var count = 0;
@@ -141,91 +122,5 @@ function animateCircle(line) {
       line.set('icons', icons);
   }, 20);
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<!-- 여기까지 구글 지도 스크립트 -->
-{% endblock %}
 
-
-
-{% block content %}
-<div class="container"style="width: 100%;min-width:600px;">
-    <div class="row">
-        <div id="col-left" style="width:70%;float: left;margin-left: 1.5%; overflow: hidden;">
-            <div class="well well-sm" style="text-align: center;margin-bottom: 0;">
-                 <b>FAQ (자주 묻는 질문)</b>
-            </div>
-
-
-            <div style="height: 30px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;"><b>No.</div>
-            <div style="height: 30px;width:82%;position:relative;float:right;border: 0px solid black;margin-bottom: 1%;overflow:hidden;">제목</div></b>
-
-            <div style='height:50%;min-height: 500px;'>
-                {% for faq in faq_list %}
-                <a href="{% url 'faq_detail' faq.pk %}">
-                <div style="position:relative;height:20px;width:15%;text-align: center;float: left;overflow: hidden;">
-                    {{faq.pk}}
-                </div>
-                <div style="position:relative;height:20px;width:82%;float: right;overflow: hidden;">
-                    {{faq.question_title}}
-                </div>
-                </a>
-            {% endfor %}
-            </div>
-        </div>
-        <div id="col-right" style="width:25%;float: right;margin-right: 1.5%;">
-
-            <div class="well well-sm">
-            찾아오시는 길
-            </div>
-            <div id="googleMap" style="width:100%; height:300px;">
-            </div>
-            <br />
-
-            <!-- 추천 스토어-->
-            <div class="well well-sm">
-            추천 멘토링
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
-                    </a>
-                </div>
-                <div class="col-md-7">
-                    <h4>Subheading</h4>
-                    <p>Lorem i totatque eveniet unde.</p>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-5">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
-                    </a>
-                </div>
-                <div class="col-md-7">
-                    <h4>Subheading</h4>
-                    <p>Lorem ipsum dolor sit eveniet unde.</p>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-5">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
-                    </a>
-                </div>
-                <div class="col-md-7">
-                    <h4>Subheading</h4>
-                    <p>Lorem ipsum dolor sit amet, c</p>
-                </div>
-            </div>
-            <br />
-
-
-        </div>
-    </div>
-</div>
-{% endblock %}
