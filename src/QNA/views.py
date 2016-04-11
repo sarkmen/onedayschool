@@ -50,7 +50,7 @@ def question_new(request):
 
 @login_required
 def question_edit(request, pk):
-    question = get_object_or_404(question, pk=pk)
+    question = get_object_or_404(Question, pk=pk)
     if request.method == "POST":
         questionform = QuestionForm(request.POST, instance=question)
         if questionform.is_valid():

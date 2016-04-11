@@ -173,8 +173,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <div style="height: 30px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 0%;overflow:hidden;"><b>작성자</b></div>
             <div style="height: 30px;width:82%;position:relative;float:right;border: 0px solid black;margin-bottom: 0%;overflow:hidden;">{{question.author}}</div>
             <hr style="height:1px;width:99%;background-color:;margin: 0 0 2% 0;">
-            <div style="height: ;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;"><b>내용</b></div>
+            <div style="height: ;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;"><b>내용</b>
+            </div>
             <div style="min-height:300px ;width:80%;position:relative;float:right;border: 0px solid black;margin-bottom: 1%;padding: 0 1% 0 1%;"><p style="width: 100%;overflow:hidden;word-wrap:break-word;">{{question.content}}</p></div>
+            {% if question.author == user %}
+            <a href="{% url 'question_edit' pk=question.pk %}"><button class="btn btn-primary">수정하기</button></a>
+            <a href="{% url 'question_delete' question.pk %}"><button class="btn btn-primary">삭제하기</button></a>
+            {% endif %}
 
             <div class="well well-sm" style="text-align: center;clear: both;margin-bottom: 0;">
                  <b>답 변</b>

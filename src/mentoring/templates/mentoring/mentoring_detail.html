@@ -12,15 +12,11 @@
     <div class="row">
 
         <!--업체 정보 content-->
-        <div class="col-md-8">
-
-            <!-- Preview Image -->
-
+        <div class="col-md-12" style="text-align: center;">
             <div class="well well-sm">
             멘토링 정보
             </div>
-            <div>
-              <ul class="nav">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="col-sm-3">
                         <h5>이름</h5>
@@ -132,18 +128,17 @@
                         <h5>{{mentoring.requirements}}</h5>
                     </div>
                 </div>
-              </ul>
             </div>
 
             {% if mentoring.acceptor %}
-            <p>성립된 멘토링입니다.</p>
+            <h2>성립된 멘토링입니다.</h2>
             {% else %}
-            <p>멘토 분을 구하고 있습니다.</p>
+            <h2>멘토 분을 구하고 있습니다.</h2>
             {% endif %}
-            <hr>
-            <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
             <hr/>
-            {% for apply in mentoring.apply_set.all %}
+            <!-- <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
+            <hr/> -->
+            <!-- {% for apply in mentoring.apply_set.all %}
                 <h6>{{apply.content}}   <button class='btn btn-primary'><a href="{% url 'mentoring_authenticate' mentoring.pk apply.pk %}">수락하기</a></button></h6>
 
 
@@ -152,7 +147,7 @@
                         {% csrf_token %}
                         {{ apply_form }}
                         <input type="submit" value="멘토링 지원하기" class="btn btn-block btn-primary"/>
-                   </form>
+                   </form> -->
 
         </div>
 
@@ -161,7 +156,7 @@
 
 
 
-
+<!--
         <div class="col-md-4">
 
             <div class="well well-sm">
@@ -172,7 +167,7 @@
             <br />
 
             <!-- 추천 스토어-->
-            <div class="well well-sm">
+         <!--    <div class="well well-sm">
             추천 멘토링
             </div>
             <div class="row">
@@ -211,7 +206,7 @@
                 </div>
             </div>
             <br />
-
+ -->
 
         </div>
 
