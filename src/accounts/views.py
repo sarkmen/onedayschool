@@ -32,6 +32,7 @@ def mentor_signup(request):
         messages.info(request, "이미 로그인되어있습니다. 로그아웃 이후 실행해주세요.")
         return redirect('index')
 
+
 #멘티 가입
 def mentee_signup(request):
     if request.user.is_anonymous:
@@ -79,6 +80,7 @@ def profile(request):
             'mentoring_mine' : mentoring_mine,
             })
 
+
 def profile_edit(request):
     user = get_object_or_404(User, pk=request.user.pk)
     if user.profile.is_mentor:
@@ -99,3 +101,11 @@ def profile_edit(request):
         else:
             form = MenteeUpdateForm(instance=user.profile)
         return render(request, 'accounts/mentee_signup.html', {'user': user, 'form': form, })
+
+
+def access_terms(request):
+    return render(request, 'accounts/access_terms.html')
+
+
+def personal_info_terms(request):
+    return render(request, 'accounts/personal_info_terms.html')

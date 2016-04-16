@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from mentoring import views as mentoring_views
+from accounts import views as accounts_views
 
 urlpatterns = [
     url(r'^$', mentoring_views.index, name='index'),
@@ -31,6 +32,8 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^mentoring/', include('mentoring.urls')),
     url(r'^Q&A/', include('QNA.urls')),
+    url(r'^access_terms/$', accounts_views.access_terms, name='access_terms'),
+    url(r'^personal_info_terms/$', accounts_views.personal_info_terms, name='personal_info_terms'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
