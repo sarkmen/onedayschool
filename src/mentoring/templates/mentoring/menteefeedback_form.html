@@ -1,0 +1,116 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'plan_form.css' %}" />
+{% endblock %}
+
+
+{% block content %}
+
+{% if user == mentoring.author %}
+<div class="container">
+    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <h2><strong>멘토링 후기 쓰기</strong></h2>
+    </div>
+
+    <div class="col-sm-6 col-sm-offset-3">
+        <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_field menteefeedbackform.impression %}
+            {% bootstrap_field menteefeedbackform.expect %}
+            {% bootstrap_field menteefeedbackform.inconvinience %}
+            <div><p><strong>투어 별점주기 </strong></p><span style="color:#E0371A" class='touring_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
+            {% bootstrap_field menteefeedbackform.touring_rating_reason %}
+            <div><p><strong>멘토 별점주기 </strong></p><span style="color:#E0371A" class='mentor_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
+            {% bootstrap_field menteefeedbackform.mentor_rating_reason %}
+            {% bootstrap_field menteefeedbackform.mirroring %}
+            {% bootstrap_field menteefeedbackform.wannabe %}
+            <div><p><strong>멘토링 별점주기 </strong></p><span style="color:#E0371A" class='mentoring_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
+            {% bootstrap_field menteefeedbackform.mentoring_rating_reason %}
+            {% bootstrap_field menteefeedbackform.helpness %}
+            {% bootstrap_field menteefeedbackform.onetime %}
+            <hr />
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 제출</button>
+            {% endbuttons %}
+        </form>
+    </div>
+    </div>
+</div>
+
+{% else %}
+자신이 받은 멘토링의 후기만 쓸 수 있습니다.
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function(){
+
+    $('.ratings').each(function(){
+      numStars = Math.round($(this).attr('value'));
+      displayedStars = "";
+      for (i=0; i<numStars; i++) {
+        displayedStars += "<i class='fa fa-star'></i>";
+      };
+      for (i=0; i < 5-numStars; i++){
+        displayedStars += "<i class='fa fa-star-o'></i>";
+      };
+      $(this).html(displayedStars);
+    });
+
+    $('.touring_rating').children('i').click(function(){
+        var passedStarValue = $(this).attr("value");
+        $(this).siblings().removeClass('selected');
+
+        $(this).addClass('selected');
+        $(this).addClass('fa-star');
+        $(this).removeClass('fa-star-o');
+
+        $("i.selected").nextAll().removeClass('fa-star');
+        $("i.selected").nextAll().addClass('fa-star-o');
+
+        $("i.fa-star").prevAll().removeClass('fa fa-star-o');
+        $("i.fa-star").prevAll().addClass('fa fa-star');
+
+        $('#id_touring_rating').val(passedStarValue);
+    });
+    $('.mentor_rating').children('i').click(function(){
+        var passedStarValue = $(this).attr("value");
+        $(this).siblings().removeClass('selected');
+
+        $(this).addClass('selected');
+        $(this).addClass('fa-star');
+        $(this).removeClass('fa-star-o');
+
+        $("i.selected").nextAll().removeClass('fa-star');
+        $("i.selected").nextAll().addClass('fa-star-o');
+
+        $("i.fa-star").prevAll().removeClass('fa fa-star-o');
+        $("i.fa-star").prevAll().addClass('fa fa-star');
+
+        $('#id_mentor_rating').val(passedStarValue);
+    });
+    $('.mentoring_rating').children('i').click(function(){
+        var passedStarValue = $(this).attr("value");
+        $(this).siblings().removeClass('selected');
+
+        $(this).addClass('selected');
+        $(this).addClass('fa-star');
+        $(this).removeClass('fa-star-o');
+
+        $("i.selected").nextAll().removeClass('fa-star');
+        $("i.selected").nextAll().addClass('fa-star-o');
+
+        $("i.fa-star").prevAll().removeClass('fa fa-star-o');
+        $("i.fa-star").prevAll().addClass('fa fa-star');
+
+        $('#id_mentoring_rating').val(passedStarValue);
+    });
+});
+</script>
+{% endblock %}

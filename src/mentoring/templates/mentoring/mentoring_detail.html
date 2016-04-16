@@ -129,13 +129,48 @@
                     </div>
                 </div>
             </div>
-
-            {% if mentoring.acceptor %}
-            <h2>성립된 멘토링입니다.</h2>
+            {% if user.profile.is_mentor %}
             {% else %}
-            <h2>멘토 분을 구하고 있습니다.</h2>
+                {% if mentoring.acceptor %}
+                <h2>성립된 멘토링입니다.</h2>
+                {% else %}
+                <h2>멘토 분을 구하고 있습니다.</h2>
+                {% endif %}
             {% endif %}
             <hr/>
+
+            {% if user.profile.is_mentor %}
+            <div class="col-md-12" style="text-align: center;">
+                <div class="well well-sm">
+                멘토링 계획서
+                </div>
+                <h1>멘토 : {{plan.mentor.profile.name}}</h1>
+                <h1>학과소개</h1>
+                <div class="jumbotron">
+                <h4>{{plan.major_intro}}<h4>
+                </div>
+                <h1>시간 관리법</h1>
+                <div class="jumbotron">
+                <h4>{{plan.time_manage}}</h4>
+                </div>
+                <h1>내신 관리법</h1>
+                <div class="jumbotron">
+                <h4>{{plan.grade_manage}}</h4>
+                </div>
+                <h1>과목 별 공부법</h1>
+                <div class="jumbotron">
+                <h4>{{plan.subject_study}}</h4>
+                </div>
+                <h1>나만의 공부법</h1>
+                <div class="jumbotron">
+                <h4>{{plan.know_how}}</h4>
+                </div>
+                <h1>해주고 싶은 말</h1>
+                <div class="jumbotron">
+                <h4>{{plan.delivering_message}}</h4>
+                </div>
+            </div>
+            {% endif %}
             <!-- <a class="btn=primary" href="{% url 'plan_new' mentoring.pk %}">멘토링 계획하기</a>
             <hr/> -->
             <!-- {% for apply in mentoring.apply_set.all %}

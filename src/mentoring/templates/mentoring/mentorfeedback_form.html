@@ -133,13 +133,13 @@
     </div>
     <div class="row">
     <div class="col-sm-8 col-sm-offset-2 text-center">
-        <h2><strong>멘토링 계획하기</strong></h2>
+        <h2><strong>멘토링 후기 쓰기</strong></h2>
     </div>
 
     <div class="col-sm-6 col-sm-offset-3">
         <form method="post" action="">
             {% csrf_token %}
-            {% bootstrap_form planform %}
+            {% bootstrap_form mentorfeedbackform %}
             <hr />
             {% buttons %}
                 <button type="submit" class="btn btn-primary">{% bootstrap_icon "ok-sign" %} 제출</button>
@@ -150,7 +150,7 @@
 </div>
 
 {% else %}
-자신이 맡은 멘토링의 계획만 세울 수 있습니다.
+자신이 맡은 멘토링의 후기만 쓸 수 있습니다.
 {% endif %}
 
 {% endblock %}
