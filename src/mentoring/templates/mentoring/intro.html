@@ -76,10 +76,13 @@ $(document).ready(function(){
 
 {% block content %}
 
+
+
 <div class="container-fluid" id="Intropage">
 
-    <div id="content_1">
-      <div id="video-wrap" style="width:100%;height:100%; margin-bottom:0px;">
+  <!--<img src='{% static 'img/SNU_background.png' %}' style="position:fixed; ;z-index:-5;width:100%; height: 300px; margin-top:0%;opacity: 0.9;"/>-->
+    <div id="content_1" style="background-color: white;margin-bottom: 0%; ">
+      <div id="video-wrap" style="width:100%;height:100%; padding-bottom:5%;">
         <div class="main-play-shade" style="z-index: 999;width: 100%;height: 658px;position: absolute;top: 0px;left: 0px;display: none;"></div>
         <p class="crop"><video id="video1"class="video" src="{% static 'img/sharpa2.mp4' %}" style="width:102%; height: 700px;max-height: 800px; overflow: hidden; margin-left: -5px;  " autoplay loop="loop" controls></video></p>
       </div>
@@ -87,8 +90,10 @@ $(document).ready(function(){
 
 
 
-<!-- Container (회사 소개 section) -->
-    <div id="content_2" class="container text-center" style="margin-top:40%;background-color: none; padding-top: 0px;padding-bottom: 0px;">
+
+<!-- Container (회사 소개 section)-->
+    <div id="content_2" class="container text-center" style="margin-top:0px;background-color: white; padding-top: 0px;padding-bottom: 0px;">
+
       <br><hr>
       <div style="background-color: none;">
 
@@ -110,14 +115,14 @@ $(document).ready(function(){
 
     </div>
 
-    <div id="content_3" class="container text-center">
+    <div id="content_3" class="container text-center" style="background-color: white;">
     <br><br><br>
     <hr style="background-color: black;margin : 20px 10% 20px 10%;padding: 5 0 0 5;"><h1><b>팀 소개</b></h1>
     <hr style="background-color: black;margin : 20px 10% 20px 10%;padding: 5 0 0 5;">
     <h1 style="text-align: center"><img src='{% static 'img/team_member.png' %}' style="width:70%;" /></h1>
     </div>
 
-    <div id="content_4" class="container text-center" style="background-color: ;">
+    <div id="content_4" class="container text-center" style="background-color:white;">
     <br><hr><br>
     <hr style="background-color: black;margin : 20px 30% 20px 30%;padding: 5 0 0 5;"><h2>후원</h2>
     <hr style="background-color: black;margin : 20px 30% 20px 30%;padding: 5 0 0 5;"><br>
