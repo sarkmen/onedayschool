@@ -23,7 +23,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="table-responsive" style="width: 80%; margin-bottom: 10%;">
+        <div class="table-responsive" style="width: 80%; margin-bottom: 10%;margin-top: 5%;">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -84,17 +84,22 @@
 
                             <tr>
                                 <th></th>
-                                <th id="left_cell" style="font-weight: normal;">{{mentoring.name}}</th>
-                                <th id="right_cell"style="font-weight: lighter;">{{mentoring.date}}</th>
+                                <th id="left_cell"><a href="{% url 'mentoring_detail' mentoring.pk %}" style="text-decoration: none;">{{mentoring.name}}</a></th>
+                                <th id="right_cell"style="min-width: 200px;"><a href="{% url 'mentoring_detail' mentoring.pk %}"style="text-decoration: none;font-weight: bold;">{{mentoring.date}}</a>
+
                                 {% if mentoring.plan %}
-                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'plan_edit' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">계획 수정하기</button></a></th>
-                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">멘토링 내역</button></a></th>
-                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'mentorfeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">후기 남기기</button></a></th>
+                                    <a href="{% url 'mentorfeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 작성</button></a>
+                                    <a href="{% url 'plan_edit' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">계획 수정</button></a>
+                                    <a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">멘토링 정보</button></a>
                                 {% else %}
-                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'plan_new' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">계획 등록하기</button></a></th>
+                                    <button class="btn-sm disabled" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 작성</button>
+                                    <a href="{% url 'plan_new' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">계획 등록</button></a>
+                                    <a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">멘토링 정보</button></a>
                                 {% endif %}
-                        </tr>
+                                </th>
+
                             </tr>
+
 
                         {% endfor %}
                     </tbody>

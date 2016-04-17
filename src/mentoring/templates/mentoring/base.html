@@ -58,11 +58,7 @@
         margin: 2px;
       }
 
-      footer {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        background-color : #cce6ff;
-      }
+
 
 
   </style>
@@ -201,8 +197,19 @@ $(document).ready(function(){
         width:100%;
         z-index: 500;
         background-color: ;
-
-
+      }
+      footer {
+        clear:both;
+        background-color: rgba(75,75,75,1);
+        color:rgba(254,254,254,1);
+        padding: 20px 0 50px 0;
+      }
+      footer p a {
+        color:rgba(254,254,254,1);
+      }
+      footer p a:hover{
+        color:rgba(254,254,254,1);
+        font-weight: bold;
       }
 
       </style>
@@ -243,15 +250,19 @@ $(document).ready(function(){
 {% endblock %}
 
 
-<footer class="text-center" style="clear:both;background-color: #cce0ff; padding: 20px 0 50px 0;">
+<footer class="text-center">
   <div class="a">
-      <a href="#">Top</a>
+      <a href="#" style="color: rgba(254,254,254,1); text-decoration: none;">Top</a>
   </div>
 
   <br><br>
-  <p>Copyright &copy; <a href="/intro">OneDaySchool</a>   <a href="/program_info">서비스소개</a>  <a href="/access_terms">이용약관</a>   <a href="/personal_info_terms">개인정보취급방침</a>   <a href="/Q&A">고객센터</a></p>
-                <p>사업자등록번호 : 282-52-00066 주소 : 서울 관악구 관악로 1 서울대학교 경영대학 58동 431호
-</p>
+  <p>Copyright &copy;
+    <a href="/intro">OneDaySchool</a> |
+    <a href="/program_info">서비스소개</a> |
+    <a href="/access_terms">이용약관</a> |
+    <a href="/personal_info_terms">개인정보취급방침</a> |
+    <a href="/Q&A">고객센터</a> |</p>
+  <p>사업자등록번호 : 282-52-00066 | 주소 : 서울 관악구 관악로 1 서울대학교 경영대학 58동 431호</p>
 </footer>
 
 

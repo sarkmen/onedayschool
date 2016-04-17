@@ -26,7 +26,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="table-responsive" style="width: 80%;margin-bottom: 10%;">
+        <div class="table-responsive" style="width: 80%;margin-bottom: 10%;margin-top: 5%;">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -73,12 +73,14 @@
 
                             <tr>
                                 <th></th>
-                                <th id="left_cell" style="font-weight: normal;">{{mentoring.name}}</th>
-                                <th id="right_cell"style="font-weight: lighter;">{{mentoring.date}}</th>
-                                <th style="width: 2%;border:none;padding: 1% 0 1% 5%;"><a href="{% url 'mentoring_detail' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">이동</button></a></th>ㅊ
-                                <th style="width: 2%;border:none;padding: 1% 0 1% 5%;"><a href="{% url 'menteefeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">후기 남기기</button></a></th>
-                        </tr>
+                                <th id="left_cell"><a href="{% url 'mentoring_detail' mentoring.pk %}" style="text-decoration: none;font-weight: bold;">{{mentoring.name}}</a></th>
+                                <th id="right_cell" style="min-width: 200px;"><a href="{% url 'mentoring_detail' mentoring.pk %}"style="text-decoration: none;font-weight: bold;">{{mentoring.date}}</a>
+                                    <a href="{% url 'menteefeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 작성</button></a>
+                                    <a href="{% url 'mentoring_detail' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">멘토링 정보</button></a>
+
+                                </th>
                             </tr>
+
 
                         {% endfor %}
                     </tbody>
