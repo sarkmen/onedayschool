@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "onedayschool.settings.azure_webapp")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "onedayschool.settings.common")
 
 application = get_wsgi_application()

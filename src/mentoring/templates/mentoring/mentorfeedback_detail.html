@@ -1,0 +1,92 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block headjs %}
+<script src="{% static 'jquery-1.12.0.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'mentoring_detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12" style="text-align: center;">
+        <div class="well well-sm">
+        <strong>멘토링 후기</strong>
+        </div>
+        <div>
+          <ul class="nav">
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티의 꿈</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.dream}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티가 행복할 때</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.happiness}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티의 고민</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.worry}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>과목 별 강약점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.subjects}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>진로계획</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.future_path}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>생활습관에 대한 조언</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.lifestyle}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티의 장단점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.sw}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>가정 지도에 대한 조언</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentorfeedback.reference}}</h5>
+                </div>
+            </div>
+            <a href="{% url 'menteefeedback_edit' mentoring.pk %}"><button class="btn btn-primary">후기 수정하기</button></a>
+          </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

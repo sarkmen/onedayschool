@@ -259,9 +259,11 @@ def mentorfeedback_edit(request, pk):
 
 
 def mentorfeedback_detail(request, pk):
-    mentorfeedback = get_object_or_404(Mentorfeedback, pk=pk)
+    mentoring = get_object_or_404(Mentoring, pk=pk)
+    mentorfeedback = mentoring.mentorfeedback
     return render(request, 'mentoring/mentorfeedback_detail.html', {
         'mentorfeedback' : mentorfeedback,
+        'mentoring' : mentoring,
         })
 
 
@@ -273,7 +275,7 @@ def menteefeedback_new(request, pk):
         if menteefeedbackform.is_valid():
             menteefeedback = menteefeedbackform.save(commit=False)
             menteefeedback.mentoring = mentoring
-            menteefeedback.mentor = request.user
+            menteefeedback.mentee = request.user
             menteefeedback.save()
             return redirect(menteefeedback_detail, pk=pk)
     else:
@@ -286,7 +288,7 @@ def menteefeedback_new(request, pk):
 
 @login_required
 def menteefeedback_edit(request, pk):
-    menteeing = get_object_or_404(Mentoring, pk=pk)
+    mentoring = get_object_or_404(Mentoring, pk=pk)
     menteefeedback = mentoring.menteefeedback
     if request.method == "POST":
         menteefeedbackform = MenteefeedbackForm(request.POST, instance=menteefeedback)
@@ -305,9 +307,11 @@ def menteefeedback_edit(request, pk):
 
 
 def menteefeedback_detail(request, pk):
-    menteefeedback = get_object_or_404(Menteefeedback, pk=pk)
+    mentoring = get_object_or_404(Mentoring, pk=pk)
+    menteefeedback = mentoring.menteefeedback
     return render(request, 'mentoring/menteefeedback_detail.html', {
         'menteefeedback' : menteefeedback,
+        'mentoring' : mentoring,
         })
 
 

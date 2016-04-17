@@ -1,0 +1,108 @@
+{% extends 'mentoring/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block headjs %}
+<script src="{% static 'jquery-1.12.0.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'mentoring_detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12" style="text-align: center;">
+        <div class="well well-sm">
+        <strong>멘토링 후기</strong>
+        </div>
+        <div>
+          <ul class="nav">
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>기분</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.impression}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>기대치 만족</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.expect}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>불편했던 점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.inconvinience}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>투어에 대한 소감</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.touring_rating_reason}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토에 대한 소감</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.mentor_ration_reason}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토에게 배울 점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.mirroring}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>다음에는 어떤 멘토가 오면 좋을까요?</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.wannabe}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토링에 대한 소감</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.mentoring_rating_reason}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토링 효과</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.helpness}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>재신청 의지</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{menteefeedback.onetime}}</h5>
+                </div>
+            </div>
+            <a href="{% url 'menteefeedback_edit' mentoring.pk %}"><button class="btn btn-primary">후기 수정하기</button></a>
+          </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

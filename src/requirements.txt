@@ -1,1 +1,1 @@
--r reqs/azure_webapp.txt
+-r reqs/common.txt

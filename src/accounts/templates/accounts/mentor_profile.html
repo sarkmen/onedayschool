@@ -89,6 +89,7 @@
                                 {% if mentoring.plan %}
                                 <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'plan_edit' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">계획 수정하기</button></a></th>
                                 <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">멘토링 내역</button></a></th>
+                                <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'mentorfeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">후기 남기기</button></a></th>
                                 {% else %}
                                 <th style="width: 2%;border:none;padding: 1% 0 0 5%;"><a href="{% url 'plan_new' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">계획 등록하기</button></a></th>
                                 {% endif %}

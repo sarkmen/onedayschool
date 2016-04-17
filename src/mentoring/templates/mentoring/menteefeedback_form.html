@@ -22,12 +22,15 @@
             {% bootstrap_field menteefeedbackform.impression %}
             {% bootstrap_field menteefeedbackform.expect %}
             {% bootstrap_field menteefeedbackform.inconvinience %}
+            {% bootstrap_field menteefeedbackform.touring_rating %}
             <div><p><strong>투어 별점주기 </strong></p><span style="color:#E0371A" class='touring_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
             {% bootstrap_field menteefeedbackform.touring_rating_reason %}
+            {% bootstrap_field menteefeedbackform.mentor_rating %}
             <div><p><strong>멘토 별점주기 </strong></p><span style="color:#E0371A" class='mentor_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
             {% bootstrap_field menteefeedbackform.mentor_rating_reason %}
             {% bootstrap_field menteefeedbackform.mirroring %}
             {% bootstrap_field menteefeedbackform.wannabe %}
+            {% bootstrap_field menteefeedbackform.mentoring_rating %}
             <div><p><strong>멘토링 별점주기 </strong></p><span style="color:#E0371A" class='mentoring_rating'><i class='fa fa-star-o fa-2x' value=1></i><i class='fa fa-star-o fa-2x' value=2></i><i class='fa fa-star-o fa-2x' value=3></i><i class='fa fa-star-o fa-2x' value=4></i><i class='fa fa-star-o fa-2x' value=5></i></span></div><br />
             {% bootstrap_field menteefeedbackform.mentoring_rating_reason %}
             {% bootstrap_field menteefeedbackform.helpness %}
@@ -79,6 +82,7 @@ $(document).ready(function(){
 
         $('#id_touring_rating').val(passedStarValue);
     });
+
     $('.mentor_rating').children('i').click(function(){
         var passedStarValue = $(this).attr("value");
         $(this).siblings().removeClass('selected');
@@ -95,6 +99,7 @@ $(document).ready(function(){
 
         $('#id_mentor_rating').val(passedStarValue);
     });
+
     $('.mentoring_rating').children('i').click(function(){
         var passedStarValue = $(this).attr("value");
         $(this).siblings().removeClass('selected');

@@ -75,7 +75,8 @@
                                 <th></th>
                                 <th id="left_cell" style="font-weight: normal;">{{mentoring.name}}</th>
                                 <th id="right_cell"style="font-weight: lighter;">{{mentoring.date}}</th>
-                                <th style="width: 2%;border:none;padding: 1% 0 1% 5%;"><a href="{% url 'mentoring_detail' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">이동</button></a></th>
+                                <th style="width: 2%;border:none;padding: 1% 0 1% 5%;"><a href="{% url 'mentoring_detail' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">이동</button></a></th>ㅊ
+                                <th style="width: 2%;border:none;padding: 1% 0 1% 5%;"><a href="{% url 'menteefeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;">후기 남기기</button></a></th>
                         </tr>
                             </tr>
 
