@@ -166,51 +166,241 @@ google.maps.event.addDomListener(window, 'load', initialize);
     position: relative;
 }
 
+#accordion div div h4 a {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 13px;
+}
 
+.panel-body {
+  padding-left: 5%;
+  padding-right: 5%;
+  font-weight: normal;
+  background-color : rgba(251, 249, 249, 1);
+  border : none;
+  font-size: 13px;
+}
+.panel-title {
+
+}
+#accordion div .panel-heading {
+  padding: 1% 0 1% 2%;
+  height: 30px;
+  background-color : rgba(251, 237, 237, 1);
+  border : none;
+  overflow:hidden;
+  line-height: 50%;
+
+}
+#hover_it:hover {
+  font-weight: bold;
+}
 </style>
 {% endblock %}
 
 
 
 {% block content %}
-<div class="container" style="width: 100%;min-width:600px;">
+<div class="container" style="width: 100%;min-width:600px;margin-top: 2%;">
     <div class="row">
         <div id="col-left" style="width:70%;float: left;margin-left: 1.5%; overflow: hidden;">
-            <a href="{% url 'faq_list' %}"  style="text-decoration: none;">
-                <div class="well well-sm" style="text-align: center;margin-bottom: 0;" >
+
+                <div class="well well-sm" style="text-align: center;margin-bottom: 0;background-color:rgba(240, 180, 180, 1);border:none;" >
                  <b>FAQ (자주 묻는 질문)</b>
                 </div>
-            </a><b>
-            <div style="height: 30px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;">No.</div>
-            <div style="height: 30px;width:85%;position:relative;float: right;border: 0px solid black;margin-bottom: 1%;overflow:hidden;">제목</div></b>
-            <div style='height:30%;min-height: 300px;'>
-            {% for faq in faq_list %}
-                <a href="{% url 'faq_detail' faq.pk %}">
-                <div style="position:relative;height:20px;width:15%;text-align: center;float: left;overflow:hidden;">
-                    {{faq.pk}}
+
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        서울대학교를 꼭 방문해야만 멘토링을 받을 수 있나요?
+                    </a>
+                  </h4>
                 </div>
-                <div style="position:relative;height:20px;width:85%;float: right;overflow:hidden;">
-                    {{faq.question_title}}
+                <div id="collapse1" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      기본적으로는 서울대학교 캠퍼스 내에서 이루어지는 멘토링 프로그램이지만, 학생이 원할 경우 멘토가 직접 찾아가는 서비스도 운영하고 있습니다.
+                  </div>
                 </div>
-                </a>
-            {% endfor %}
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        '서울대 원데이스쿨' 멘토링 프로그램을 받고 나면 학생들에게 어떤 점이 좋은가요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      저희 프로그램의 목표는 목적 없이 힘들게 공부하는 학생들에게는 스스로 공부하고자 하는 학습 의욕을, 더욱 만족스러운 학업 성취를 원하는 학생들에게는 서울대 학생들의 노하우를 전수해 주는 것입니다. 이를 위해서 서울대학교 재학생들의 효과적인 공부법, 나아가 원하는 전공의 멘토로부터 대학 입시 전략을 상담받으실 수 있습니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        ‘서울대 원데이스쿨’은 다른 멘토링 프로그램들과 어떤 점이 다르고 특별한가요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      1 ) 학생 한 명 한 명에게 온전히 집중합니다. 저희 프로그램은 기존에 1대 다수로 진행되는 멘토링 방식이 비효율적임에 주목했습니다. 때문에 멘토 한 명당 3인 이하의 소규모 맞춤형 멘토링을 제공함으로써 멘토가 온전히 학생 개개인에 집중할 수 있게 프로그램을 구성하였습니다.<br>
+                      2 ) 엄격한 기준에 의거하여 멘토를 선발합니다. 학생들에게 최적의 멘토링을 제공하기 위해 각 전공별 학생들을 면접을 통해 멘토로 선발하며, 선발 이후에도 사전 교육을 실시함으로써 멘토링 프로그램에 참여할 모든 준비 과정을 거치게 되어있습니다.<br>
+                      3 ) 시간을 낭비하지 않습니다. 무의미하게 과도한 시간을 캠퍼스 투어에 투자하는 다른 멘토링 프로그램과 달리, 멘티에게 의미 있는 경험을 심어 줄 수 있는 최소한의, 그렇지만 꼭 필요한 장소만을 선정하여 캠퍼스 투어를 진행합니다.<br>
+
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        멘토링 프로그램 신청 기간이 정해져 있나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      기본적으로 학기 중에는 주말(토, 일요일)에 이루어집니다. 방학 기간에는 평일에도 멘토링 프로그램을 운영하고 있습니다. 원활한 멘토-멘티 연결을 위해 멘토링 신청은 멘토링 일주일 전까지 신청할 수 있습니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        원하는 전공을 가진 멘토를 신청할 수 있는 건가요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      그렇습니다. 예를 들어, 의예과 전공의 멘토를 원하시면, ‘서울대 원데이스쿨’에서 서울대학교 의과대학 재학생 멘토를 연결시켜 드릴 수 있습니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        희망 전공이 아직 정해지지 않은 학생은 어떤 멘토를 배정받나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      물론 멘티가 원하는 전공의 서울대학교 학생을 배정하는 것이 최선의 방법이지만, 만약 특별히 바라는 전공이 없을 시, 특별히 공부법을 지도 받고 싶은 과목을 사전에 말씀해주시거나, 학습 동기 부여를 집중적으로 받고 싶다고 말씀해 주시면, 해당 분야의 전문적인 멘토를 배정해 드립니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        멘토-멘티는 1:1로만 가능한가요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      ‘서울대 원데이스쿨’은 멘토가 심층적 대화를 통해 멘티에게 오롯이 집중하여 멘티에게 진정한 도움이 되는 소규모 멘토링 프로그램을 지향하고 있습니다. 따라서 멘토 한 명당 멘티 1~3명을 담당하여 멘토링을 하는 것을 권고합니다. 한 번에 4명 이상의 멘티를 위한 프로그램을 원하신다면 최적의 멘토링 환경을 위해 상담을 통해 문의해주시기 바랍니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        멘토링 프로그램을 수료하면 확인증 같은 것을 받을 수 있나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse8" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      서울대 원데이스쿨에서는 멘토링 프로그램에 성실히 참여한 멘티에게 추후에 멘토링 프로그램 수료증을 발급해 드리고 있습니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        멘토링 이후에도 공부법이나 입시전략에 대해 상담을 받을 수 있나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse9" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      웹사이트의 ‘멘토링 > 상담게시판’에 멘토링 받았던 것에 대해 추후에 궁금하신 점을 올려주시면, ‘서울대 원데이스쿨’ 우수 멘토진이 성심성의껏 답변해 드리겠습니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        멘토링 대상 학년은 어떻게 되나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse10" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      ‘서울대 원데이스쿨’ 멘토링 프로그램은 ‘학습 동기 부여, 능률적이고 효과적인 학습법, 검증된 입시전략 등이 필요한 중, 고등학생’을 대상으로 하고 있습니다. 그러나 초등학생, 혹은 재수생의 경우에도 원하시는 멘토가 있으시다면 매칭을 시켜 드립니다.
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default" >
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                        입금은 어떻게 하나요?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse11" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      멘토링 3일 전까지 아래의 계좌로 입금해주시면 됩니다. 입금 후에 담당자(010-9808-3738)에게 멘티 이름과 입금자명을 문자로 보내주시면 입금을 확인 후 확인 문자를 발송해 드립니다.<br><br>계좌번호 : 302-1068-3480-41 (농협)<br>예금주명 : 여호용
+
+                  </div>
+                </div>
+              </div>
+
+
+
             </div>
 
 
-            <a href="{% url 'question_list' %}" style="text-decoration: none;">
-                <div class="well well-sm" style="text-align: center;clear: both;margin-bottom: 0;">
-                 <b>Q & A (질문하기)</b>
+            <a href="{% url 'question_list' %}" style="text-decoration: none;color: black;">
+                <div class="well well-sm" style="text-align: center;clear: both;margin-bottom: 0;background-color:rgba(240, 180, 180, 1);border:none;">
+                 <b>Q & A (질문하기)<a href="{% url 'question_new' %}"><button class="btn btn-xs" style="float: right; margin-top: -1px;color: black;background-color:rgba(253, 253, 253, 1); ">작성</b></button></a>
                 </div>
             </a><b>
-            <div style="height: 30px;width:15%;position:relative;float: left; text-align: center; border: 0px solid black;margin-bottom: 1%;overflow:hidden;">ID</div>
-            <div style="height: 30px;width:82%;position:relative;float:right;border: 0px solid black;margin-bottom: 1%;overflow:hidden;">제목</div></b>
-            <div style='height:50%;min-height: 500px;'>
+            <div style="height: 22px;background-color:rgba(251, 237, 237, 1);">
+            <div style="height: 22px;width:15%;position:relative;float: left; text-align: center;margin-bottom: 1%;overflow:hidden;z-index: 10;">ID</div>
+            <div style="height: 22px;width:82%;position:relative;float:right;margin-bottom: 1%;overflow:hidden;z-index: 10;">제목</div></b></div>
+
+            <div style='height:50%;min-height: 500px;background-color:rgba(251, 249, 249, 1)'>
             {% for question in question_list %}
-                <a href="{% url 'question_detail' question.pk %}">
-                <div style="position:relative;height:20px;width:15%;text-align: center;float: left;overflow: hidden;">
+                <a id="hover_it"href="{% url 'question_detail' question.pk %}" style="color:black;">
+                <div style="font-size: 13px;position:relative;height:20px;width:15%;text-align: center;float: left;overflow: hidden;">
                     {{question.author}}
                 </div>
-                <div style="position:relative;height:20px;width:82%;float: right;overflow: hidden;">
+                <div style="font-size: 13px;position:relative;height:20px;width:82%;float: right;overflow: hidden;style="color:black;"">
                     {{question.title}}
                 </div>
                 </a>
@@ -221,7 +411,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         <div id="col-right" style="width:25%;float: right;margin-right: 1.5%;">
 
-            <div class="well well-sm">
+            <div class="well well-sm" style="background-color:rgba(240, 180, 180, 1);text-align: center;">
             <b>찾아오시는 길</b>
             </div>
             <div id="googleMap" style="width:100%; height:300px;">
