@@ -203,7 +203,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   @media screen and (max-width: 800px) {
     #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 0px; }
-    .content_div { margin-left: 160px; }
+    .content_div { margin-left: 130px; }
   }
 
   .affix {
@@ -217,12 +217,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 #Mypill >li > a {
   color:  #737373;
-  font-size: 1vw;
+  font-size: 1.3vw;
 
 }
 
 #Mypill > li.active > a {
-    font-size: 1vw;
+    font-size: 1,31vw;
     background-color:#008ae6;
     color: white;
 }
@@ -258,9 +258,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div id="Program_info_page" >
 
     <div style=" margin-left: 5px;border-right: 5px; padding: 0 0 0 0;">
-        <div class="row" style="width:100%;min-width: 800px;">
+        <div class="row" style="width:100%;min-width: 300px;">
             <nav id="myScrollspy" data-spy="affix" data-offset-top="130"style="float: left; width: 15%;">
-                <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width: 107px;background-color: white;border-radius: 15px;">
+                <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width: 107px;background-color: transparent;border-radius: 15px;z-index: 500;">
                   <li><a href="#">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
                   <li><a href="#section11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>목 적</b></a></li>
                   <li><a href="#section12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>배 경</b></a></li>
@@ -273,9 +273,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
                 </ul>
             </nav>
-            <div style="left: 0; width: 140px;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
+            <div style="left: 0; min-width: 60px;width:15%;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
 
-            <div class="content_div" style="position: relative;min-width:500px;width:70%;margin: 0 0% 0 8%; display: inline-block;">
+            <div class="content_div" style="position: relative;min-width:300px;width:75%;margin: 0 0% 0 1%; display: inline-block;">
 
 
                 <div id="section11" style="">
@@ -307,9 +307,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <h1>
                      <img src="{% static "img/pro_info_2.png" %}" style="width : 100%;"/></h1>
                 </div>
-                <div id="section3" style=" padding: 10% 15% 10% 15%; text-align: center;" >
-                      <h1 style="text-align: left;"><span style="color: #005c99;">멘토링</span> <small style="color: #0073e6;">후기</small></h1>
+                <div id="section3" style=" padding: 10% 0 10% 0; text-align: center;" >
+                    <h1>
+                     <img src="{% static "img/pro_info_3.png" %}" style="width : 100%;"/></h1>
                       <br><br>
+                      <!--
                       <div class="row slideanim">
                         <div id="review_photo">
                           <a href="#"><img src="{% static "img/sample.png" %}" /></a>
@@ -351,7 +353,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                       <li><a href="#">3</a></li>
                       <li><a href="#">4</a></li>
                       <li><a href="#">5</a></li>
-                    </ul></h1>
+                    </ul></h1> -->
 
                 </div>
 
