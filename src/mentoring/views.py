@@ -30,13 +30,20 @@ def mentoring_list(request):
 
 def mentoring_detail(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
-    plan = mentoring.plan
-    return render(request, 'mentoring/mentoring_detail.html', {
-        'mentoring' : mentoring,
-        'apply_form' : ApplyForm(),
-        'plan' : plan,
-        })
-
+    try:
+        plan = mentoring.plan
+    except Plan.DoesNotExist:
+        plan = None
+    if plan:
+        return render(request, 'mentoring/mentoring_detail.html', {
+            'mentoring' : mentoring,
+            'apply_form' : ApplyForm(),
+            'plan' : plan,
+                })
+    else:
+        return render(request, 'mentoring/mentoring_detail.html', {
+            'mentoring' : mentoring,
+            })
 
 @login_required
 def mentoring_new(request):
