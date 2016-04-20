@@ -176,20 +176,23 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 {% endblock %}
 
-
-
 {% block style %}
 <style>
+
+div {
+    position: relative;
+}
   #Program_info_page {
       position: relative;
 
 
   }
   ul.nav-pills {
+    left : 0px;
+    position: fixed;
+    margin-top: 0%;
 
-      left : 0px;
-      position: absolute;
-      margin-top: 3%;
+
   }
 
 
@@ -201,79 +204,82 @@ google.maps.event.addDomListener(window, 'load', initialize);
 #section2 {color: #737373; background-color: white;}
 #section3 {color: #737373; background-color: white;}
 
-  @media screen and (max-width: 800px) {
-    #section11, #section12, #section13, #section14, #section15, #section2, #section3 { margin-left: 0px; }
-    .content_div { margin-left: 130px; }
-  }
+.affix {
 
-  .affix {
-        position: fixed;
-        width: 15%;
-        margin-top: 13%;
-        min-width: 185px;
-        z-index: 500;
+}
 
-      }
+#Mypill >li {
+  overflow: visible;
+  width: ;
+  z-index: 900;
+}
 
 #Mypill >li > a {
   color:  #737373;
-  font-size: 1.3vw;
+  background-color: transparent;
+  font-size: 1.2vw;
+  padding: 1vw 0 1vw 0;
+  z-index: 900;
+  width:
+  overflow: visible;
+}
+#Mypill >li > a > b{
+  margin-right: 0.7vw;
 
 }
 
-#Mypill > li.active > a {
-    font-size: 1,31vw;
-    background-color:#008ae6;
-    color: white;
+#Mypill > li.active > #main_pill {
+  font-size: 1.2vw;
+  background-color:rgb(1,63,187);
+  color: white;
+  padding: 1vw 0 1vw 0;
+  z-index: 900;
+  width:;
+  overflow: visible;
+}
+#Mypill > li.active > #sub_pill {
+  font-size: 1.2vw;
+  background-color:;
+  color:white;
+  padding: 0 0 0 0;
+  z-index: 900;
+  width:;
+  overflow: visible;
 }
 
-
-#review_photo {
-    width: 30%;
-    display: inline-block;
-    text-align: center;
+#Mypill > li.active > a > b {
+  background-color:
 }
-
-#review_photo img {
-  min-width: 50px;
-  min-height: 50px;
-  width: 80%;
-}
-
-
-
-
-
 </style>
-
 {% endblock %}
 
+
+
 {% block content %}
+<div class="container" id="Program_info_page" style="width: 100%;margin-top: 2%;">
+    <div class="row">
+        <div id="col-left" style="width:15%;float: left;margin-left: 1.5%; overflow: visible;">
 
+            <nav id="myScrollspy" style="width: 100%;">
+                <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width:;background-color:;border-radius: 15px;z-index: 500;overflow: visible;">
+                  <li><a href="#"id="main_pill">&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
+                  <li><a href="#section11"id="sub_pill" style=""><button class="btn"style="float:center;text-align:center;background-color:rgb(1,63,187);border:none;padding: 1vw 1.3vw 1vw 0;">&nbsp;&nbsp;&nbsp;&nbsp;-<b>목 적</b></a></li>
+                  <li><a href="#section12"id="sub_pill"class="btn btn-info"role="button"style="z-index: 900;">-&nbsp;&nbsp;<b>배 경</b></a></li>
+                  <li><a href="#section13"id="sub_pill"class="btn btn-info"role="button"style="z-index: 900;">-&nbsp;&nbsp;<b>장 점</b></a></li>
+                  <li><a href="#section14"id="sub_pill"class="btn btn-info"role="button"style="z-index: 900;">-&nbsp;&nbsp;<b>일정표</b></a></li>
+                  <li><a href="#section15"id="sub_pill"class="btn btn-info"role="button"style="z-index: 900;">-&nbsp;&nbsp;<b>오시는 길</b></a></li>
 
-
-
-<div id="Program_info_page" style="width: 100%;" >
-
-    <div style=" margin-left: 5px;border-right: 5px; padding: 0 0 0 0;">
-        <div class="row" style="width:100%;min-width: 300px;">
-            <nav id="myScrollspy" data-spy="affix" data-offset-top="130"style="float: left; width: 15%;">
-                <ul id = Mypill class="nav nav-pills nav-stacked" style="min-width: 107px;background-color: transparent;border-radius: 15px;z-index: 500;">
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>프로그램</b></a></li>
-                  <li><a href="#section11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>목 적</b></a></li>
-                  <li><a href="#section12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>배 경</b></a></li>
-                  <li><a href="#section13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>장 점</b></a></li>
-                  <li><a href="#section14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>일정표</b></a></li>
-                  <li><a href="#section15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<b>오시는 길</b></a></li>
-
-                  <li><a href="#section2">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토 소개</b></a></li>
-                  <li><a href="#section3">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토링 후기</b></a></li>
+                  <li><a href="#section2"id="main_pill">&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토 소개</b></a></li>
+                  <li><a href="#section3"id="main_pill">&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;<b>멘토링 후기</b></a></li>
 
                 </ul>
             </nav>
-            <div style="left: 0; min-width: 60px;width:15%;height: 1000px; position: relative;z-index: 000;display: inline-block; background-color: ;"></div>
 
-            <div class="content_div" style="position: relative;width:75%;margin: 0 0% 0 1%; display: inline-block;">
+
+        </div>
+
+        <div id="col-right" style="width:80%;float: right;margin-right: 1.5%;">
+          <div class="content_div" style="position: relative;width:75%;margin: 0 0% 0 1%; display: inline-block;">
 
 
                 <div id="section11" style="padding-bottom : 5%;">
@@ -315,58 +321,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <h1>
                      <img src="{% static "img/pro_info_3.png" %}" style="width : 100%;"/></h1>
                       <br><br>
-                      <!--
-                      <div class="row slideanim">
-                        <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                        <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                        <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                      </div>
-                      <br><br>
-                      <div class="row slideanim">
-                        <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                       <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}"/></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                        <div id="review_photo">
-                          <a href="#"><img src="{% static "img/sample.png" %}" /></a>
-                          <h4>2015.11.02</h4>
-                          <h5>서울대생의 공부법을 배웠어요.</h5>
-                        </div>
-                      </div>
-                    <h1><ul class="pagination pagination-sm center">
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                    </ul></h1> -->
 
                 </div>
 
 
-                </div>
-            </div>
+          </div>
         </div>
     </div>
-
-
-
+</div>
 {% endblock %}

@@ -4,52 +4,270 @@
 
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'plan_detail.css' %}" />
+<link rel="stylesheet" href="{% static 'plan_form.css' %}" />
+<style>
+    .jumbotron {
+        background-color: white;
+        padding: 2% 2% 2% 2%;
+        margin : 0 10% 5% 10%;
+    }
+    .jumbotron p {
+        font-size: 13px;
+
+    }
+    .row div h4, h5 {
+        text-align: center;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="well well-sm">
-            멘토링 계획서
-            </div>
-            <h3>멘토 : {{plan.mentor}}</h3>
-            <h1>학과소개</h1>
-            <div class="jumbotron">
-            <h4>{{plan.major_intro}}<h4>
-            </div>
-            <h1>시간 관리법</h1>
-            <div class="jumbotron">
-            <h4>{{plan.time_manage}}</h4>
-            </div>
-            <h1>내신 관리법</h1>
-            <div class="jumbotron">
-            <h4>{{plan.grade_manage}}</h4>
-            </div>
-            <h1>과목 별 공부법</h1>
-            <div class="jumbotron">
-            <h4>{{plan.subject_study}}</h4>
-            </div>
-            <h1>나만의 공부법</h1>
-            <div class="jumbotron">
-            <h4>{{plan.know_how}}</h4>
-            </div>
-            <h1>해주고 싶은 말</h1>
-            <div class="jumbotron">
-            <h4>{{plan.delivering_message}}</h4>
-            </div>
+{% if user.profile.phone == mentoring.acceptor %}
+    <div class="jumbotron" style="background-color : rgba(251, 243, 242, 1);margin-top:3%;">
+        <div class="well well-sm" style="background-color:rgba(251, 237, 237, 1);">
+        <h4 style="text-align: center;font-weight: bold;"><서울대 원데이 스쿨> 사전 교육</h4>
         </div>
-        <div class="col-md-4">
+
+
+        <p style="font-size: 15px;">안녕하세요. 서울대 원데이 스쿨의 멘토가 되신 것을 환영합니다.<br><br>멘토링을 진행하기에 앞서 저희 프로그램 소개와 준비해야 될 사항들에 대해서 안내해드리겠습니다.<br><br>&nbsp;먼저, 저희 서울대 원데이 스쿨은 중, 고등학생 멘티와 서울대학교 재학생 멘토가 서울대학교에서 만나 5시간 동안 공부 동기부여, 학업고민, 공부법, 입시전략 등의 주제로 이야기를 나누고, 또 중간에 캠퍼스 투어와 식사까지 함께하는 멘토링 프로그램입니다.<br><br>&nbsp;교육 프로그램의 일관성을 위해 미리 구성된 프로그램 일정이 있으며, 큰 틀에서는 정해진 방향을 따라가주시면 됩니다. 그러나 학생 개개인의 상태와 요구하는 바가 다를 수 있으므로, 기존 프로그램 구성 중 학생에게 불필요해 보인다거나 혹은 기존 구성에 없더라도 학생에게 필요한 부분이 있다고 판단되신다면 그에 맞추어 프로그램을 진행해주시면 됩니다.<br><br>서울대 원데이 스쿨 프로그램 일정은 다음과 같습니다.</p><hr><br>
+        <ul>
+            <li>[10:00] 정문에서 집합, 멘토 멘티 소개, 교재 수령, 멘토링 장소로 이동</li><br>
+            <li>[10:00-11:10] 전공 강의(멘토링 장소는 카페, 세미나실 예약 등 사전에 멘토가 준비. 자신의 단과대학 내 장소를 예약하는 것이 가장 좋은데, 준비가 어려울 경우 사전에 운영진에게 필히 연락할 것)<br>
+                            <br>&nbsp;&nbsp;- 학생 파악(10분): 내신성적/모의고사 + 관심 + 전공
+                            <br>&nbsp;&nbsp;- ‘before’ 학생이 생각하는 전공 (5~10분)
+                            <br>&nbsp;&nbsp;- 전공 소개(20분): 해당 전공에서 배우는 과목, 커리큘럼, 실제 선배들의 진로 등
+                            <br>&nbsp;&nbsp;- 기타 설명(10분): 멘토 보충 설명 + 내가 재밌었던 수업 등
+                            <br>&nbsp;&nbsp;- ‘after’ 강연 후 학생이 알게 된 전공을 교재에 정리(5분)</li><br>
+            <li>[11:10-12:45] 점심 식사 및 캠퍼스 투어<br>
+                            <br>&nbsp;&nbsp;- 점심 식사비 각 5000원 지급, 학식, 배달 음식 등 식사 방법은 자율적으로 선택
+                            <br>&nbsp;&nbsp;- 캠퍼스 투어는 최소한으로 필요한 곳들만(학생회관, 도서관, 자하연 등)
+                            <br>&nbsp;&nbsp;- 가능하다면 서점에 들러 실제 대학생들이 공부하는 전공 서적 보여주기
+                            <br>&nbsp;&nbsp;- 학관 문구점, 기념품점 짧게 방문</li><br>
+            <li>[12:45-15:00] 경영대 세미나실로 이동 공부법 강의(운영진이 사전에 예약)<br>
+                            <br>&nbsp;&nbsp;- 목표 대학 설정(10분) ( >> 학교별 전형 및 커트라인 파악)
+                            <br>&nbsp;&nbsp;- 입시 전략 컨설팅(10분)
+                            <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 학생에게 적합한 전형을 준비하기 위한 간략한 입시 전략
+                            <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 반영 비율에 따라 집중해야 하는 내신, 면접, 논술, 비교과(동아리 등), 수능 등 팁 제공
+                            <br>&nbsp;&nbsp;- 멘토의 수시 공부법
+                            <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 계획표 세우기
+                            <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 멘토의 내신관리 비법
+                            <br>&nbsp;&nbsp;- 멘토의 정시 공부법
+                            <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 수능 국어, 영어, 수학, 탐구 영역 공부법
+                            <br>&nbsp;&nbsp;- 기타 알려주고 싶은 본인만의 특별한 공부법 또는 자기소개서 작성, 면접 요령 등</li><br>
+            <li>[15:00-15:10] 경영대 로비에서 집합, 작별 인사, 피드백</li><br>
+        </ul><hr><br>
+        <p style="font-size: 15px;">조금 더 자세하게 설명을 드리자면,<br>프로그램은 총 세 파트로 구성이 되어있습니다.<br><br>&nbsp;•&nbsp;&nbsp;첫 번째 파트는 '전공 설명'입니다.<br><br>전공 설명 파트 내에서도 세 가지 주제로 나뉘는데, <br>(1) 해당 학과 수업에서 배우는 내용 <br>(2) 수업 이외에 해당 전공 학생들의 대학생활 <br>(3) 졸업 후 선배들의 진출 분야입니다.<br><br>사실 고등학생들이 대학교에 원서를 넣을 때 뚜렷한 목표를 가지고 있는 친구들이 많지 않습니다. 단순히 인기 학과이기 때문에 지원한다거나, 아니면 성적에 맞추어 지원하는 경우도 많지요. 혹 정해진 목표가 있거나 관심 분야가 있는 학생의 경우에도 실제 자신이 지원하는 전공 학과에서 무엇을 배우고, 해당 전공의 학위를 취득해서 무엇을 할 수 있는지 잘 알지 못합니다. 따라서 저희는 그러한 학생들에게 실제 해당 전공의 멘토들이 본 전공에서는 어떤 수업들이 있고 무엇을 배우는지, 학교에서 학생들은 수업 이외에 어떻게 생활하는지, 그리고 졸업 후 어떤 일들을 할 수 있는지를 알려주려고 합니다.<br><br>&nbsp;•&nbsp;&nbsp;두 번째 파트는 '캠퍼스 투어'입니다.<br><br>전공 설명이 끝난 뒤에는 1시간에서 1시간 반 정도 동안 캠퍼스 투어 및 점심식사를 하게 됩니다. 점심 식사비는 인당 5,000원 지급되며, 주어진 예산 내에서 학식, 배달 음식 등 자율적으로 멘티와 함께 식사를 해주시면 되겠습니다. 캠퍼스 투어의 경우 멘토링 시작 장소에서 출발하여 도서관, 학생회관, 자하연 등 최소한으로 필요한 곳들만 방문해주시면 됩니다. 학생회관에서는 학관 문구점, 기념품점을 방문하여 서울대 노트, 필통 등 학생이 원하는 기념품을 구매할 수 있는 시간을 가지고, 가능하다면 서점에 들러 실제 대학생들이 공부하는 전공 서적들을 보여주시면 좋을 것 같습니다. 또한 학관 3, 4층에 있는 동아리 방들을 구경시켜 주셔도 좋습니다. 캠퍼스 투어가 끝난 뒤에는 경영대학 58동으로 이동하여 저희 측에서 사전에 예약해놓은 세미나실에서 다음 일정을 진행해주시면 됩니다.<br><br>&nbsp;•&nbsp;&nbsp;마지막 파트는 '공부법 강의'입니다.<br><br>먼저, 멘티가 작성한 멘토링 신청 정보를 바탕으로 학생이 희망하는 대학에 진학하기 위해 필요한 성적 또는 입시전형에 대해 알려줍니다. 따라서 학교별 전형 및 커트라인을 미리 파악해 놓아야 합니다. 다음으로는 학생의 상황에 맞는 입시 전략을 추천해줍니다. 항목별 반영 비율에 따라 학생이 집중해야 하는 내신, 면접, 논술, 비교과, 수능 등에 대한 팁을 제공합니다.<br>&nbsp;다음으로는 계획표 세우는 방법과 시간 관리법에 대해 알려줍니다. 또한 이와 더불어 학교 내신 준비는 어떻게 하는지, 멘토 자신만의 내신관리 비법을 전수해줍니다. 멘티가 고등학생일 경우 수능에 초점을 두어, 중학생일 경우 고등학교에 들어가기 전까지 국, 영, 수 과목별로 어떻게 준비를 해야 할 지 그 방법을 가르쳐주시면 됩니다.<br><br>저희가 미리 정해놓은 주제 이외에도 기타 멘토님께서 학생에게 알려주고 싶으신 본인만의 특별한 공부법 또는 자기소개서 작성, 면접 요령 등을 알려주셔도 좋습니다.<br>세 번째 파트가 끝나고 15:00시에 경영대 로비에서 집합하여 기념사진을 촬영함으로써 전체 일정이 마무리 됩니다.<br><hr><br>멘토링을 진행하기 이전에 멘토님께서는 멘토 계획서를 작성해주셔야 합니다.<br>멘토 계획서를 작성하는 방법은 다음과 같습니다.</p>
+        <ol>
+            <li>www.snu1dayschool.net에 접속</li>
+            <li>회원가입(멘토로 가입하기)</li>
+            <li>우측 상단에 아이디 -> 마이페이지 클릭</li>
+            <li>나의 멘토링 목록 -> 계획 등록</li>
+            <li>멘티 정보와 사전교육자료를 꼼꼼히 확인한 뒤 멘토링 계획 작성</li>
+            <li>제출하기</li>
+        </ol>
+        <p style="font-size: 15px;">멘티가 여러 명인 경우 똑같은 내용을 복사 + 붙여넣기 해주시면 되고, 다만, 학생의 질문에 대한 답변 계획만 다르게 작성해주시면 됩니다.<br><hr><br>멘토링 계획을 등록하면 [후기 작성] 버튼이 활성화됩니다. 멘토링 진행 전에 후기 작성페이지를 꼭 확인하시고 멘토링 진행 중 후기를 작성하기 위해 필요한 학생의 정보를 최대한 파악해주셔야 합니다. 몇 가지 질문은 멘토링 중에 인터뷰 형식으로 학생에게 질문하고 답변을 바로 옮겨 적으셔도 됩니다. 멘토링이 끝나고 나서 채우지 못한 멘토링 후기를 마저 작성합니다. 후기 작성이 성실하게 완료되어야 멘토링 비용이 지급되니 이 점 꼭 유의하시기 바랍니다.</p>
+        <ul style="font-size: 15px;">
+            <li>기타 유의사항</li>
+                <ol>
+                    <li>멘토링 당일에 늦지 않게 와주세요.</li>
+                    <li>학생들의 사진을 많이 찍어주세요. 멘토님이 함께 나온 사진이라면 더욱 좋습니다^^ (최소5장)</li>
+                    <li>교재를 충실하게 작성할 수 있도록 지도해주시고, 집에 꼭 챙겨갈 수 있도록 해주세요! 기록물이 없으면 부모님들께서 학생이 어떤 것을 배우고 왔는지 알 방법이 없어요..</li>
+                    <li>후기를 충실하게 작성해주세요.</li>
+                    <li>비록 하루 5시간의 짧은 만남이지만 학생에게 소중한 추억을 줄 수 있는 멘토가 되어주세요.</li>
+                </ol>
+        </ul>
+    </div>
+
+
+<div class="container">
+    <div class="col-md-12" style="text-align: center; background-color: rgba(251, 243, 242, 1);padding: 0 0 0 0;">
+        <div class="well well-sm" style="background-color:rgba(251, 237, 237, 1);">
+        <h4 style="text-align: center;font-weight: bold;">멘토링 정보</h4>
+        </div>
+        <div>
+          <ul class="nav">
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>이름</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.name}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>지역/학교</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.area_highschool}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>학년</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.grade}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘티 전화번호</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.phone_mentee}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>보호자 전화번호</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.phone_keeper}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>희망날짜</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.date}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>장래희망</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.wannabe}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>희망대학</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.university}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>성적수준</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.rating}}</h5>
+                </div>
+            </div><div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>공부의욕</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.will_to_study}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공1</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major1}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공2</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major2}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>관심전공3</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.major3}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>평소 궁금했던 질문</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.questions}}</h5>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-sm-3">
+                    <h5>멘토에게 바라는 점</h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>{{mentoring.requirements}}</h5>
+                </div>
+            </div>
+          </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 3%;padding:0 0 0 0;">
+    <div class="row">
+        <div style="width: 90%;margin: 0 5% 0 5%; padding-bottom:1%;background-color: rgba(251, 243, 242, 1);">
+            <div class="well well-sm" style="background-color:rgba(251, 237, 237, 1);;width:100%;">
+                <h4 style="text-align: center;font-weight: bold;">멘토링 계획서</h4>
+            </div>
+            <h5>멘토 이름</h5>
+            <div class="jumbotron" style="text-align: center;">
+            <h5>{{plan.mentor}}</h5>
+            </div>
+            <br>
+            <h5>멘토 소개 문구</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.mentor_intro}}</p>
+            </div>
+            <h5>약 력</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.mentor_spec}}</p>
+            </div>
+            <h5>학과 소개</h5>
+            <div class="jumbotron" style="background-color: white;">
+            <p>{{plan.major_intro}}</p>
+            </div>
+            <h5>계획표 세우는 법</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.time_manage}}</p>
+            </div>
+            <h5>내신 관리 비법</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.grade_manage}}</p>
+            </div>
+            <h5>과목별 공부법</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.subject_study}}</p>
+            </div>
+            <h5>기타 알려주고 싶은 본인만의 특별한 공부법</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.know_how}}</p>
+            </div>
+            <h5>학생의 질문에 대한 답변</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.answering_question}}</p>
+            </div>
+            <h5>그 외에 학생에게 전달하고 싶은 메세지</h5>
+            <div class="jumbotron" style="background-color: white">
+            <p>{{plan.delivering_message}}</p>
+            </div>
+
+<a href="{% url 'profile' %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 5% 0 1% 3%;background-color:rgba(240, 180, 180, 1);">돌아가기</button></a>
+        <a href="{% url 'plan_edit' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 5% 0 1% 3%;background-color:rgba(240, 180, 180, 1);">계획 수정</button></a>
+
+        </div>
+
+
+       <!-- <div class="col-md-4">
 
             <div class="well well-sm">
             찾아오시는 길
             </div>
             <div id="map" style="width:100%; min-height:300px;">
             </div>
-            <br />
+            <br />-->
 
             <!-- 추천 스토어-->
+            <!--
             <div class="well well-sm">
             추천 멘토링
             </div>
@@ -89,9 +307,15 @@
                 </div>
             </div>
             <br />
+-->
 
 
-        </div>
     </div>
 </div>
+
+
+
+
+
+{% endif %}
 {% endblock %}

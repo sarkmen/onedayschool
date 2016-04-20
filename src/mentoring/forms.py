@@ -16,7 +16,18 @@ class MentoringForm(forms.ModelForm):
 class PlanForm(forms.ModelForm):
     class Meta:
         model = Plan
-        fields = ('major_intro', 'time_manage', 'grade_manage', 'subject_study', 'know_how', 'delivering_message',)
+        fields = ('mentor_intro','mentor_spec','major_intro', 'time_manage', 'grade_manage', 'subject_study', 'know_how','answering_question', 'delivering_message',)
+        widgets = {
+            'mentor_intro' : forms.Textarea(attrs={'style':'resize:none;', 'rows':4, 'placeholder':'프로그램 소개 -> 멘토 소개 참고'}),
+            'mentor_spec' : forms.Textarea(attrs={'style':'resize:none;', 'rows':4, 'placeholder':'프로그램 소개 -> 멘토 소개 참고'}),
+            'major_intro' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 자신의 전공에 대한 설명을 배우는 교과목, 추후 진로등에 대해 멘티들이 이해하기 쉽고 구체적으로 설명해 주세요. 학과 소개 자료 및 멘티들에게 알려 줄 수 있는 내용이 있으면 함께 첨부 해 주셔도 됩니다.'}),
+            'time_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'grade_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'subject_study' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'know_how' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'answering_question' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'delivering_message' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,})
+            }
 
 
 class ApplyForm(forms.ModelForm):

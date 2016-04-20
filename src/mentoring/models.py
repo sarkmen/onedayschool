@@ -90,12 +90,15 @@ class Mentoring(models.Model):
 class Plan(models.Model):
     mentoring = models.OneToOneField(Mentoring)
     mentor = models.ForeignKey(settings.AUTH_USER_MODEL, default='1')
+    mentor_intro = models.TextField(max_length=500, verbose_name='멘토 소개 문구')
+    mentor_spec = models.TextField(max_length=500, verbose_name='약 력')
     major_intro = models.TextField(max_length=500, verbose_name='학과 소개')
     time_manage = models.TextField(max_length=500, verbose_name='계획표 세우는 법')
     grade_manage = models.TextField(max_length=500, verbose_name='내신 관리 비법')
-    subject_study = models.TextField(max_length=500, verbose_name='과목 별 공부법')
-    know_how = models.TextField(max_length=500, verbose_name='본인만의 특별한 공부법')
-    delivering_message = models.TextField(max_length=500, verbose_name='그 외에 전달하고 싶은 메세지')
+    subject_study = models.TextField(max_length=500, verbose_name='과목별 공부법')
+    know_how = models.TextField(max_length=500, verbose_name='기타 알려주고 싶은 본인만의 특별한 공부법')
+    answering_question = models.TextField(max_length=500, verbose_name='학생의 질문에 대한 답변')
+    delivering_message = models.TextField(max_length=500, verbose_name='그 외에 학생에게 전달하고 싶은 메시지')
 
 
 class Apply(models.Model):

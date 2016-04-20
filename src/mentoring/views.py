@@ -94,7 +94,8 @@ def plan_detail(request, pk):
     mentoring = get_object_or_404(Mentoring, pk=pk)
     plan = mentoring.plan
     return render(request, 'mentoring/plan_detail.html', {
-        'plan' : plan
+        'plan' : plan,
+        'mentoring' : mentoring
         })
 
 
@@ -130,7 +131,7 @@ def plan_edit(request, pk):
             plan.save()
             return redirect(plan_detail, pk=pk)
     else:
-        planform = PlanForm()
+        planform = PlanForm(instance=plan)
     return render(request, 'mentoring/plan_form.html', {
         'planform' : planform,
         'mentoring' : mentoring
@@ -258,7 +259,7 @@ def mentorfeedback_edit(request, pk):
             mentorfeedback.save()
             return redirect(mentorfeedback_detail, pk=pk)
     else:
-        mentorfeedbackform = MentorfeedbackForm()
+        mentorfeedbackform = MentorfeedbackForm(instance=mentorfeedback)
     return render(request, 'mentoring/mentorfeedback_form.html', {
         'mentorfeedbackform' : mentorfeedbackform,
         'mentoring' : mentoring,
@@ -286,7 +287,7 @@ def menteefeedback_new(request, pk):
             menteefeedback.save()
             return redirect(menteefeedback_detail, pk=pk)
     else:
-        menteefeedbackform = MenteefeedbackForm()
+        menteefeedbackform = MenteefeedbackForm(instance=menteefeedback)
     return render(request, 'mentoring/menteefeedback_form.html', {
         'menteefeedbackform' : menteefeedbackform,
         'mentoring' : mentoring

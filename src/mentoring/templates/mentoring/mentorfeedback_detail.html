@@ -82,7 +82,9 @@
                     <h5>{{mentorfeedback.reference}}</h5>
                 </div>
             </div>
-            <a href="{% url 'menteefeedback_edit' mentoring.pk %}"><button class="btn btn-primary">후기 수정하기</button></a>
+
+            <a href="{% url 'mentorfeedback_edit' mentoring.pk %}"><button class="btn btn-primary"style="margin-top: 2%;">후기 수정하기</button></a>
+            <a href="{% url 'profile' %}" style="margin-left: 2%;"><button class="btn btn-primary"style="margin-top: 2%;">돌아가기</button></a>
           </ul>
         </div>
     </div>
