@@ -131,7 +131,7 @@
             </div>
             {% if user.profile.is_mentor %}
             {% else %}
-                {% if mentoring.acceptor %}
+                {% if mentoring.acceptor != "1" %}
                 <h2>성립된 멘토링입니다.</h2>
                 {% else %}
                 <h2>멘토 분을 구하고 있습니다.</h2>
