@@ -16,5 +16,5 @@ DATABASES = {
 }
 DATABASE_OPTIONS = {'charset':'utf8'}
 STATIC_ROOT= os.path.join(BASE_DIR, '..', 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 MEDIA_URL= '/media/'

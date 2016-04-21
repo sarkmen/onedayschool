@@ -135,7 +135,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR, '..', 'static_root')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = join(BASE_DIR, '..', 'media_root')
+MEDIA_ROOT = join(BASE_DIR, '..', 'media')
 
 from django.contrib.messages import constants as messages_constants
 
