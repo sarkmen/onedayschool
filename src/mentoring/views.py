@@ -287,7 +287,7 @@ def menteefeedback_new(request, pk):
             menteefeedback.save()
             return redirect(menteefeedback_detail, pk=pk)
     else:
-        menteefeedbackform = MenteefeedbackForm(instance=menteefeedback)
+        menteefeedbackform = MenteefeedbackForm()
     return render(request, 'mentoring/menteefeedback_form.html', {
         'menteefeedbackform' : menteefeedbackform,
         'mentoring' : mentoring
