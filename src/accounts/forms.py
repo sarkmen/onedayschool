@@ -22,9 +22,10 @@ class MentorForm(UserCreationForm):
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
     #image = forms.ImageField(label='프로필 사진')
     intro = forms.CharField(label='각종 약력', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
-    is_agree = forms.BooleanField(label='약관동의', error_messages={
-        'required' : '약관동의를 해주셔야 가입이 됩니다.',
-    })
+
+    #is_agree = forms.BooleanField(label='약관동의', error_messages={
+        #'required' : '약관동의를 해주셔야 가입이 됩니다.',
+    #})
 
     error_messages = {
         'password_mismatch': _("비밀번호가 일치하지 않습니다."),
@@ -66,9 +67,9 @@ class MenteeForm(UserCreationForm):
     #phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
     grade = forms.ChoiceField(label='학년', choices=GRADE_CHOICES)
     access_route = forms.ChoiceField(label='가입경로', choices=ACCESS_ROUTE)
-    is_agree = forms.BooleanField(label='약관동의', error_messages={
-        'required' : '약관동의를 해주셔야 가입이 됩니다.',
-    })
+    #is_agree = forms.BooleanField(label='약관동의', error_messages={
+    #    'required' : '약관동의를 해주셔야 가입이 됩니다.',
+    #})
 
     error_messages = {
         'password_mismatch': _("비밀번호가 일치하지 않습니다."),
