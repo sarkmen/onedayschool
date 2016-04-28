@@ -20,12 +20,12 @@ class PlanForm(forms.ModelForm):
         widgets = {
             'mentor_intro' : forms.Textarea(attrs={'style':'resize:none;', 'rows':4, 'placeholder':'프로그램 소개 -> 멘토 소개 참고'}),
             'mentor_spec' : forms.Textarea(attrs={'style':'resize:none;', 'rows':4, 'placeholder':'프로그램 소개 -> 멘토 소개 참고'}),
-            'major_intro' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 자신의 전공에 대한 설명을 배우는 교과목, 추후 진로등에 대해 멘티들이 이해하기 쉽고 구체적으로 설명해 주세요. 학과 소개 자료 및 멘티들에게 알려 줄 수 있는 내용이 있으면 함께 첨부 해 주셔도 됩니다.'}),
-            'time_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
-            'grade_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
-            'subject_study' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
-            'know_how' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
-            'answering_question' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
+            'major_intro' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 자신의 전공에 대한 설명을 배우는 교과목, 추후 진로등에 대해 멘티들이 이해하기 쉽고 구체적으로 설명해 주세요. 학과 소개 자료 및 멘티들에게 알려 줄 수 있는 내용이 있으면 함께 첨부 해 주셔도 됩니다. (300자 내외)'}),
+            'time_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 학습 계획표 세우는 법을 구체적으로 설명해 주세요. (200자 내외)'}),
+            'grade_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 내신 관리 비법을 구체적으로 설명해 주세요. (200자 내외)'}),
+            'subject_study' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 과목별 공부법을 구체적으로 설명해 주세요. (과목별 100자 내외)'}),
+            'know_how' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 기타 멘티들에게 알려주고 싶은 본인만의 특별한 공부법을 구체적으로 상세히 설명해 주세요. '}),
+            'answering_question' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,} 'placeholder':' 위의 \'멘토링 정보\' 탭에 있는 \'멘티가 멘토에게 궁금한 질문\'에 대한 답변을 성실하게 작성해 주세요. '),
             'delivering_message' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,})
             }
 
