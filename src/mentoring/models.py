@@ -84,7 +84,8 @@ class Mentoring(models.Model):
     is_recommended = models.PositiveSmallIntegerField(unique=True, blank=True, null=True)
 
     def __str__(self):
-        return self.author.username
+        return self.name+" "+self.user.username
+
 
 
 class Plan(models.Model):
