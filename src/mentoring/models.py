@@ -100,6 +100,9 @@ class Plan(models.Model):
     answering_question = models.TextField(max_length=500, verbose_name='학생의 질문에 대한 답변')
     delivering_message = models.TextField(max_length=500, verbose_name='그 외에 학생에게 전달하고 싶은 메시지')
 
+    def __str__(self):
+        return self.mentor.profile.name + self.mentor.username
+
 
 class Apply(models.Model):
     mentoring = models.ForeignKey(Mentoring)
@@ -149,7 +152,7 @@ class Mentorfeedback(models.Model):
     reference = models.TextField(max_length=1000, verbose_name="집에서 학생을 지도할 때 참고했으면 하는 내용")
 
     def __str__(self):
-        return self.mentoring
+        return self.mentoring.name
 
 
 class Menteefeedback(models.Model):
@@ -169,6 +172,9 @@ class Menteefeedback(models.Model):
     mentoring_rating_reason = models.TextField(max_length=500, verbose_name="이 프로그램을 통해 얼마나 진로에 대해 이해할 수 있었나요?")
     helpness = models.TextField(max_length=500, verbose_name="이 프로그램을 통해 학교생활을 적극적으로 하는데 도움이 될 것 같은가요?")
     onetime= models.TextField(max_length=500, verbose_name="1회성 멘토 서비스에 만족하나요? 만일 지속적인 멘토링을 받고 싶다면 어떻게 운영되면 좋을까요?")
+
+    def __str__(self):
+        return self.mentoring.name
 
 
 

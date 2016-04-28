@@ -198,25 +198,8 @@
         <div class="well well-sm" style="background-color:rgba(251, 237, 237, 1)">
         <h2 style="text-align: center;font-weight: bold;">멘토링 계획하기</h2>
         </div>
-        <form method="POST" ENCTYPE="multipart/form-data" action="upload_ok.php">
-            <table width="500" border="0" align="center" bgcolor="dddddd">
-                <tr>
-                    <td width="600" colspan="2" align="center"><b>멘토 사진 업로드</b></td>
-                </tr>
-                <tr></tr>
-                <tr>
 
-                    <td width="500" align="center"> <input type="file" name="upfile" size="20">(파일의 용량 제한 : 20M)</td>
-                </tr>
-                <tr>
-                    <td align="center" colspan="2">
-                        <input type="submit" value="적용"> <input type="reset" value="취소">
-                    </td>
-                </tr>
-            </table>
-        </form>
-
-        <div    class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-3">
             <form method="post" action="">
                 {% csrf_token %}
                 {% bootstrap_form planform %}

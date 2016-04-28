@@ -54,7 +54,7 @@ class Installer(object):
 
         if not self.kwargs['media_root']:
             raise RuntimeError('{}.MEDIA_ROOT 를 설정해주세요. '
-                               'ex) os.path.join(BASE_DIR, "..", "media")'.format(django_settings_module))
+                               'ex) os.path.join(BASE_DIR, "..", "media_root")'.format(django_settings_module))
 
         if os.environ['USER'] != 'root':
             raise RuntimeError('root 권한으로 실행해주세요.')
