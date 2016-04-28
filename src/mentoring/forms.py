@@ -25,8 +25,8 @@ class PlanForm(forms.ModelForm):
             'grade_manage' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 내신 관리 비법을 구체적으로 설명해 주세요. (200자 내외)'}),
             'subject_study' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 과목별 공부법을 구체적으로 설명해 주세요. (과목별 100자 내외)'}),
             'know_how' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8, 'placeholder':' 기타 멘티들에게 알려주고 싶은 본인만의 특별한 공부법을 구체적으로 상세히 설명해 주세요. '}),
-            'answering_question' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,} 'placeholder':' 위의 \'멘토링 정보\' 탭에 있는 \'멘티가 멘토에게 궁금한 질문\'에 대한 답변을 성실하게 작성해 주세요. '),
-            'delivering_message' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,})
+            'answering_question' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,} 'placeholder':' 위의 \'멘토링 정보\' 탭에 있는 \'멘티가 멘토에게 궁금한 질문\'에 대한 답변을 성실하게 작성해 주세요. '}),
+            'delivering_message' : forms.Textarea(attrs={'style':'resize:none;', 'rows':8,}),
             }
 
 
