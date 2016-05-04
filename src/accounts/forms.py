@@ -8,6 +8,7 @@ from django.template.defaultfilters import filesizeformat
 from django.conf import settings
 
 from .models import Profile, MAJOR_CHOICES, ADMISSION_TYPE_CHOICES, GRADE_CHOICES, ACCESS_ROUTE
+from .fields import RestrictedImageField
 
 def phone_validator(value):
     number = ''.join(re.findall(r'\d+', value))
@@ -22,7 +23,7 @@ class MentorForm(UserCreationForm):
     admission_type = forms.ChoiceField(label='입학전형', choices=ADMISSION_TYPE_CHOICES)
     highschool = forms.CharField(label='출신고등학교')
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
-    #image = forms.ImageField(label='프로필 사진')
+    image = RestrictedImageField(max_upload_size=2621440, label='프로필 사진')
     intro = forms.CharField(label='각종 약력', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
 
     #is_agree = forms.BooleanField(label='약관동의', error_messages={
@@ -48,7 +49,7 @@ class MentorForm(UserCreationForm):
             user.profile.admission_type = self.cleaned_data['admission_type']
             user.profile.highschool = self.cleaned_data['highschool']
             user.profile.phone = self.cleaned_data['phone']
-            #user.profile.image = self.cleaned_data['image']
+            user.profile.image = self.cleaned_data['image']
             user.profile.intro = self.cleaned_data['intro']
             user.profile.is_mentor = True
             user.profile.save()
