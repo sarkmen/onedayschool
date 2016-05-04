@@ -23,7 +23,7 @@ class MentorForm(UserCreationForm):
     admission_type = forms.ChoiceField(label='입학전형', choices=ADMISSION_TYPE_CHOICES)
     highschool = forms.CharField(label='출신고등학교')
     phone = forms.CharField(label='휴대폰 번호', widget=forms.TextInput(attrs={'placeholder': 'ex) 010-1234-5678'}), validators=[phone_validator])
-    image = RestrictedImageField(max_upload_size=2621440, label='프로필 사진')
+    image = RestrictedImageField(max_upload_size=3145728, label='프로필 사진')
     intro = forms.CharField(label='각종 약력', widget=forms.TextInput(attrs={'placeholder': '멘토링,과외 경험, 각종 대회 수상, 인증시험 등'}))
 
     #is_agree = forms.BooleanField(label='약관동의', error_messages={
