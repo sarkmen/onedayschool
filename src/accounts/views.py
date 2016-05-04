@@ -91,7 +91,7 @@ def profile_edit(request):
                 return redirect('profile')
         else:
             form = MentorUpdateForm(instance=user.profile)
-        return render(request, 'accounts/mentor_signup.html', {'user': user, 'form': form, })
+        return render(request, 'accounts/mentor_signup_edit.html', {'user': user, 'form': form, })
     else:
         if request.method == 'POST':
             form = MenteeUpdateForm(request.POST, instance=user.profile)
@@ -100,7 +100,7 @@ def profile_edit(request):
                 return redirect('profile')
         else:
             form = MenteeUpdateForm(instance=user.profile)
-        return render(request, 'accounts/mentee_signup.html', {'user': user, 'form': form, })
+        return render(request, 'accounts/mentee_signup_edit.html', {'user': user, 'form': form, })
 
 
 def access_terms(request):
