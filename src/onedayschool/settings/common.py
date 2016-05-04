@@ -146,3 +146,4 @@ MESSAGE_TAGS = {
 MESSAGE_LEVEL = messages_constants.DEBUG
 
 LOGIN_REDIRECT_URL = '/'
+

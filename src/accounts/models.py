@@ -8,13 +8,16 @@ from onedayschool.utils import thumbnail, random_name_upload_to
 
 MAJOR_CHOICES = (
     ('간호대학', '간호대학'),
+    ('건축학과', '건축학과'),
     ('경영대학', '경영대학'),
     ('농경제사회학부', '농경제사회학부'),
     ('사회과학계열', '사회과학계열'),
+    ('심리학과', '심리학과'),
     ('소비자아동학부', '소비자아동학부'),
     ('의류학과', '의류학과'),
     ('인문계열', '인문계열'),
     ('언어학과', '언어학과'),
+    ('교육학과', '교육학과'),
     ('국어교육과', '국어교육과'),
     ('물리교육과', '물리교육과'),
     ('사회교육과', '사회교육과'),
@@ -26,7 +29,6 @@ MAJOR_CHOICES = (
     ('체육교육과', '체육교육과'),
     ('화학교육과', '화학교육과'),
     ('수학교육과', '수학교육과'),
-    ('건축학과', '건축학과'),
     ('물리천문학부', '물리천문학부'),
     ('바이오시스템소재학부', '바이오시스템소재학'),
     ('산림과학부', '산림과학부'),
@@ -106,7 +108,12 @@ class Profile(models.Model):
     access_route = models.CharField(max_length=80, choices=ACCESS_ROUTE, verbose_name='가입경로')
 
     def __str__(self):
-        return self.name+" "+self.user.username
+
+        if str(self.is_mentor) == "True":
+            return "멘토 ||  "+self.name+" ( ID : "+self.user.username+" , 전화번호 : " + str(self.phone) + " )"
+        else:
+            return "멘티 ||  "+self.name+" ( ID : "+self.user.username+" )"
+
 
 def pre_on_mentorimage_save(sender, **kwargs):
     mentor_image = kwargs['instance']

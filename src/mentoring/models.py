@@ -84,7 +84,7 @@ class Mentoring(models.Model):
     is_recommended = models.PositiveSmallIntegerField(unique=True, blank=True, null=True)
 
     def __str__(self):
-        return self.name+" ( "+self.author.username+" ) \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"+self.date
+        return "멘티 : "+self.name+" ( ID : "+self.author.username+" ,  "+self.date+" )"
 
 
 
@@ -102,7 +102,7 @@ class Plan(models.Model):
     delivering_message = models.TextField(max_length=500, verbose_name='그 외에 학생에게 전달하고 싶은 메시지')
 
     def __str__(self):
-        return self.mentor.profile.name + self.mentor.username
+        return "멘토 : " + self.mentor.profile.name + "("+self.mentor.username+") - ( 멘티 : "+self.mentoring.name+" , " + self.mentoring.date + " )"
 
 
 class Apply(models.Model):
@@ -153,7 +153,7 @@ class Mentorfeedback(models.Model):
     reference = models.TextField(max_length=1000, verbose_name="집에서 학생을 지도할 때 참고했으면 하는 내용")
 
     def __str__(self):
-        return self.mentoring.name
+        return " 멘토 : "+self.mentor.profile.name +" ( 멘티 : "+ self.mentoring.name +" , "+ self.mentoring.date + " ) "
 
 
 class Menteefeedback(models.Model):
@@ -175,7 +175,7 @@ class Menteefeedback(models.Model):
     onetime= models.TextField(max_length=500, verbose_name="1회성 멘토 서비스에 만족하나요? 만일 지속적인 멘토링을 받고 싶다면 어떻게 운영되면 좋을까요?")
 
     def __str__(self):
-        return self.mentoring.name
+        return " 멘티 : " + self.mentoring.name + " ( " + self.mentoring.date + " ) "
 
 
 

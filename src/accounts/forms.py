@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetP
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import filesizeformat
+from django.conf import settings
 
 from .models import Profile, MAJOR_CHOICES, ADMISSION_TYPE_CHOICES, GRADE_CHOICES, ACCESS_ROUTE
 
@@ -35,6 +37,8 @@ class MentorForm(UserCreationForm):
         'major': forms.RadioSelect(attrs={'style':'display: none'}),
         'admission_type': forms.RadioSelect(attrs={'style':'display: none'}),
         }
+
+
     def save(self, commit=True):
         user = super(MentorForm, self).save(commit=False)
         if commit:
