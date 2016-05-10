@@ -96,9 +96,15 @@
                                 <th style="border-top: none;"></th>
                                 <th style="border-top: none; padding: 0 0 0 0;">
                                 {% if mentoring.plan %}
+                                    {% if mentoring.mentorfeedback %}
+                                    <a href="{% url 'mentorfeedback_detail' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 보기</button></a>
+                                    <a href="{% url 'plan_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">계획 정보</button></a>
+                                    <a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">멘토링 정보</button></a>
+                                    {% else %}
                                     <a href="{% url 'mentorfeedback_new' mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 작성</button></a>
                                     <a href="{% url 'plan_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">계획 정보</button></a>
                                     <a href="{% url 'mentoring_detail' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">멘토링 정보</button></a>
+                                    {% endif %}
                                 {% else %}
                                     <button class="btn-sm disabled" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">후기 작성</button>
                                     <a href="{% url 'plan_new' pk=mentoring.pk %}"><button class="btn-sm btn-primary" style="border:none;float:right;font-weight:bold;margin: 0 0 1% 1%;">계획 등록</button></a>
