@@ -79,7 +79,7 @@ class Mentoring(models.Model):
     major1 = models.CharField(max_length=40, verbose_name='관심전공1')
     major2 = models.CharField(max_length=40, verbose_name='관심전공2')
     major3 = models.CharField(max_length=40, verbose_name='관심전공3')
-    questions = models.TextField(max_length=2000, verbose_name='평소 궁금했던 질문')
+    questions = models.TextField(max_length=2000, verbose_name='멘토링을 통해 멘토에게 답변 받고 싶은 질문')
     requirements = models.TextField(max_length=2000, verbose_name='멘토에게 바라는 점')
     is_recommended = models.PositiveSmallIntegerField(unique=True, blank=True, null=True)
 

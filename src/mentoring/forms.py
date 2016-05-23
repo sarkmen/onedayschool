@@ -9,6 +9,7 @@ class MentoringForm(forms.ModelForm):
         fields = ('name', 'area_highschool', 'grade', 'phone_mentee', 'phone_keeper', 'date', 'wannabe', 'university', 'major1', 'major2', 'major3', 'rating', 'will_to_study', 'questions', 'requirements')
         widgets = {
             'will_to_study' : forms.RadioSelect(attrs={'style':'display: none'}),
+            'questions' : forms.Textarea(attrs={'style':'resize:none;', 'rows':10, 'placeholder':' 평소 궁금했던 질문이나 멘토링을 통해 서울대학생 멘토에게 답변 받고 싶은 질문을 이 곳에 적어주세요. 좋은 질문이 많을 수록 멘토링이 더욱 풍부해질 수 있습니다.'}),
 
         }
 
