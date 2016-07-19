@@ -1,8 +1,11 @@
 from django.contrib import admin
 from .models import Mentoring, Plan, Recommendmentor, Review, Mentoring_faq, Mentoring_question, Mentoring_answer, Mentorfeedback, Menteefeedback
 
-# Register your models here.
-admin.site.register(Mentoring)
+class MentoringAdmin(admin.ModelAdmin):
+    list_display = ['__str__', 'acceptor',]
+    list_editable = ['acceptor',]
+
+admin.site.register(Mentoring, MentoringAdmin)
 admin.site.register(Plan)
 admin.site.register(Recommendmentor)
 admin.site.register(Review)
